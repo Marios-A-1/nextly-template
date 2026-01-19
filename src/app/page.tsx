@@ -1,49 +1,419 @@
-import { Container } from "@/components/Container";
 import { Hero } from "@/components/Hero";
 import { SectionTitle } from "@/components/SectionTitle";
 import { Benefits } from "@/components/Benefits";
 import { Video } from "@/components/Video";
-import { Testimonials } from "@/components/Testimonials";
+import Testimonials from "@/components/Testimonials";
 import { Faq } from "@/components/Faq";
 import { Cta } from "@/components/Cta";
-
 import { benefitOne, benefitTwo } from "@/components/data";
+
+const GoogleTestimonialsContent = {
+ items: [
+ {
+  id: 1,
+  type: "google" as const,
+  author: "eleni mpakse",
+  rating: 5,
+  text: "Απλά άλλαξε η ζωή μου όλη ,από που να αρχισω; την πανέμορφη και πολύ γλυκιά βοηθό του γιατρού;με έκανε να αισθανθώ σαν οικογένεια δεν έχω λόγια.απλά την αγαπώ, τον γιατρό μας; άλλος ένας πανέμορφος άνθρωπος .Μου δόθηκε η ευκαιρία να ξαναρχίσω την ζωή μου με αγάπη αυτή την φορά για τον εαυτό μου ,κάτι που το αξίζουμε όλες μας.Τους έχω τυφλή εμπιστοσύνη ❤️❤️"
+},
+{
+  id: 2,
+  type: "google" as const,
+  author: "Lavinia Karamali",
+  rating: 5,
+  text: "Είναι πολύ σημαντικό ο γιατρός σου να μην σε δει σαν πορτοφόλι ούτε διεκπαιρεωτικα αλλά σαν άνθρωπο.\nΕξαιρετικός, φιλικός , προσιτός!\nΑφαίρεση σπίλου από την πλάτη κ θα συνεχίσουμε κ σε άλλα!"
+},
+{
+  id: 4,
+  type: "google" as const,
+  author: "Κατερίνα Σταύρου",
+  rating: 5,
+  text: "Εξαιρετικός επιστήμονας και άνθρωπος, ειλικρινής, με πολύ καλή τεχνική και τα καλύτερα υλικά! Συγχαρητήρια γιατρέ μου και σας ευχαριστώ για το αποτέλεσμα!!"
+},
+{
+  id: 5,
+  type: "google" as const,
+  author: "Angela Kouvoutsaki",
+  rating: 5,
+  text: "Έμεινα απόλυτα ευχαριστημένη!!Εξαιρετικός επαγγελματίας, με έκανε να νιώσω άνετα από την πρώτη στιγμή. Ασχολήθηκε με προσοχή με το πρόβλημά μου, εξήγησε τα πάντα με κατανοητό τρόπο και μου ενέπνευσε εμπιστοσύνη. Τον συνιστώ ανεπιφύλακτα σε όποιον σκέφτεται να κάνει μια αισθητική επέμβαση!!"
+},
+{
+  id: 6,
+  type: "google" as const,
+  author: "Βασιλική Τσελα",
+  rating: 5,
+  text: "Απίστευτος γιατρός, καταπληκτικός άνθρωπος,τα αποτελέσματα πραγματικά θεαματικά...η καλύτερη επιλογή που θά μπορούσα να κάνω"
+},
+{
+  id: 7,
+  type: "google" as const,
+  author: "Απολλωνια Παραμυθιωτη",
+  rating: 5,
+  text: "Αντικειμενικος , καθαρός στον λόγο του και άψογος εις το έργο του. Κάθε απορία που είχα στο πρόβλημα μου απαντήθηκε και λύθηκε με την πιο ορθή επιλογή. Όχι μόνο για τώρα αλλά και για μετά το χειρουργείο.  Απόλυτα ευχαριστημένη και χαρούμενη για την γνωριμία μου με τον κυριο Βλασταρακο αλλά και τους συνεργάτες του στον χώρο."
+},
+{
+  id: 8,
+  type: "google" as const,
+  author: "Μαρια Κυπριωτη",
+  rating: 5,
+  text: "Πάνω απ όλα υπέροχος άνθρωπος και μετα καλλιτέχνης!!!Τα 5 αστερισ δε φτάνουν..μακάρι να είχε κι άλλα!!"
+},
+{
+  id: 9,
+  type: "google" as const,
+  author: "Jenny Pentedeka Christopoulou",
+  rating: 5,
+  text: "Εξαιρετικός επαγγελματίας με άψογη προσέγγιση! Συνδυάζει γνώση, εμπειρία και κατανόηση στις ανάγκες του ασθενούς !Το αποτέλεσμα ήταν πέρα από τις προσδοκίες μου, φυσικό και αρμονικό !Εκτος των αισθητικών παρεμβάσεων με βοήθησε εξαιρετικά…"
+},
+{
+  id: 10,
+  type: "google" as const,
+  author: "Renata Elezi",
+  rating: 5,
+  text: "Δεν υπάρχει πιο σημαντικό από την εμπιστοσύνη που μπορεί να σου εμπνεύσει ένας ειδικά στα θέματα της αισθητικής. από την πρώτη στιγμή χωρίς άγχος ένιωσα την ασφάλεια ότι αποτέλεσμα θα ήταν μοναδικό. Χωρίς υπερβολές ήταν αυτό ακριβώς που…"
+},
+{
+  id: 11,
+  type: "google" as const,
+  author: "Βασίλης Κακαλής",
+  rating: 5,
+  text: "Είναι πολύ σωστός επαγγελματίας,με άψογη προσέγγιση επί του θέματος που μου προεκυψε,έδωσε την απαραίτητη προσοχή,μου πρότεινε λύση στο προβλημα μου,,παντα με ευγενεια και χαμογελο οπως επίσης και η συνεργάτης του στο ιάτρειο.\nΣας ευχαριστώ πολύ."
+},
+{
+  id: 12,
+  type: "google" as const,
+  author: "Giwta Koulouvardi",
+  rating: 5,
+  text: "Πριν από πολυ καλός γιατρός είναι ένας υπέροχος άνθρωπος..Όταν πήγα πρώτο του μέλημα ήταν να νιώσω καλα\nΜε είδε σαν άνθρωπο κ όχι σαν πορτοφόλι !!!…"
+},
+{
+  id: 13,
+  type: "google" as const,
+  author: "Ioanna Toli",
+  rating: 5,
+  text: "Καταπληκτικός γιατρός και άνθρωπος. Το πιο φυσικό αποτέλεσμα υαλουρονικου!!! Έμεινα πολυ ευχαριστημένη και τον συνιστώ ανεπιφύλακτα!!!"
+},
+{
+  id: 14,
+  type: "google" as const,
+  author: "olumpia ziai",
+  rating: 5,
+  text: "Ο καλύτερος πλαστικός χειρουργός με διαφορά στην Ελλάδα τον συνιστώ ανεπιφυλακτα!\nΕίναι ο ανθρωπος που θα σου δώσει το καλύτερο δυνατό αποτέλεσμα σε ότι και αν αποφασίσεις να κανείς"
+},
+{
+  id: 15,
+  type: "google" as const,
+  author: "Ina Passali",
+  rating: 5,
+  text: "Από την πρώτη επίσκεψη ο κύριος Βλασταράκος  σε κάνει να τον εμπιστευτείς και να αφεθείς στα χέρια του και στην εμπειρία του! Χαμόγελο, διάθεση, συζήτηση, ανάλυση, λεπτομέρεια για όλα και πόσα ακόμα… πολλά συγχαρητήρια και στη βοηθό του,…"
+},
+{
+  id: 16,
+  type: "google" as const,
+  author: "Meda Andromeda",
+  rating: 5,
+  text: "Ο καλύτερος γιατρός !!!υπομονετικός συζητησιμος  και πάνω απ όλα καταπληκτικός στην δουλειά του!\nΜου έκανε ακριβώς αυτό που ζήτησα και ήθελα .…"
+},
+{
+  id: 17,
+  type: "google" as const,
+  author: "Marietta Kerasta",
+  rating: 5,
+  text: "Πολύ κακη εμπειρία...βλέφαρο πλαστική πριν δύο χρόνια...όπως είπε κ ο οφθαλμίατρος μου ένα χιλιοστό αν είχε κόψει δε θα έκλειναν τα μάτια μου ...κανένας σεβασμός στο άγχος του ασθενούς πριν το χειρουργείο...τα μάτια μου κάθε τόσο πρήζονται…"
+},
+{
+  id: 18,
+  type: "google" as const,
+  author: "GALINI STEFANIDI",
+  rating: 5,
+  text: "Αν και δεν το συνηθίζω για τον συγκεκριμένο άνθρωπο-γιατρό αξιζει. Είναι εξαιρετικός ιατρός,συνεπής, νοιάζεται για τον ασθενή του και επαγγελματίας πάνω απ'ολα. Δεν έχω κανένα παράπονο. Το μόνο μειονέκτημα είναι που δεν υπάρχουν κι αλλοι γιατροί σαν τον κύριο Βλασταρακο!"
+},
+{
+  id: 19,
+  type: "google" as const,
+  author: "Elena Chrch",
+  rating: 5,
+  text: "Ο καλύτερος ιατρός, μα πάνω από όλα ΑΝΘΡΩΠΟΣ..!! Η δουλειά του είναι τέλεια και κανείς δεν μπορεί να καταλάβει τις επεμβάσεις που έχεις κάνει..!! Πόνος δεν υπάρχει..!! Πραγματικά είναι ο καλύτερος πλαστικός χειρουργός..!! Δεν τον αλλάζω με…"
+},
+{
+  id: 20,
+  type: "google" as const,
+  author: "NANSY MARTZIOU",
+  rating: 5,
+  text: "Εξαιρετικός γιατρός, υπέροχος άνθρωπος. Έχω κάνει κατά διαστήματα διάφορες θεραπείες, μποτοξ, υαλουρονικό, lpg, λίπο κλπ. Πολύ ευχαριστημένη από όλες τις θεραπείες και από την μετά θεραπεία παρακολούθηση και το ενδιαφέρον του γιατρού."
+},
+{
+  id: 21,
+  type: "google" as const,
+  author: "Mariza Skarpinaki",
+  rating: 5,
+  text: "Η προσωπική μου εμπειρία είναι εφιαλτική. Αυξητική μαστών, επιπλοκή και νοσηλεία για άλλες 5 μέρες. Ύστερα από 4 μήνες δεύτερο χειρουργείο για να αποκατασταθεί η ζημιά του πρώτου και πάλι το ένθεμα πάλι βρέθηκε κάτω από τη θέση που πρέπει…"
+},
+{
+  id: 22,
+  type: "google" as const,
+  author: "Emilia Thomaidi",
+  rating: 5,
+  text: "Επισκέφτηκα το ιατρείο για αφαίρεση ξανθελασμάτων.\nΌλα έγιναν τέλεια και όπου και να έχω πάει ,σε αισθητικό ή δερματολόγο , μου έχουνε πει ότι έχει κάνει καταπληκτική δουλειά. Σε ερώτηση μου, την 1η φορά που…"
+},
+{
+  id: 23,
+  type: "google" as const,
+  author: "Ελενα Κουτσοβασιλη",
+  rating: 5,
+  text: "Ένας εξαιρετικός ιατρός αλλά πάνω απ' όλα υπέροχος άνθρωπος! Ευγενικός και τόσο αναλυτικός σε οποιαδήποτε απορία! Πολύ έμπειρος που σου εμπνέει εμπιστοσύνη και ασφάλεια!Ο καλύτερος με διάφορα!"
+},
+{
+  id: 24,
+  type: "google" as const,
+  author: "ANNA KONTOLEON",
+  rating: 5,
+  text: "Εξαιρετικά αποτελέσματα από όλες τις απόψεις !!! Θεαματικές αλλαγές μετά το Facelift. Γρήγορη αποκατάσταση. Μηδενικά προβλήματα. Σωστή προετοιμασία και επεξήγηση σχετικά με την διαδικασία.…"
+},
+{
+  id: 25,
+  type: "google" as const,
+  author: "Katerina Kampioni",
+  rating: 5,
+  text: "Μετά την εγκυμοσύνη και το θηλασμό το σώμα της γυναίκας αλλάζει. Επισκέφτηκα  το ιατρείο του γιατρού Πέτρου Βλασταράκου και έφυγα χαρούμενη και αποφασισμένη να προχωρήσω σε όσα μου πρότεινε σχετικά με την αυξητική μαστοπηξια (ανόρθωση με…"
+},
+{
+  id: 26,
+  type: "google" as const,
+  author: "Elena Panagiotopoulou",
+  rating: 5,
+  text: "Από τους καλύτερους\nΆνθρωπος πάνω από όλα και μετά επιστήμονας,ανυπομωνω για την επόμενη έμπειρια γιατί η πρώτη ήταν πραγματικά απίστευτη,μου έδωσε ακριβώς το αποτέλεσμα που…"
+},
+{
+  id: 27,
+  type: "google" as const,
+  author: "Maria Prionisti",
+  rating: 5,
+  text: "Εξαιρετικός !\nΤόσο ο ίδιος όσο και η ομάδα του.\nΈμεινα εντυπωσιασμένη από τον επαγγελματισμό του ,την άψογη κατάρτιση του αλλά…"
+},
+{
+  id: 28,
+  type: "google" as const,
+  author: "D",
+  rating: 5,
+  text: "Οτι κ να πω για αυτο το γιατρο ειναι λιγο. Εκτος απο απιστευτος επιστημονας ειναι κ πραγματικα απιστευτος ανθρωπος. Απο τη στιγμη που θα μπεις στο γραφειο του, σε βλεπει σα δικο του ανθρωπο κ δεν σου απανταει σε οτι κ αν σε προβληματιζει. Αψογος επαγγελματιας καθως κ ολη η ομαδα του. Δεν τον αλλαζω με τιποτα , αν μπορουσα θα εβαζα 10!"
+},
+{
+  id: 29,
+  type: "google" as const,
+  author: "VIVIAN DRAGONA",
+  rating: 5,
+  text: "Τα λόγια είναι πολυ λίγα…. Επιστήμονας αλλά και φοβερός άνθρωπος, που για μενα είναι πολυ σημαντικο"
+},
+{
+  id: 30,
+  type: "google" as const,
+  author: "Έλλη Κουκουβέ",
+  rating: 5,
+  text: "Ο άνθρωπος πρώτα απ' όλα κι ο γιατρός μετέπειτα που αγάπησα ... Με κλειστά μάτια τον εμπιστεύομαι. Όποιος θέλει κάτι να βελτιώσει - διορθώσει τον συστήνω χωρίς δεύτερη σκέψη !!!…"
+},
+{
+  id: 31,
+  type: "google" as const,
+  author: "Ευγενια Βουμβουλακη",
+  rating: 5,
+  text: "Αγαπημένος και μοναδικός στο είδος του!ο εξοπλισμός και ο χώρος είναι σε αψογη κατάσταση, όπως ακριβώς αρμόζει σε όποιον θέλει να λέγεται επαγγελματίας.Το σημαντικότερο όμως που δημιούργησε για εμένα την ιδανική συνθήκη είναι ότι όλα τα…"
+},
+{
+  id: 32,
+  type: "google" as const,
+  author: "Despina Kanellopoulou",
+  rating: 5,
+  text: "Εύστοχος γιατρός, πολύ καλό αποτέλεσμα!!"
+},
+{
+  id: 33,
+  type: "google" as const,
+  author: "I. Belibasakis Urology & Andrology Athens",
+  rating: 5,
+  text: "Εξαιρετικός συνάδελφος με εμπειρία, χειρουργική δεινότητα και άριστος κλινικός Με προσοχή στην λεπτομέρεια, νοιάζεται για όλους τους ασθενείς σαν να είναι δικοί του άνθρωποι."
+},
+{
+  id: 34,
+  type: "google" as const,
+  author: "Κατερίνα Μπιτσάνη",
+  rating: 5,
+  text: "Η δική μου εμπειρία είναι κακή λόγω του αποτελέσματος που δεν μπορεί κ να διορθωθεί... Εκανα λιπομεταφορά στο πρόσωπο το 2017 με αποτέλεσμα να έχω απο τότε μέχρι και σήμερα μία σακούλα κάτω απο το μάτι μου.... Πλήρωσα με  λίγα λόγια για να γίνω πιο άσχημη... Συνεπώς και το ένα αστέρι είναι πολύ..."
+},
+{
+  id: 35,
+  type: "google" as const,
+  author: "Damianos turbo diesel services ike Damianos turbo",
+  rating: 5,
+  text: "Εμεινα πολυ ευχαριστημενη, εξαιρετικος χειρουργός, με υπομονη, γνωσεις και καταπληκτικη δουλεια, κοιλιοπλαστικη με υπεροχο αποτελεσμα. Απο την πρωτη επισκεψη, ολο το περιβαλλον πολυ φιλικο και εξυπηρετικο. Συστηνω ανεπιφυλακτα εαν θελετε να…"
+},
+{
+  id: 36,
+  type: "google" as const,
+  author: "Emmanouil S",
+  rating: 5,
+  text: "Προσωπικος ανθρωπος ύστερα από δύο χρόνια ταλαιπωρείται και συνεχίζει να τρέχει στους γιατρούς λόγω των επιπλοκών που έχει πάθει από τα χειρουργεία που έκανε μαζί του.…"
+},
+{
+  id: 37,
+  type: "google" as const,
+  author: "Frantzeska Mihail",
+  rating: 5,
+  text: "Ο καλυτερος ολων μακραν!!!! Εκανα μια τελεια βλεφαροπλαστικη και φυσικα συνεχισα και με την εξαιρετικη συνεργατιδα του τη Γιουλη,  θεραπειες σωματος!!!Ευχαριστω πολυ πολυ!!!"
+},
+{
+  id: 38,
+  type: "google" as const,
+  author: "christina e",
+  rating: 5,
+  text: "Καταπληκτικός επιστήμονας και άνθρωπος!!! Έμεινα πολύ ευχαριστημένη από όλες τις επεμβάσεις που έκανα κ τα αποτελέσματα ήταν καταπληκτικά!!! Σε ευχαριστώ πολύ Πέτρο!!!!!"
+},
+{
+  id: 40,
+  type: "google" as const,
+  author: "Eleanna Rielle",
+  rating: 5,
+  text: "Ο Καλύτερος Γιατρός και άνθρωπος που θα μπορούσα να έχω κοντά μου στην αυξητική στήθους που μου άλλαξε τη ζωή😍\nΤο ήθελα από μικρή και δεν είχα βρει έναν γιατρό να εμπιστευτώ και ανακάλυψα τον…"
+},
+{
+  id: 41,
+  type: "google" as const,
+  author: "Ράνια Αργυροπούλου",
+  rating: 5,
+  text: "Ένας εξαιρετικός γιατρός με εμπειρία διαφορετική,καινοτόμες τεχνικές,χαρακτήρα αδαμάντινο και ιατρική προσέγγιση άριστη.Η εμπειρία του χειρουργείου που έκανα πριν ένα μήνα μου έχει αφήσει άριστες εντυπώσεις…ανώδυνο μέσα σε κλίμα…"
+},
+{
+  id: 42,
+  type: "google" as const,
+  author: "Maria S",
+  rating: 5,
+  text: "Ο καλύτερος όλων!! Εμπειρος,καταρτισμένος και πολύ καλός γνωστής του αντικειμένου !!!!"
+},
+{
+  id: 43,
+  type: "google" as const,
+  author: "Elena Klouts",
+  rating: 5,
+  text: "Άριστος επιστήμονας και πάνω από όλα ΑΝΘΡΩΠΟΣ..!! Μακάρι να μπορούσα να βάλω όλα τα αστέρια του κόσμου..!! Έχω κάνει επεμβάσεις στον γιατρό και τα αποτελέσματα είναι θεαματικά..!! Ανύπαρκτες τομές, καταπληκτικά αποτελέσματα, συνιστώ…"
+},
+{
+  id: 44,
+  type: "google" as const,
+  author: "Giorgos Gritsopoulos",
+  rating: 5,
+  text: "Αριστος γνωστης συνεπής επαγγελματίας εξαιρετικό ιατρείο απιθανα αποτελεσματα"
+},
+{
+  id: 45,
+  type: "google" as const,
+  author: "Δήμητρα Γωτη",
+  rating: 5,
+  text: "Εξαιρετικός φιλικός υπεύθυνος"
+},
+{
+  id: 46,
+  type: "google" as const,
+  author: "NIKOLETTA THOMOPOULOU",
+  rating: 5,
+  text: "Εξαιρετικό περιβάλλον και άψογες υπηρεσίες"
+},
+{
+  id: 47,
+  type: "google" as const,
+  author: "ελενη κουππα",
+  rating: 5,
+  text: "Είναι πολύ καλός γιατρός!"
+},
+{
+  id: 48,
+  type: "google" as const,
+  author: "afroditi zografou",
+  rating: 5,
+  text: "Έχετε κερδίσει την εμπιστοσύνη μου και την αγάπη μου!!"
+},
+{
+  id: 50,
+  type: "google" as const,
+  author: "Absolute Zero",
+  rating: 5,
+  text: "Έκανα λιπεκτομή 360 και αφαίρεση γυναικείου σώματος που είναι μια πολύ δύσκολη διαδικασία αλλά ο γιατρός Πέτρος την έκανε εύκολη! Και πραγματικά καλό"
+},
+{
+  id: 51,
+  type: "google" as const,
+  author: "Amalia Georgiafou",
+  rating: 5,
+  text: "Είμαι πολύ χαρούμενος με την απόφασή μου να υποβληθώ στο χειρουργείο.. έκανα κοιλιά και ανόρθωση στήθους... τα αποτελέσματα είναι εξαιρετικά ικανοποιητικά... Ο Δρ Μπλασταράκος ως άνθρωπος είναι τόσο ζεστός και φιλόξενος σε διευκολύνει... το…"
+},
+{
+  id: 52,
+  type: "google" as const,
+  author: "Sophie V",
+  rating: 5,
+  text: "Απολύτως καταπληκτικό! Έχω συστήσει τον Πέτρο σε πολλούς συγγενείς και φίλους. Από την αρχή μέχρι το τέλος είχα την καλύτερη δυνατή φροντίδα. Με έλεγχε συνεχώς και φρόντιζε να είμαι καλά ανάμεσα στους ελέγχους. Ο Πέτρος με έκανε να νιώσω…"
+},
+{
+  id: 53,
+  type: "google" as const,
+  author: "Sue Maari",
+  rating: 5,
+  text: "Absolutely satisfied with the results of my surgery procedure, Dr. Vlastarakos took time to explain all the options and supported me in making the right choice for me,  both on the phone and in the office. His aftercare was fantastic and his team were compassionate and attentive throughout the process.\nI highly recommend Dr. Vlastarakos for anyone considering plastic surgery."
+},
+{
+  id: 55,
+  type: "google" as const,
+  author: "A Vlc",
+  rating: 5,
+  text: "Αν σκέφτεστε να κάνετε το πρώτο σας μπότοξ, δεν μπορώ να προτείνω αρκετό Δρ Βλασταράκο και την ομάδα του, που ξεπέρασαν τα όρια για να βρουν υλικό για να το κάνετε σε μια αδύνατη στιγμή μετά το Πάσχα.…"
+},
+{
+  id: 56,
+  type: "google" as const,
+  author: "Joanne Hanvey",
+  rating: 5,
+  text: "I flew to Greece for a tummy tuck, muscle repair and lipo. I was so nervous about the whole experience but pedros was amazing he cares so much about his patients and that's why am writing the reveiw. If anyone is thinking of any type of surgery I recommend Pedro's and his team they are amazing. .. And that includes everyone from reception staff, Sophie, to all the nurses. ... Yous are all fantastic, thanks for a great experience. Joanne hanvey xx"
+},
+{
+  id: 57,
+  type: "google" as const,
+  author: "Rose",
+  rating: 5,
+  text: "Εξαιρετικός τρόπος δίπλα στο κρεβάτι. Κανένα τυπικό θεό σύνδρομο εγώ!!\nΟ Δρ Πέτρος Βλασταράκος μου έκανε τα εμφυτεύματα και την ανόρθωση στήθους μου.\nΛιποαναρρόφηση 360 συν Βραζιλιάνικη ανύψωση γλουτών."
+},
+
+]
+};
+
 export default function Home() {
   return (
-    <Container>
+    <>
       <Hero />
       <SectionTitle
-        preTitle="Nextly Benefits"
-        title=" Why should you use this landing page"
+        preTitle="Γιατι να μας Επιλεξεις"
+        title="Γιατί Art of The Possible"
       >
-        Nextly is a free landing page & marketing website template for startups
-        and indie projects. Its built with Next.js & TailwindCSS. And its
-        completely open-source.
+        Στόχος μας είναι ένα αποτέλεσμα που “δένει” φυσικά με το πρόσωπο/σώμα σας, με προτεραιότητα την ασφάλεια και τη σωστή ιατρική καθοδήγηση.
       </SectionTitle>
-
-      <Benefits data={benefitOne} />
+      <Benefits data={benefitOne}/>
       <Benefits imgPos="right" data={benefitTwo} />
 
       <SectionTitle
         preTitle="Watch a video"
-        title="Learn how to fullfil your needs"
+        title="Δείτε σε 60’’ πώς δουλεύουμε"
       >
-        This section is to highlight a promo or demo video of your product.
-        Analysts says a landing page with video has 3% more conversion rate. So,
-        don&apos;t forget to add one. Just like this.
+        Μια σύντομη παρουσίαση της φιλοσοφίας μας, της διαδικασίας και του τι να περιμένετε από το ραντεβού σα
       </SectionTitle>
 
       <Video videoId="fZ0D0cnR88E" />
 
       <SectionTitle
         preTitle="Testimonials"
-        title="Here's what our customers said"
+        title="Τι λένε οι ασθενείς μας"
       >
-        Testimonials is a great way to increase the brand trust and awareness.
-        Use this section to highlight your popular customers.
+        Η εμπιστοσύνη χτίζεται με εμπειρία, καθαρή επικοινωνία και φροντίδα
       </SectionTitle>
 
-      <Testimonials />
+      <Testimonials  content={GoogleTestimonialsContent}/>
 
       <SectionTitle preTitle="FAQ" title="Frequently Asked Questions">
         Answer your customers possible questions here, it will increase the
@@ -52,6 +422,6 @@ export default function Home() {
 
       <Faq />
       <Cta />
-    </Container>
+    </>
   );
 }

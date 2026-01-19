@@ -1,7 +1,38 @@
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Base */
+  --bg: 10 10 10;
+  --surface: 18 18 18;
+  --card: 228 228 228;
+  --border: 40 40 40;
+
+  /* Gold */
+  --primary: 227 192 77;        /* Rich Gold */
+  --primarySoft: 255 215 128;   /* Soft Gold */
+
+  /* Accent */
+  --accent: 160 160 160;        /* Silver Grey */
+
+  /* Text */
+  --text: 70 70 70 ;
+  --muted: 160 160 160;
+}
+
+.dark {
+  --bg: 10 10 10;
+  --surface: 18 18 18;
+  --card: 24 24 24;
+  --border: 40 40 40;
+
+  --primary: 212 175 55;
+  --primarySoft: 255 215 128;
+  --accent: 160 160 160;
+
+  --text: 245 245 245;
+  --muted: 160 160 160;
+}
 
 
 @layer base {
