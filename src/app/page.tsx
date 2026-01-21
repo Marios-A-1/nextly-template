@@ -5,6 +5,7 @@ import { Video } from "../components/Video";
 import Testimonials from "../components/Testimonials";
 import { Faq } from "../components/Faq";
 import { Cta } from "../components/Cta";
+import { MainContainer, PageRoot } from "../components/PageLayout";
 import { benefitOne, benefitTwo } from "../components/data";
 
 const GoogleTestimonialsContent = {
@@ -386,42 +387,54 @@ const GoogleTestimonialsContent = {
 
 export default function Home() {
   return (
-    <>
-      <Hero />
-      <SectionTitle
-        preTitle="Γιατι να μας Επιλεξεις"
-        title="Γιατί Art of The Possible"
-      >
-        Στόχος μας είναι ένα αποτέλεσμα που “δένει” φυσικά με το πρόσωπο/σώμα σας, με προτεραιότητα την ασφάλεια και τη σωστή ιατρική καθοδήγηση.
-      </SectionTitle>
+    <PageRoot>
+      <MainContainer className="space-y-24 py-12">
+        <Hero />
+        <section id="why-us" className="grid grid-cols-1">
+          <SectionTitle
+            preTitle="Γιατι να μας Επιλεξεις"
+            title="Γιατί Art of The Possible ?"
+          >
+            Στόχος μας είναι ένα αποτέλεσμα που “δένει” φυσικά με το πρόσωπο/σώμα σας, με προτεραιότητα την ασφάλεια και τη σωστή ιατρική καθοδήγηση.
+          </SectionTitle>
+        </section>
 
-      <Benefits data={benefitOne}/>
-      <Benefits imgPos="right" data={benefitTwo} />
+        <section id="benefits" className="grid grid-cols-1 gap-10">
+          <Benefits data={benefitOne} />
+          <Benefits imgPos="right" data={benefitTwo} />
+        </section>
 
-      <SectionTitle
-        preTitle="Watch a video"
-        title="Δείτε σε 60’’ πώς δουλεύουμε"
-      >
-        Μια σύντομη παρουσίαση της φιλοσοφίας μας, της διαδικασίας και του τι να περιμένετε από το ραντεβού σα
-      </SectionTitle>
+        <section id="care-experience" className="grid grid-cols-1 gap-16">
+          <div className="grid grid-cols-1 gap-6">
+            <SectionTitle
+              preTitle="Watch a video"
+              title="Δείτε σε 60’’ πώς δουλεύουμε"
+            >
+              Μια σύντομη παρουσίαση της φιλοσοφίας μας, της διαδικασίας και του τι να περιμένετε από το ραντεβού σα
+            </SectionTitle>
+            <Video videoId="fZ0D0cnR88E" />
+          </div>
 
-      <Video videoId="fZ0D0cnR88E" />
+          <div className="grid grid-cols-1 gap-6">
+            <SectionTitle
+              preTitle="Testimonials"
+              title="Τι λένε οι ασθενείς μας"
+            >
+              Η εμπιστοσύνη χτίζεται με εμπειρία, καθαρή επικοινωνία και φροντίδα
+            </SectionTitle>
+            <Testimonials content={GoogleTestimonialsContent} />
+          </div>
 
-      <SectionTitle
-        preTitle="Testimonials"
-        title="Τι λένε οι ασθενείς μας"
-      >
-        Η εμπιστοσύνη χτίζεται με εμπειρία, καθαρή επικοινωνία και φροντίδα
-      </SectionTitle>
+          <div className="grid grid-cols-1 gap-6">
+            <SectionTitle preTitle="FAQ" title="Συχνές Ερωτήσεις">
+              Ό,τι χρειάζεται να γνωρίζεις, συγκεντρωμένο εδώ. Για επιπλέον πληροφορίες, επικοινώνησε μαζί μας.
+            </SectionTitle>
+            <Faq />
+          </div>
 
-      <Testimonials  content={GoogleTestimonialsContent}/>
-
-      <SectionTitle preTitle="FAQ" title="Συχνές Ερωτήσεις">
-        Ό,τι χρειάζεται να γνωρίζεις, συγκεντρωμένο εδώ. Για επιπλέον πληροφορίες, επικοινώνησε μαζί μας.
-      </SectionTitle>
-
-      <Faq />
-      {/* <Cta /> */}
-    </>
+          {/* <Cta /> */}
+        </section>
+      </MainContainer>
+    </PageRoot>
   );
 }

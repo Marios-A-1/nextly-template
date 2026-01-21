@@ -1,38 +1,36 @@
 "use client";
-import React from "react";
-import { Container } from "./Container";
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/24/solid";
 
-export const Faq = () => {
+interface FaqProps {
+  className?: string;
+}
+
+export const Faq = ({ className }: FaqProps) => {
   return (
-    <Container className="!p-0">
-      <div className="w-full max-w-2xl p-2 mx-auto rounded-2xl">
-        {faqdata.map((item, index) => (
-          <div key={item.question} className="mb-5">
-            <Disclosure>
-              {({ open }) => (
-                <>
-                  <DisclosureButton className="flex items-center justify-between w-full px-4 py-4 text-lg text-left text-text rounded-lg bg-card/40 border-2 border-primary/70 hover:bg-card/70 focus:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-opacity-75 dark:bg-trueGray-800 dark:text-text">
-                    <span>{item.question}</span>
-                    <ChevronUpIcon
-                      className={`${
-                        open ? "transform rotate-180" : ""
-                      } w-5 h-5 text-primary`}
-                    />
-                  </DisclosureButton>
-                  <DisclosurePanel className="px-4 pt-4 pb-2 text-muted dark:text-muted">
-                    {item.answer}
-                  </DisclosurePanel>
-                </>
-              )}
-            </Disclosure>
-          </div>
+    <div className={`w-full max-w-3xl rounded-2xl justify-self-center ${className ?? ""}`}>
+      <div className="space-y-5">
+        {faqdata.map((item) => (
+          <Disclosure key={item.question}>
+            {({ open }) => (
+              <>
+                <DisclosureButton className="flex w-full items-center justify-between rounded-lg border-2 border-primary/40 bg-card/20 px-4 py-4 text-left text-lg font-semibold text-text transition hover:bg-primary/20 focus:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-opacity-75">
+                  <span>{item.question}</span>
+                  <ChevronUpIcon
+                    className={`${open ? "rotate-180" : ""} h-5 w-5 font-black text-primary transition`}
+                  />
+                </DisclosureButton>
+                <DisclosurePanel className="px-4 -mt-2 pb-4 text-muted">
+                  {item.answer}
+                </DisclosurePanel>
+              </>
+            )}
+          </Disclosure>
         ))}
       </div>
-    </Container>
+    </div>
   );
-}
+};
 const faqdata = [
   {
     question: "Τι περιλαμβάνει η πρώτη επίσκεψη/συμβουλευτική;",
