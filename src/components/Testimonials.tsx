@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type TouchEvent, type ReactNode } from "react";
-import LazyVimeo from "@/components/LazyVimeo";
+import LazyVimeo from "./LazyVimeo";
 
 /* =======================
    Types
@@ -139,25 +139,23 @@ export default function TestimonialsCarousel({ content }: TestimonialsProps) {
       className="flex w-full scroll-mt-[80px] flex-col items-center justify-center space-y-6 py-12 md:py-24"
     >
       <div className="w-full px-4 sm:px-6">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-items-center justify-center items space-y-8">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-items-center justify-center items space-y-10 pb-10 -mt-[35%] lg:-mt-60">
           {/* Heading */}
           {/* Carousel */}
-          <div
-            className="relative mx-auto mt-6 md:mt-12 flex w-full max-w-225 items-center justify-center px-2 touch-pan-y"
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-          >
+          <div className="relative mx-auto mt-6 md:mt-12 flex w-full items-center justify-center gap-4 px-2 touch-pan-y">
             <button
-             onClick={prev}
-             className={`absolute left-20 z-10 hidden h-10 w-10 items-center justify-center rounded-full border-3 bg-primary/30 border-2 border-primary text-primary transition hover:border-primary/70 hover:text-primary/70 hover:bg-gold-200 sm:flex
-               ${testimonials[focus]?.type === "google" ? "top-6" : "top-9/10 lg:top-3/10 -translate-y-1/2"}
-             `}
-             aria-label="Previous testimonial"
+              onClick={prev}
+              className="hidden h-10 w-10 items-center justify-center rounded-full border-3 border-primary bg-primary/30 text-primary transition hover:border-primary/70 hover:text-primary/70 hover:bg-gold-200 md:flex mt-[10%]"
+              aria-label="Previous testimonial"
             >
               <ChevronLeft />
             </button>
 
-            <div className="lg:mt-5 mt-45 relative h-80 w-full max-w-75 md:h-155 md:max-w-160 -mb-20 mt-40 ">
+            <div
+              className="relative mt-10 -mb-20 h-[420px] w-full max-w-[360px] overflow-hidden md:h-[520px] md:max-w-[460px]"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               {testimonials.map((testimonial, index) => {
                 const offset = calculateOffset(index, focus, total);
                 const hidden = Math.abs(offset) > 1;
@@ -174,7 +172,7 @@ export default function TestimonialsCarousel({ content }: TestimonialsProps) {
                      className={`absolute left-1/2 flex -translate-x-1/2 items-center justify-center transition-all duration-500 ease-out 
                       ${
                         testimonial.type === "google"
-                          ? "top-3"
+                          ? "top-1/2"
                           : "-translate-y-1/2 top-4/10 lg:top-8/10 mt-10 lg:-mt-20"
                       }
                     `}
@@ -194,7 +192,7 @@ export default function TestimonialsCarousel({ content }: TestimonialsProps) {
                     }
                   >
                     <div className="relative">
-                      <div className="relative overflow-hidden rounded-[28px] border border-gold-500 bg-white/90 shadow-2xl shadow-primary/30">
+                      <div className="relative overflow-hidden rounded-[28px] border border-gold-500 bg-white/90 ">
                         {testimonial.type === "video" ? (
                           <LazyVimeo
                             videoId={testimonial.vimeo}
@@ -231,9 +229,7 @@ export default function TestimonialsCarousel({ content }: TestimonialsProps) {
 
             <button
               onClick={next}
-              className={`absolute right-20 z-10 hidden h-10 w-10 items-center justify-center rounded-full border-3 bg-primary/30 border-2 border-primary text-primary transition hover:border-primary/60 hover:text-primary/70 hover:bg-gold-200 sm:flex
-                ${testimonials[focus]?.type === "google" ? "top-6" : "top-9/10 lg:top-3/10 -translate-y-1/2"}
-              `}
+              className="hidden h-10 w-10 items-center justify-center rounded-full border-3 border-primary bg-primary/30 text-primary transition hover:border-primary/60 hover:text-primary/70 hover:bg-gold-200 md:flex mt-[10%]"
               aria-label="Next testimonial"
             >
               <ChevronRight />

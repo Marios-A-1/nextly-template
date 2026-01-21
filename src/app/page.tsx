@@ -1,11 +1,11 @@
-import { Hero } from "@/components/Hero";
-import { SectionTitle } from "@/components/SectionTitle";
-import { Benefits } from "@/components/Benefits";
-import { Video } from "@/components/Video";
-import Testimonials from "@/components/Testimonials";
-import { Faq } from "@/components/Faq";
-import { Cta } from "@/components/Cta";
-import { benefitOne, benefitTwo } from "@/components/data";
+import { Hero } from "../components/Hero";
+import { SectionTitle } from "../components/SectionTitle";
+import { Benefits } from "../components/Benefits";
+import { Video } from "../components/Video";
+import Testimonials from "../components/Testimonials";
+import { Faq } from "../components/Faq";
+import { Cta } from "../components/Cta";
+import { benefitOne, benefitTwo } from "../components/data";
 
 const GoogleTestimonialsContent = {
  items: [
@@ -394,6 +394,7 @@ export default function Home() {
       >
         Στόχος μας είναι ένα αποτέλεσμα που “δένει” φυσικά με το πρόσωπο/σώμα σας, με προτεραιότητα την ασφάλεια και τη σωστή ιατρική καθοδήγηση.
       </SectionTitle>
+
       <Benefits data={benefitOne}/>
       <Benefits imgPos="right" data={benefitTwo} />
 
@@ -415,13 +416,12 @@ export default function Home() {
 
       <Testimonials  content={GoogleTestimonialsContent}/>
 
-      <SectionTitle preTitle="FAQ" title="Frequently Asked Questions">
-        Answer your customers possible questions here, it will increase the
-        conversion rate as well as support or chat requests.
+      <SectionTitle preTitle="FAQ" title="Συχνές Ερωτήσεις">
+        Ό,τι χρειάζεται να γνωρίζεις, συγκεντρωμένο εδώ. Για επιπλέον πληροφορίες, επικοινώνησε μαζί μας.
       </SectionTitle>
 
       <Faq />
-      <Cta />
+      {/* <Cta /> */}
     </>
   );
 }

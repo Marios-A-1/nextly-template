@@ -11,6 +11,7 @@ export const Navbar = () => {
   "Τιμοκατάλογος", 
   "About us", 
   ];
+  const getHref = (label: string) => (label === "About us" ? "/about" : "/");
 
   return (
     <div className="w-full">
@@ -69,7 +70,7 @@ export const Navbar = () => {
                 <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden">
                   <>
                     {navigation.map((item, index) => (
-                      <Link key={index} href="/" className="w-full px-4 py-2 -ml-4 text-muted rounded-md dark:text-muted hover:text-primary focus:text-white focus:bg-primary dark:focus:bg-card focus:outline-none">
+                      <Link key={index} href={getHref(item)} className="w-full px-4 py-2 -ml-4 text-muted rounded-md dark:text-muted hover:text-primary focus:text-white focus:bg-primary dark:focus:bg-card focus:outline-none">
                           {item}
                       </Link>
                     ))}
@@ -87,7 +88,7 @@ export const Navbar = () => {
           <ul className="items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex">
             {navigation.map((menu, index) => (
               <li className="mr-3 nav__item" key={index}>
-                <Link href="/" className="inline-block px-4 py-2 text-lg font-normal text-text no-underline rounded-md dark:text-text hover:text-primary focus:text-white focus:bg-primary focus:outline-none dark:focus:bg-card">
+                <Link href={getHref(menu)} className="inline-block px-4 py-2 text-lg font-normal text-text no-underline rounded-md dark:text-text hover:text-primary focus:text-white focus:bg-primary focus:outline-none dark:focus:bg-card">
                     {menu}
                 </Link>
               </li>

@@ -12,8 +12,8 @@ import {
   CogIcon,
 } from "@heroicons/react/24/solid";
 
-import benefitOneImg from "../../public/img/benefit-one.webp";
-import benefitTwoImg from "../../public/img/benefit-two.webp";
+import benefitOneImg from "../../public/img/stock-blast.webp";
+import benefitTwoImg from "../../public/img/stock-blast-2.webp";
 import { FlagIcon } from "@heroicons/react/20/solid";
 
 const benefitOne = {
@@ -40,7 +40,7 @@ const benefitOne = {
 };
 
 const benefitTwo = {
-  title: "Περισσότερα από μία επέμβαση — μια ολοκληρωμένη εμπειρία φροντίδας",
+  title: "Περισσότερα από μία επέμβαση - μια ολοκληρωμένη εμπειρία φροντίδας",
   desc: "Η διαδικασία δεν τελειώνει στο χειρουργείο. Είμαστε δίπλα σας πριν, κατά τη διάρκεια και μετά.",
   image: benefitTwoImg,
   bullets: [

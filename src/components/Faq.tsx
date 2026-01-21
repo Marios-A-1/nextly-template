@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Container } from "@/components/Container";
+import { Container } from "./Container";
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/24/solid";
 
@@ -13,7 +13,7 @@ export const Faq = () => {
             <Disclosure>
               {({ open }) => (
                 <>
-                  <DisclosureButton className="flex items-center justify-between w-full px-4 py-4 text-lg text-left text-text rounded-lg bg-card hover:bg-card focus:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-opacity-75 dark:bg-trueGray-800 dark:text-text">
+                  <DisclosureButton className="flex items-center justify-between w-full px-4 py-4 text-lg text-left text-text rounded-lg bg-card/40 border-2 border-primary/70 hover:bg-card/70 focus:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-opacity-75 dark:bg-trueGray-800 dark:text-text">
                     <span>{item.question}</span>
                     <ChevronUpIcon
                       className={`${
@@ -33,24 +33,46 @@ export const Faq = () => {
     </Container>
   );
 }
-
 const faqdata = [
   {
-    question: "Is this template completely free to use?",
-    answer: "Yes, this template is completely free to use.",
-  },
-  {
-    question: "Can I use it in a commercial project?",
-    answer: "Yes, this you can.",
-  },
-  {
-    question: "What is your refund policy? ",
+    question: "Τι περιλαμβάνει η πρώτη επίσκεψη/συμβουλευτική;",
     answer:
-      "If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund you in full, no questions asked.",
+      "Στην πρώτη επίσκεψη αξιολογούμε το αίτημά σου, συζητάμε στόχους και επιλογές θεραπείας, εξετάζουμε το ιατρικό ιστορικό σου και σου προτείνουμε ένα εξατομικευμένο πλάνο με αναλυτικές οδηγίες και κόστος.",
   },
   {
-    question: "Do you offer technical support? ",
+    question: "Πώς θα ξέρω αν είμαι κατάλληλος/η υποψήφιος/α για επέμβαση;",
     answer:
-      "No, we don't offer technical support for free downloads. Please purchase a support plan to get 6 months of support.",
+      "Η καταλληλότητα κρίνεται μετά από κλινική αξιολόγηση, ιατρικό ιστορικό και, όπου χρειάζεται, εξετάσεις. Θα σου εξηγήσουμε με ειλικρίνεια τι είναι ρεαλιστικό και τι όχι, καθώς και τους πιθανούς κινδύνους.",
+  },
+  {
+    question: "Πόσο κοστίζει μια πλαστική επέμβαση;",
+    answer:
+      "Το κόστος εξαρτάται από την επέμβαση, την πολυπλοκότητα, την αναισθησία και τυχόν νοσηλεία/υλικά. Μετά τη συμβουλευτική θα λάβεις εξατομικευμένη προσφορά με πλήρη ανάλυση.",
+  },
+  {
+    question: "Πόσο διαρκεί η αποθεραπεία και πότε επιστρέφω στην καθημερινότητα;",
+    answer:
+      "Ο χρόνος αποθεραπείας διαφέρει ανά επέμβαση. Συνήθως υπάρχει αρχική περίοδος ξεκούρασης λίγων ημερών και σταδιακή επιστροφή σε δραστηριότητες, ενώ η πλήρης επούλωση/τελικό αποτέλεσμα μπορεί να χρειαστεί εβδομάδες ή μήνες.",
+  },
+  {
+    question: "Θα έχω πόνο ή σημάδια;",
+    answer:
+      "Η ενόχληση είναι συνήθως ελεγχόμενη με αγωγή. Όσο για τα σημάδια, στόχος μας είναι οι τομές να τοποθετούνται όσο γίνεται πιο διακριτικά και να υπάρχει σωστή μετεγχειρητική φροντίδα για την καλύτερη δυνατή επούλωση.",
+  },
+  {
+    question: "Ποιοι είναι οι πιθανοί κίνδυνοι/επιπλοκές;",
+    answer:
+      "Κάθε επέμβαση έχει πιθανούς κινδύνους (π.χ. αιμορραγία, λοίμωξη, ασυμμετρία, ουλές, ανάγκη διορθωτικής επέμβασης). Θα σου εξηγήσουμε αναλυτικά τους κινδύνους και τα μέτρα πρόληψης πριν προχωρήσουμε.",
+  },
+  {
+    question: "Γίνονται οι επεμβάσεις με γενική ή τοπική αναισθησία;",
+    answer:
+      "Ανάλογα με την επέμβαση και τις ανάγκες σου, μπορεί να γίνει με τοπική αναισθησία με μέθη ή με γενική αναισθησία. Θα αποφασίσουμε το κατάλληλο και ασφαλέστερο πλάνο μαζί με τον/την αναισθησιολόγο.",
+  },
+  {
+    question: "Καλύπτονται οι επεμβάσεις από ασφάλεια ή δόσεις πληρωμής;",
+    answer:
+      "Ορισμένες επεμβάσεις μπορεί να καλύπτονται μόνο όταν έχουν ιατρική ένδειξη (π.χ. λειτουργικό πρόβλημα). Για πληρωμές, ανάλογα με την πολιτική μας, μπορεί να υπάρχουν επιλογές προκαταβολής και προγραμματισμού πληρωμής — θα σε ενημερώσουμε στη συμβουλευτική.",
   },
 ];
+

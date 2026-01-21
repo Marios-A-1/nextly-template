@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { Container } from "@/components/Container";
+import { Container } from "./Container";
 import heroImg from "../../public/img/logo-hq.webp";
+import CountUp from "./CountUp";
 
 export const Hero = () => {
   return (
@@ -52,13 +53,26 @@ export const Hero = () => {
       <Container>
         <div className="flex flex-col justify-center mt-20">
           <div className="text-xl text-center text-text dark:text-text">
-            Πάνω απο <span className="text-primary">2000+</span>{" "}
-            Επεμβάσεις
+            Πάνω απο
+              <span className="px-2  text-primary">+
+              <CountUp
+                from={0}
+                to={2000}
+                separator=","
+                direction="up"
+                duration={1}
+                className="count-up-text"
+                // startCounting={'up',100}
+                />
+              </span>
+            {/* <span className="text-primary">2000+</span>{" "} */}
+             Επεμβάσεις
           </div>
-
-          <div className="flex flex-wrap justify-center gap-5 mt-10 md:justify-around">
+        </div>
+      </Container>
+          {/* <div className="flex flex-wrap justify-center text-text bg-accent/40 dark:text-text dark:bg-accent/40 py-5 gap-5 mt-10 md:justify-around">
             <div className="pt-2 text-muted dark:text-muted">
-              {/* <AmazonLogo /> */}
+              <AmazonLogo />
             </div>
             <div className="text-muted dark:text-muted">
               • Ατομικό πλάνο θεραπείας •
@@ -66,15 +80,13 @@ export const Hero = () => {
             <div className="text-muted dark:text-muted">
               • Διαφανής ενημέρωση •
             </div>
-            <div className="pt-1 text-muted dark:text-muted">
+            <div className=" text-muted dark:text-muted">
               • Υποστήριξη μετά την επέμβαση •
             </div>
             <div className="pt-2 text-muted dark:text-muted">
-              {/* <SonyLogo /> */}
+              <SonyLogo />
             </div>
-          </div>
-        </div>
-      </Container>
+          </div> */}
     </>
   );
 }

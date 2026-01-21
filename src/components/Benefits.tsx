@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { Container }  from "@/components/Container";
+import { Container }  from "./Container";
 
 interface BenefitsProps {
   imgPos?: "left" | "right";
@@ -24,13 +24,13 @@ export const Benefits = (props: Readonly<BenefitsProps>) => {
           className={`flex items-center justify-center w-full lg:w-1/2 ${
             props.imgPos === "right" ? "lg:order-1" : ""
           }`}>
-          <div>
+                <div className="border-2 border-primary/40 rounded-xl bg-primary/20">
             <Image
               src={data.image}
               width={321}
               height={321}
               alt="Benefits"
-              className="object-contain w-72 h-auto sm:w-80 lg:w-96"
+              className="object-contain w-72 h-auto sm:w-80 lg:w-96 rounded-xl"
               placeholder="blur"
               blurDataURL={data.image.src}
             />
@@ -68,7 +68,7 @@ export const Benefits = (props: Readonly<BenefitsProps>) => {
 function Benefit(props: any) {
   return (
       <div className="flex items-start mt-8 space-x-3">
-        <div className="flex items-center justify-center flex-shrink-0 mt-1 bg-primary rounded-md w-11 h-11 ">
+        <div className="flex items-center justify-center flex-shrink-0 mt-1 bg-primary rounded-full w-11 h-11 ">
           {React.cloneElement(props.icon, {
             className: "w-7 h-7 text-text",
           })}
