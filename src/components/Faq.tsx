@@ -14,7 +14,7 @@ export const Faq = ({ className }: FaqProps) => {
           <Disclosure key={item.question}>
             {({ open }) => (
               <>
-                <DisclosureButton className="flex w-full items-center justify-between rounded-lg border-2 border-primary/40 bg-card/20 px-4 py-4 text-left text-lg font-semibold text-text transition hover:bg-primary/20 focus:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-opacity-75">
+                <DisclosureButton className="flex w-full items-center justify-between rounded-lg border-2 border-black bg-card/20 px-4 py-4 text-left text-lg font-semibold text-text transition hover:bg-black/10 hover:border-3  focus:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-opacity-75">
                   <span>{item.question}</span>
                   <ChevronUpIcon
                     className={`${open ? "rotate-180" : ""} h-5 w-5 font-black text-primary transition`}

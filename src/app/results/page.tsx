@@ -6,38 +6,38 @@ import { MainContainer, PageRoot } from "../../components/PageLayout";
 const resultsItems = [
   {
     id: "result-01",
-    img: "/img/stock-blast.webp",
-    url: "/img/stock-blast.webp",
+    img: "/img/results/1.webp",
+    url: "/img/results/1.webp",
     height: 820
   },
   {
     id: "result-02",
-    img: "/img/stock-blast-2.webp",
-    url: "/img/stock-blast-2.webp",
+    img: "/img/results/2.webp",
+    url: "/img/results/2.webp",
     height: 760
   },
   {
     id: "result-03",
-    img: "/img/our-mission-image.webp",
-    url: "/img/our-mission-image.webp",
+    img: "/img/results/3.webp",
+    url: "/img/results/3.webp",
     height: 880
   },
   {
     id: "result-04",
-    img: "/img/our-vision-image.webp",
-    url: "/img/our-vision-image.webp",
+    img: "/img/results/4.webp",
+    url: "/img/results/4.webp",
     height: 700
   },
   {
     id: "result-05",
-    img: "/img/benefit-one.webp",
-    url: "/img/benefit-one.webp",
+    img: "/img/results/5.webp",
+    url: "/img/results/5.webp",
     height: 520
   },
   {
     id: "result-06",
-    img: "/img/benefit-two.webp",
-    url: "/img/benefit-two.webp",
+    img: "/img/results/6.webp",
+    url: "/img/results/6.webp",
     height: 560
   }
 ];
