@@ -12,15 +12,14 @@ export const Hero = () => {
       <div className="space-y-8 text-center lg:text-left lg:order-1">
         <div className="space-y-6">
               
-          <h1 className="text-center lg:text-left text-4xl font-bold -mb-4 leading-snug  tracking-tight text-text lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight">
+          <h1 className="text-center lg:text-left text-4xl font-bold -mb-4 leading-snug tracking-tight text-text lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight">
             <BlurText
-            text="Art of the Possible"
-            delay={20}
-            animateBy="letters"
-            direction="top"
-            className="justify-center lg:justify-start text-center lg:text-left text-4xl font-bold -mb-4 leading-snug  tracking-tight text-text lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight"
-            />  
-             
+              text="Art of the Possible"
+              delay={20}
+              animateBy="letters"
+              direction="top"
+              className="justify-center lg:justify-start text-center lg:text-left text-4xl font-bold -mb-4 leading-snug tracking-tight text-text lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight"
+            />
           </h1>
           <div className="text-xl leading-relaxed text-muted text-center lg:text-xl xl:text-2xl lg:text-left lg:hidden ">
           <SplitText
@@ -69,7 +68,7 @@ export const Hero = () => {
             placeholder="blur"
           />
         </AnimatedContent>
-        <AnimatedContent>
+        <AnimatedContent threshold={-100}>
         <p className="text-xl font-medium text-center text-text lg:text-2xl lg:text-left mt-6">
           Πάνω απο
           <span className="px-2 text-primary">
@@ -87,7 +86,7 @@ export const Hero = () => {
         </AnimatedContent>
       </div>
 
-      <AnimatedContent className="lg:-mt-40 lg:col-span-2 lg:order-3">
+      <AnimatedContent threshold={-100} className="lg:-mt-40 lg:col-span-2 lg:order-3">
         <div className="flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row sm:items-center sm:justify-start">
         <a
           href="https://web3templates.com/templates/nextly-landing-page-template-for-startups"

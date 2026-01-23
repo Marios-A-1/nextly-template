@@ -83,7 +83,7 @@ export default function AboutPage() {
         <MissionSection/>
         <VisionSection/>
 
-        <section className="space-y-6">
+        {/* <section className="space-y-6">
           <div className="flex items-end justify-between">
             <p className="text-sm font-semibold uppercase tracking-widest text-primary">
               Impact metrics
@@ -144,7 +144,7 @@ export default function AboutPage() {
               Start the conversation
             </Link>
           </div>
-        </section>
+        </section> */}
       </Container>
     </>
   );

@@ -6,6 +6,7 @@ type BlurTextProps = {
   text?: string;
   delay?: number;
   className?: string;
+  as?: 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   animateBy?: 'words' | 'letters';
   direction?: 'top' | 'bottom';
   threshold?: number;
@@ -34,6 +35,7 @@ const BlurText: React.FC<BlurTextProps> = ({
   text = '',
   delay = 200,
   className = '',
+  as = 'p',
   animateBy = 'words',
   direction = 'top',
   threshold = 0.1,
@@ -44,9 +46,10 @@ const BlurText: React.FC<BlurTextProps> = ({
   onAnimationComplete,
   stepDuration = 0.35
 }) => {
-  const elements = animateBy === 'words' ? text.split(' ') : text.split('');
+  const words = text.split(' ');
+  const elements = animateBy === 'words' ? words : text.split('');
   const [inView, setInView] = useState(false);
-  const ref = useRef<HTMLParagraphElement>(null);
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (!ref.current) return;
@@ -88,9 +91,11 @@ const BlurText: React.FC<BlurTextProps> = ({
   const totalDuration = stepDuration * (stepCount - 1);
   const times = Array.from({ length: stepCount }, (_, i) => (stepCount === 1 ? 0 : i / (stepCount - 1)));
 
+  const Tag = as;
+
   return (
-    <p
-      ref={ref}
+    <Tag
+      ref={ref as React.Ref<HTMLElement>}
       className={className}
       style={{
         display: 'flex',
@@ -98,34 +103,71 @@ const BlurText: React.FC<BlurTextProps> = ({
         opacity: inView ? 1 : 0
       }}
     >
-      {elements.map((segment, index) => {
-        const animateKeyframes = buildKeyframes(fromSnapshot, toSnapshots);
+      {animateBy === 'letters'
+        ? words.map((word, wordIndex) => (
+            <span
+              key={`word-${wordIndex}`}
+              style={{ display: 'inline-flex', whiteSpace: 'nowrap' }}
+            >
+              {Array.from(word).map((letter, letterIndex) => {
+                const letterOffset =
+                  words.slice(0, wordIndex).reduce((sum, w) => sum + w.length, 0) + letterIndex;
+                const animateKeyframes = buildKeyframes(fromSnapshot, toSnapshots);
+                const spanTransition: Transition = {
+                  duration: totalDuration,
+                  times,
+                  delay: (letterOffset * delay) / 1000,
+                  ease: easing
+                };
+                const isLast =
+                  wordIndex === words.length - 1 && letterIndex === word.length - 1;
+                return (
+                  <motion.span
+                    key={`letter-${wordIndex}-${letterIndex}`}
+                    initial={fromSnapshot}
+                    animate={inView ? animateKeyframes : fromSnapshot}
+                    transition={spanTransition}
+                    onAnimationComplete={isLast ? onAnimationComplete : undefined}
+                    style={{
+                      display: 'inline-block',
+                      willChange: 'transform, filter, opacity'
+                    }}
+                  >
+                    {letter}
+                  </motion.span>
+                );
+              })}
+              {wordIndex < words.length - 1 && '\u00A0'}
+            </span>
+          ))
+        : elements.map((segment, index) => {
+            const animateKeyframes = buildKeyframes(fromSnapshot, toSnapshots);
 
-        const spanTransition: Transition = {
-          duration: totalDuration,
-          times,
-          delay: (index * delay) / 1000,
-          ease: easing
-        };
+            const spanTransition: Transition = {
+              duration: totalDuration,
+              times,
+              delay: (index * delay) / 1000,
+              ease: easing
+            };
 
-        return (
-          <motion.span
-            key={index}
-            initial={fromSnapshot}
-            animate={inView ? animateKeyframes : fromSnapshot}
-            transition={spanTransition}
-            onAnimationComplete={index === elements.length - 1 ? onAnimationComplete : undefined}
-            style={{
-              display: 'inline-block',
-              willChange: 'transform, filter, opacity'
-            }}
-          >
-            {segment === ' ' ? '\u00A0' : segment}
-            {animateBy === 'words' && index < elements.length - 1 && '\u00A0'}
-          </motion.span>
-        );
-      })}
-    </p>
+            return (
+              <motion.span
+                key={index}
+                initial={fromSnapshot}
+                animate={inView ? animateKeyframes : fromSnapshot}
+                transition={spanTransition}
+                onAnimationComplete={index === elements.length - 1 ? onAnimationComplete : undefined}
+                style={{
+                  display: 'inline-block',
+                  willChange: 'transform, filter, opacity'
+                }}
+              >
+                {segment === ' ' ? '\u00A0' : segment}
+                {animateBy === 'words' && index < elements.length - 1 && '\u00A0'}
+              </motion.span>
+            );
+          })}
+    </Tag>
   );
 };
 

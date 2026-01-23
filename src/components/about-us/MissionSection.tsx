@@ -1,12 +1,14 @@
 "use client"
 import Image from "next/image";
+import AnimatedContent from "../AnimatedContent";
+import BlurText from "../BlurText";
 
 export function MissionSection() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-20">
       <div className="grid grid-cols-1 items-center text-left  gap-12 lg:grid-cols-2">
         {/* LEFT — IMAGE */}
-        <div className="hidden lg:block mx-auto w-full max-w-md overflow-hidden rounded-2xl">
+        <AnimatedContent className="hidden lg:block mx-auto w-full max-w-md overflow-hidden rounded-2xl">
           <Image
             src="/img/our-mission-image.webp"
             alt="Η αποστολή μας"
@@ -14,19 +16,26 @@ export function MissionSection() {
             height={600}
             className="h-full w-full object-cover"
           />
-        </div>
+        </AnimatedContent>
         {/*  RIGHT— TEXT */}
         <div>
-          <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-wide text-primary text-center lg:text-left">
-            Η αποστολη μας
-          </span>
+          <div className="flex justify-center lg:justify-start">
+            <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-wide text-primary text-center">
+              Η αποστολη μας
+            </span>
+          </div>
 
-          <h2 className="text-center text-3xl font-semibold text-text sm:text-4xl lg:text-left">
-            Ιατρική φροντίδα με ανθρώπινο πρόσωπο
-          </h2>
+          <BlurText
+            as="h2"
+            text="Ιατρική φροντίδα με ανθρώπινο πρόσωπο"
+            delay={20}
+            animateBy="letters"
+            direction="top"
+            className="justify-center lg:justify-start text-center text-3xl font-semibold text-text sm:text-4xl lg:text-left"
+          />
 
           {/* Mobile-only mission image below heading */}
-          <div className="mt-6 block overflow-hidden rounded-2xl bg-card shadow-lg lg:hidden">
+          <AnimatedContent className="mt-6 block overflow-hidden rounded-2xl lg:hidden">
             <Image
               src="/img/our-mission-image.webp"
               alt="Η αποστολή μας"
@@ -34,7 +43,7 @@ export function MissionSection() {
               height={600}
               className="h-full w-full object-cover"
             />
-          </div>
+          </AnimatedContent>
 
           <p className="mt-6 text-muted">
             Προσφέρουμε υψηλού επιπέδου πλαστική χειρουργική με απόλυτη

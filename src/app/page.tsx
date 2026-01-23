@@ -421,6 +421,7 @@ export default function Home() {
             <SectionTitle
               preTitle="Testimonials"
               title="Τι λένε οι ασθενείς μας"
+              titleAnimation="content"
             >
               Η εμπιστοσύνη χτίζεται με εμπειρία, καθαρή επικοινωνία και φροντίδα
             </SectionTitle>
@@ -428,7 +429,9 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 gap-6">
-            <SectionTitle preTitle="FAQ" title="Συχνές Ερωτήσεις">
+            <SectionTitle preTitle="FAQ" title="Συχνές Ερωτήσεις"
+              titleAnimation="content"
+            >
               Ό,τι χρειάζεται να γνωρίζεις, συγκεντρωμένο εδώ. Για επιπλέον πληροφορίες, επικοινώνησε μαζί μας.
             </SectionTitle>
             <Faq />
