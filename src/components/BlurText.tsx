@@ -91,11 +91,11 @@ const BlurText: React.FC<BlurTextProps> = ({
   const totalDuration = stepDuration * (stepCount - 1);
   const times = Array.from({ length: stepCount }, (_, i) => (stepCount === 1 ? 0 : i / (stepCount - 1)));
 
-  const Tag = as;
+  const Tag = as as React.ElementType;
 
   return (
     <Tag
-      ref={ref as React.Ref<HTMLElement>}
+      ref={ref}
       className={className}
       style={{
         display: 'flex',

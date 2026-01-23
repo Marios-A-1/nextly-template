@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 type LazyVimeoProps = {
@@ -132,16 +133,16 @@ export default function LazyVimeo({
       ) : (
         <button
           type="button"
-          className="block h-full w-full border-0 bg-transparent p-0"
+          className="relative block h-full w-full border-0 bg-transparent p-0"
           onClick={() => setShouldLoad(true)}
           aria-label={`Load video: ${title}`}
         >
-          <img
+          <Image
             src={posterSrc}
             alt={posterAlt}
-            className="h-full w-full object-cover"
-            loading="lazy"
-            decoding="async"
+            fill
+            className="object-cover"
+            sizes="100vw"
           />
         </button>
       )}
