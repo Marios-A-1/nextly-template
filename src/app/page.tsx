@@ -7,6 +7,8 @@ import { Faq } from "../components/Faq";
 import { Cta } from "../components/Cta";
 import { MainContainer, PageRoot } from "../components/PageLayout";
 import { benefitOne, benefitTwo } from "../components/data";
+import ScrollReveal from "../components/ScrollReveal";
+import BlurText from "../components/BlurText";
 
 const GoogleTestimonialsContent = {
  items: [
@@ -390,7 +392,7 @@ export default function Home() {
     <PageRoot>
       <MainContainer className="space-y-24 py-12">
         <Hero />
-        <section id="why-us" className="grid grid-cols-1">
+    <section id="why-us" className="grid grid-cols-1">
           <SectionTitle
             preTitle="Γιατι να μας Επιλεξεις"
             title="Γιατί Art of The Possible ?"

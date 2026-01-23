@@ -14,7 +14,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        trueGray: colors.trueGray,
+        trueGray: colors.neutral,
         bg: "rgb(var(--bg) / <alpha-value>)",
         surface: "rgb(var(--surface) / <alpha-value>)",
         card: "rgb(var(--card) / <alpha-value>)",
