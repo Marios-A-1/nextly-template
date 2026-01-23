@@ -15,7 +15,7 @@ export function Video({ videoId }: Readonly<VideoProps>) {
       {!playVideo && (
         <button
           onClick={() => setPlayVideo(!playVideo)}
-          className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-text shadow-2xl transition hover:bg-accent lg:h-28 lg:w-28"
+          className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-card text-text shadow-2xl transition hover:bg-accent lg:h-28 lg:w-28"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -3,21 +3,21 @@
 
 :root {
   /* Base */
-  --bg: 10 10 10;
-  --surface: 18 18 18;
-  --card: 228 228 228;
-  --border: 40 40 40;
+  --bg: 250 248 243;
+  --surface: 255 255 255;
+  --card: 255 255 255;
+  --border: 226 226 226;
 
   /* Gold */
-  --primary: 227 192 77;        /* Rich Gold */
+  --primary: 237 191 40;        /* Rich Gold */
   --primarySoft: 255 215 128;   /* Soft Gold */
 
   /* Accent */
   --accent: 160 160 160;        /* Silver Grey */
 
   /* Text */
-  --text: 70 70 70 ;
-  --muted: 160 160 160;
+  --text: 28 28 28;
+  --muted: 104 104 104;
 }
 
 .dark {
@@ -38,7 +38,7 @@
 @layer base {
   html,
   body {
-    @apply dark:bg-trueGray-900;
+    @apply bg-bg text-text;
   }
 }
 

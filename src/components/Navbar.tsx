@@ -8,7 +8,7 @@ export const Navbar = () => {
   const navigation = [
   "Αρχική", 
   "Αποτελέσματα", 
-  "Τιμοκατάλογος", 
+  // "Τιμοκατάλογος", 
   "About us", 
   ];
   const getHref = (label: string) => (label === "About us" ? "/about" : "/");

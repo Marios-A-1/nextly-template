@@ -129,7 +129,7 @@ export function PopupWidget() {
                     <form onSubmit={handleSubmit(onSubmit)} noValidate>
                       <input
                         type="hidden"
-                        value="YOUR_ACCESS_KEY_HERE"
+                        value="375e4508-36e2-4706-bd40-b3ff5573161b"
                         {...register("apikey")}
                       />
                       <input

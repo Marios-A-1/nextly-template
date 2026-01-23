@@ -26,7 +26,7 @@ export const Benefits = (props: Readonly<BenefitsProps>) => {
             props.imgPos === "right" ? "lg:order-2" : ""
           }`}
         >
-          <div className="border-2 border-primary/40 rounded-xl bg-primary/20">
+          <div className="border-0 border-primary rounded-xl bg-primarySoft">
             <Image
               src={data.image}
               width={321}

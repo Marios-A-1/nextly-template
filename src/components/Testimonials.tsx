@@ -192,7 +192,7 @@ export default function TestimonialsCarousel({ content }: TestimonialsProps) {
                     }
                   >
                     <div className="relative">
-                      <div className="relative overflow-hidden rounded-[28px] border border-gold-500 bg-white/90 ">
+                      <div className="relative overflow-hidden rounded-[28px] border border-gold-500 bg-card/90">
                         {testimonial.type === "video" ? (
                           <LazyVimeo
                             videoId={testimonial.vimeo}
@@ -209,7 +209,7 @@ export default function TestimonialsCarousel({ content }: TestimonialsProps) {
                         )}
                       </div>
                       {isActive ? (
-                        <div className="absolute left-1/2 top-full mt-4 -translate-x-1/2 text-xs font-semibold uppercase tracking-wide text-neutral-500">
+                        <div className="absolute left-1/2 top-full mt-4 -translate-x-1/2 text-xs font-semibold uppercase tracking-wide text-muted">
                           {(() => {
                             const typeItems = testimonials.filter(
                               (item) => item.type === testimonial.type
@@ -268,11 +268,11 @@ function GoogleReviewCard({ review }: { review: GoogleTestimonial }) {
             ))}
           </div>
         </div>
-        <p className="text-sm md:text-base text-neutral-700 leading-relaxed">
+        <p className="text-sm md:text-base text-muted leading-relaxed">
           “{review.text}”
         </p>
       </div>
-      <div className="pt-4 text-sm font-medium text-neutral-900">
+      <div className="pt-4 text-sm font-medium text-text">
         {review.author}
       </div>
     </div>

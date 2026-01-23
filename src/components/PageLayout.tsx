@@ -9,7 +9,7 @@ interface MainContainerProps extends PageRootProps {
 }
 
 export function PageRoot({ children }: PageRootProps) {
-  return <div className="w-full bg-white text-text">{children}</div>;
+  return <div className="w-full bg-bg text-text">{children}</div>;
 }
 
 export function MainContainer({ children, className }: MainContainerProps) {

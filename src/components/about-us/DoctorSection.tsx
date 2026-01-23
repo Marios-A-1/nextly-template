@@ -13,12 +13,12 @@ export default function DoctorSection() {
             Ο Ιατρoς
           </span>
 
-          <h2 className="text-center text-3xl font-semibold leading-tight text-neutral-900 sm:text-4xl lg:text-left">
+          <h2 className="text-center text-3xl font-semibold leading-tight text-text sm:text-4xl lg:text-left">
             Dr. Βλασταράκος 
           </h2>
 
           {/* Mobile-only doctor image placed between the heading and description */}
-          <div className="mt-6 block overflow-hidden rounded-2xl bg-neutral-100 shadow-lg lg:hidden">
+          <div className="mt-6 block overflow-hidden rounded-2xl bg-card shadow-lg lg:hidden">
             <Image
               src="/img/vlast-pic.webp"
               alt="Ο πλαστικός χειρουργός"
@@ -29,11 +29,11 @@ export default function DoctorSection() {
             />
           </div>
 
-          <p className="mt-2 text-lg font-medium text-neutral-600">
+          <p className="mt-2 text-lg font-medium text-muted">
             Πλαστικός Χειρουργός
           </p>
 
-          <div className="mt-6 space-y-5 text-neutral-700">
+          <div className="mt-6 space-y-5 text-muted">
             <p>
              Ο Πλαστικός Χειρουργός Πέτρος Θ. Βλασταράκος είναι μέλος της Ελληνικής Εταιρίας Πλαστικής, Επανορθωτικής και Αισθητικής Χειρουργικής,  έχει την έδρα του στην Αθήνα και δραστηριοποιείται στον ιδιωτικό τομέα.
 
@@ -50,7 +50,7 @@ export default function DoctorSection() {
           </div>
 
           {/* QUOTE */}
-          <blockquote className="mt-8 border-l-4 border-amber-400 pl-5 italic text-neutral-800">
+          <blockquote className="mt-8 border-l-4 border-amber-400 pl-5 italic text-text">
             «Η επιτυχία μιας επέμβασης δεν μετριέται μόνο στο αποτέλεσμα,
             αλλά στο πόσο ασφαλής ένιωσε ο ασθενής σε όλη τη διαδρομή.»
           </blockquote>
@@ -58,7 +58,7 @@ export default function DoctorSection() {
 
         {/* RIGHT — IMAGE */}
         <div className="hidden lg:block relative mx-auto w-full max-w-md">
-          <div className="overflow-hidden rounded-2xl bg-neutral-100 shadow-lg">
+          <div className="overflow-hidden rounded-2xl bg-card shadow-lg">
             <Image
               src="/img/vlast-pic.webp" // άλλαξε path
               alt="Ο πλαστικός χειρουργός"
