@@ -64,15 +64,15 @@ export function Footer() {
             <div>Follow us</div>
             <div className="flex mt-5 space-x-5 text-muted dark:text-muted">
               <a
-                href="https://twitter.com/web3templates"
+                href="https://www.tiktok.com/@artofpossible/"
                 target="_blank"
                 rel="noopener"
               >
-                <span className="sr-only">Twitter</span>
-                <Twitter />
+                <span className="sr-only">Tiktok</span>
+                <TikTok />
               </a>
               <a
-                href="https://facebook.com/web3templates"
+                href="https://www.facebook.com/p/Art-Of-The-Possible-Plastic-Surgery-Clinic-61568608215185"
                 target="_blank"
                 rel="noopener"
               >
@@ -80,14 +80,14 @@ export function Footer() {
                 <Facebook />
               </a>
               <a
-                href="https://instagram.com/web3templates"
+                href="https://www.instagram.com/petros_vlastarakos/"
                 target="_blank"
                 rel="noopener"
               >
                 <span className="sr-only">Instagram</span>
                 <Instagram />
               </a>
-              <a href="https://linkedin.com/" target="_blank" rel="noopener">
+              <a href="https://gr.linkedin.com/in/petrosvlastarakos" target="_blank" rel="noopener">
                 <span className="sr-only">Linkedin</span>
                 <Linkedin />
               </a>
@@ -108,7 +108,7 @@ export function Footer() {
   );
 }
 
-const Twitter = ({ size = 24 }) => (
+const TikTok = ({ size = 24 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -116,9 +116,11 @@ const Twitter = ({ size = 24 }) => (
     viewBox="0 0 24 24"
     fill="currentColor"
   >
-    <path d="M24 4.37a9.6 9.6 0 0 1-2.83.8 5.04 5.04 0 0 0 2.17-2.8c-.95.58-2 1-3.13 1.22A4.86 4.86 0 0 0 16.61 2a4.99 4.99 0 0 0-4.79 6.2A13.87 13.87 0 0 1 1.67 2.92 5.12 5.12 0 0 0 3.2 9.67a4.82 4.82 0 0 1-2.23-.64v.07c0 2.44 1.7 4.48 3.95 4.95a4.84 4.84 0 0 1-2.22.08c.63 2.01 2.45 3.47 4.6 3.51A9.72 9.72 0 0 1 0 19.74 13.68 13.68 0 0 0 7.55 22c9.06 0 14-7.7 14-14.37v-.65c.96-.71 1.79-1.6 2.45-2.61z" />
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.2v13.4a2.77 2.77 0 1 1-2.77-2.77c.27 0 .54.04.79.1V9.46a6.01 6.01 0 0 0-.79-.05 6.01 6.01 0 1 0 6.01 6.01V8.56a8.02 8.02 0 0 0 4.73 1.53V6.94c-.35 0-.69-.04-1-.25z" />
   </svg>
 );
+
+export default TikTok;
 
 const Facebook = ({ size = 24 }) => (
   <svg
