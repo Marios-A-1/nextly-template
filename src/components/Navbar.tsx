@@ -8,6 +8,7 @@ export const Navbar = () => {
   const navigation = [
     { label: "Αρχική", href: "/" },
     { label: "Αποτελέσματα", href: "/results" },
+    { label: "Επεμβάσεις", href: "/epemvaseis" },
     // { label: "Τιμοκατάλογος", href: "/pricing" },
     { label: "About us", href: "/about" }
   ];

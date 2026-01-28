@@ -1,5 +1,6 @@
 import { SectionTitle } from "../../components/SectionTitle";
 import Masonry from "../../components/Masonry";
+import DomeGallery from "../../components/DomeGallery";
 import { MainContainer, PageRoot } from "../../components/PageLayout";
 
 // Replace with real results photos and keep height close to the original pixel height.
@@ -59,6 +60,20 @@ export default function ResultsPage() {
 
         <section className="w-full">
           <Masonry items={resultsItems} animateFrom="bottom" />
+        </section>
+
+        <section className="w-full">
+          <div className="w-full h-[600px]">
+            <DomeGallery
+              fit={1}
+              minRadius={600}
+              maxVerticalRotationDeg={0}
+              segments={26}
+              dragDampening={2}
+              grayscale={false}
+              showBackgroundOverlay={false} showVignette={false}
+            />
+          </div>
         </section>
       </MainContainer>
     </PageRoot>

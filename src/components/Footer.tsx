@@ -28,9 +28,11 @@ export function Footer() {
             </div>
 
             <div className="max-w-md mt-4 text-muted dark:text-muted">
-              Στην κλινική μας, η πλαστική χειρουργική δεν είναι μια μεμονωμένη πράξη.
-              Είναι μια ολιστική εμπειρία φροντίδας, σχεδιασμένη με σεβασμό στο σώμα, 
-              την ψυχολογία και τις πραγματικές ανάγκες κάθε ανθρώπου.
+                  <h1 className="font-bold">ΩΡΑΡΙΟ ΛΕΙΤΟΥΡΓΙΑΣ</h1> <br/>
+                  Δευτέρα, Τρίτη, Πέμπτη, Παρασκευή   |  17:00 - 21:0 <br/>
+                  Τετάρτη   |  09:00 - 13:00 <br/>
+                  Σάββατο & Κυριακή   |  Κλειστά <br/>
+
             </div>
           </div>
 
@@ -92,6 +94,10 @@ export function Footer() {
                 <Linkedin />
               </a>
             </div>
+          <div className="flex flex-wrap w-full mt-12 -ml-2 lg:ml-0 text-muted" >
+          <h1>EMAIL info@artofthepossible.gr
+          </h1>
+          </div>
           </div>
         </div>
 
