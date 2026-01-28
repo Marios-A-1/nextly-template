@@ -62,7 +62,7 @@ export default function ResultsPage() {
           <Masonry items={resultsItems} animateFrom="bottom" />
         </section>
 
-        <section className="w-full">
+        {/* <section className="w-full">
           <div className="w-full h-[600px]">
             <DomeGallery
               fit={1}
@@ -74,7 +74,7 @@ export default function ResultsPage() {
               showBackgroundOverlay={false} showVignette={false}
             />
           </div>
-        </section>
+        </section> */}
       </MainContainer>
     </PageRoot>
   );

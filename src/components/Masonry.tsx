@@ -105,7 +105,7 @@ const Masonry: React.FC<MasonryProps> = ({
   items,
   ease = 'power3.out',
   duration = 0.6,
-  stagger = 0.05,
+  stagger = 0.15,
   animateFrom = 'bottom',
   scaleOnHover = true,
   hoverScale = 0.95,
