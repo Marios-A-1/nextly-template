@@ -1,8 +1,10 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import ThemeChanger from "./DarkSwitch";
-import Image from "next/image"
+import Image from "next/image";
 import { Disclosure } from "@headlessui/react";
+import { ContactModal } from "./ContactModal";
 
 export const Navbar = () => {
   const navigation = [
@@ -12,6 +14,7 @@ export const Navbar = () => {
     // { label: "Τιμοκατάλογος", href: "/pricing" },
     { label: "About us", href: "/about" }
   ];
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
     <div className="w-full">
@@ -35,14 +38,18 @@ export const Navbar = () => {
         <div className="gap-3 nav__item mr-2 lg:flex ml-auto lg:ml-0 lg:order-2">
             <ThemeChanger />
             <div className="hidden mr-3 lg:flex nav__item">
-              <Link href="/" className="px-6 py-2 text-text bg-primary rounded-md md:ml-5">
+              <button
+                type="button"
+                onClick={() => setIsContactOpen(true)}
+                className="px-6 py-2 text-text bg-primary rounded-md md:ml-5"
+              >
                 Επικοινωνία
-              </Link>
+              </button>
             </div>
         </div>
                 
         <Disclosure>
-          {({ open }) => (
+          {({ open, close }) => (
             <>
                 <Disclosure.Button
                   aria-label="Toggle Menu"
@@ -74,9 +81,16 @@ export const Navbar = () => {
                           {item.label}
                       </Link>
                     ))}
-                    <Link href="/" className="w-full px-6 py-2 mt-3 text-center text-text bg-primary rounded-md lg:ml-5">         
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsContactOpen(true);
+                        close();
+                      }}
+                      className="w-full px-6 py-2 mt-3 text-center text-text bg-primary rounded-md lg:ml-5"
+                    >
                         Επικοινωνία
-                    </Link>
+                    </button>
                   </>
                 </Disclosure.Panel>
             </>
@@ -97,6 +111,7 @@ export const Navbar = () => {
         </div>
 
       </nav>
+      <ContactModal open={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </div>
   );
 }

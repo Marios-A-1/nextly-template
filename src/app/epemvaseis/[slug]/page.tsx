@@ -72,7 +72,7 @@ const ProcedureSectionCard = ({
   section: DoctorContentSection;
   parentTitle?: string | null;
 }) => (
-  <article className="space-y-4 rounded-xl border border-border bg-white p-6 shadow-sm">
+  <article className="space-y-4 rounded-xl border border-border bg-card p-6 shadow-sm">
     {section.title && section.title !== parentTitle ? (
       <h3 className="text-center text-lg font-semibold text-text">
         {section.title}
@@ -420,7 +420,7 @@ export default function ProcedurePage({ params, searchParams }: ProcedurePagePro
             : fallbackSections?.map((section) => (
                 <ProcedureSectionCard key={section.id} section={section} />
               ))}
-          <article className="space-y-4 rounded-xl border border-border bg-white p-6 shadow-sm">
+          <article className="space-y-4 rounded-xl border border-border bg-card p-6 shadow-sm">
             <h3 className="text-center text-lg font-semibold text-text">
               Θέλετε να το συζητήσουμε;
             </h3>

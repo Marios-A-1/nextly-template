@@ -11,8 +11,8 @@ type EpemvaseisBreadcrumbProps = {
   highlightLabel?: string | null;
 };
 
-const linkClass = "text-xs font-bold tracking-wide transition";
-const mutedClass = "text-muted";
+const linkClass = "text-xs font-bold tracking-wide transition !text-text";
+const mutedClass = "!text-text";
 const hoverClass = "hover:text-text";
 const highlightedClass = "text-primary";
 
@@ -78,7 +78,7 @@ export default function EpemvaseisBreadcrumb({
   return (
     <Breadcrumb
       separator="/"
-      className="text-xs tracking-wide text-muted"
+      className="text-xs tracking-wide text-text [&_.ant-breadcrumb-separator]:text-muted"
       items={breadcrumbItems}
     />
   );
