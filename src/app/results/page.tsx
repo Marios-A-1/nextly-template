@@ -1,49 +1,33 @@
 import { SectionTitle } from "../../components/SectionTitle";
-import Masonry from "../../components/Masonry";
-import DomeGallery from "../../components/DomeGallery";
 import { MainContainer, PageRoot } from "../../components/PageLayout";
+import ResultsMasonryClient from "../../components/ResultsMasonryClient";
+import { readdir } from "fs/promises";
+import path from "path";
 
-// Replace with real results photos and keep height close to the original pixel height.
-const resultsItems = [
-  {
-    id: "result-01",
-    img: "/img/results/1.webp",
-    url: "/img/results/1.webp",
-    height: 820
-  },
-  {
-    id: "result-02",
-    img: "/img/results/2.webp",
-    url: "/img/results/2.webp",
-    height: 760
-  },
-  {
-    id: "result-03",
-    img: "/img/results/3.webp",
-    url: "/img/results/3.webp",
-    height: 880
-  },
-  {
-    id: "result-04",
-    img: "/img/results/4.webp",
-    url: "/img/results/4.webp",
-    height: 700
-  },
-  {
-    id: "result-05",
-    img: "/img/results/5.webp",
-    url: "/img/results/5.webp",
-    height: 520
-  },
-  {
-    id: "result-06",
-    img: "/img/results/6.webp",
-    url: "/img/results/6.webp",
-    height: 560
+const RESULTS_DIR = path.join(process.cwd(), "public", "img", "results");
+const VALID_EXT = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif"]);
+
+const sortFiles = (a: string, b: string) => {
+  const aNum = Number.parseInt(a, 10);
+  const bNum = Number.parseInt(b, 10);
+  if (!Number.isNaN(aNum) && !Number.isNaN(bNum) && aNum !== bNum) {
+    return aNum - bNum;
   }
-];
+  return a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" });
+};
 
-export default function ResultsPage() {
+export const revalidate = 300;
+
+export default async function ResultsPage() {
+  const files = (await readdir(RESULTS_DIR)).filter((file) =>
+    VALID_EXT.has(path.extname(file).toLowerCase())
+  );
+  const sorted = files.sort(sortFiles);
+  const page = sorted.slice(0, 24);
+  const initialPage = {
+    items: page.map((file) => ({ src: `/img/results/${file}`, name: file })),
+    nextOffset: sorted.length > page.length ? page.length : null
+  };
   return (
     <PageRoot>
       <MainContainer className="space-y-12 py-12">
@@ -59,7 +43,10 @@ export default function ResultsPage() {
         </section>
 
         <section className="w-full">
-          <Masonry items={resultsItems} animateFrom="bottom" />
+          <ResultsMasonryClient
+            baseItems={[]}
+            initialPage={initialPage}
+          />
         </section>
 
         {/* <section className="w-full">

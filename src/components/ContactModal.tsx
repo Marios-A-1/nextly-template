@@ -151,7 +151,7 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
                           📝 Συμπληρώστε τη φόρμα
                         </span>
                         <span className="text-sm text-muted">
-                          Θα σας απαντήσουμε σύντομα
+                          Και θα σας απαντήσουμε σύντομα
                         </span>
                         {/* <span className="mt-1 text-xs text-muted">
                           ⏱ απάντηση εντός 24 ωρών

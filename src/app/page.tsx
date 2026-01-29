@@ -395,7 +395,7 @@ export default function Home() {
         <Hero />
     <section id="why-us" className="grid grid-cols-1">
           <SectionTitle
-            preTitle="Γιατι να μας Επιλεξεις"
+            preTitle="Γιατι να μας Επιλεξετε"
             title="Γιατί Art of The Possible ?"
           >
             Στόχος μας είναι ένα αποτέλεσμα που “δένει” φυσικά με το πρόσωπο/σώμα σας, με προτεραιότητα την ασφάλεια και τη σωστή ιατρική καθοδήγηση.
