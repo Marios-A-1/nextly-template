@@ -127,7 +127,7 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
                     <div className="mt-6 space-y-3">
                       <a
                         href="tel:2110081112"
-                        className="group flex min-h-[48px] w-full flex-col items-center justify-center rounded-xl bg-gradient-to-br from-primary via-primary/90 to-primarySoft px-4 py-3 text-center text-text shadow-lg shadow-primary/30 transition hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-xl"
+                        className="group flex min-h-[48px] w-full flex-col items-center justify-center rounded-xl bg-gradient-to-br from-primary via-primary/90 to-primarySoft px-4 py-3 text-center text-text  transition hover:-translate-y-0.5 hover:scale-[1.01]  hover:shadow-xl"
                       >
                         <span className="text-base font-semibold">
                           📞 Καλέστε μας
