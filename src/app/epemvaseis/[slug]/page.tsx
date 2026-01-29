@@ -96,10 +96,10 @@ const ProcedureSectionCard = ({
   const displaySubtitle = headerSubtitle ?? null;
 
   return (
-    <article className="space-y-4 rounded-xl border border-border bg-card p-6 text-center shadow-sm">
+    <article className="w-full rounded-xl border border-border bg-card p-6 text-center shadow-sm lg:w-[60%] lg:mx-auto">
       {displayTitle ? (
         <div className="space-y-2">
-          <h3 className="text-center px-8 text-lg font-semibold text-text">
+          <h3 className="text-center px-8 mb-4 text-lg font-semibold text-text">
             {displayTitle}
           </h3>
           {displaySubtitle ? (
@@ -166,6 +166,32 @@ const ProcedureSectionCard = ({
         })}
       </div>
     </article>
+  );
+};
+
+const ProcedureSectionMasonry = ({
+  sections,
+  parentTitle,
+  headerTitle,
+  headerSubtitle
+}: {
+  sections: DoctorContentSection[];
+  parentTitle?: string | null;
+  headerTitle?: string | null;
+  headerSubtitle?: string | null;
+}) => {
+  return (
+    <div className="space-y-6">
+      {sections.map((section, sectionIndex) => (
+        <ProcedureSectionCard
+          key={section.id}
+          section={section}
+          parentTitle={parentTitle}
+          headerTitle={sectionIndex === 0 ? headerTitle : null}
+          headerSubtitle={sectionIndex === 0 ? headerSubtitle : null}
+        />
+      ))}
+    </div>
   );
 };
 
@@ -378,23 +404,14 @@ export default function ProcedurePage({ params, searchParams }: ProcedurePagePro
           </div>
         ) : null}
 
-        <div className="mt-6 grid gap-6 lg:grid-cols-[repeat(2,minmax(0,1fr))] lg:items-stretch">
-          <div className="hidden lg:flex lg:items-stretch">
-            <div className="flex w-full flex-col justify-center rounded-2xl p-6">
-              <ProcedureHeaderText
-                title={procedure.title}
-                shortDesc={procedure.shortDesc}
-                className="max-w-2xl"
-              />
-            </div>
-          </div>
-          <div className="relative min-h-[260px] overflow-hidden rounded-2xl border border-border bg-muted/10">
+        <div className="mt-6">
+          <div className="relative min-h-[260px] overflow-hidden rounded-2xl border border-border bg-muted/10 lg:mx-auto lg:w-[60%]">
             {procedureImages[procedure.slug] ? (
               <Image
                 src={procedureImages[procedure.slug]}
                 alt={procedure.title ?? procedure.slug}
                 fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover"
                 priority
               />
@@ -403,8 +420,8 @@ export default function ProcedurePage({ params, searchParams }: ProcedurePagePro
                 Placeholder
               </div>
             )}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:hidden" />
-            <div className="absolute inset-0 flex items-end px-6 py-6 lg:hidden">
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 flex items-center justify-center px-6 py-6">
               <div className="w-full">
                 <ProcedureHeaderText
                   title={procedure.title}
@@ -443,24 +460,19 @@ export default function ProcedurePage({ params, searchParams }: ProcedurePagePro
                     key={group.id ?? `${groupTitle ?? "group"}-${groupIndex}`}
                     className="space-y-4"
                   >
-                    <div className="space-y-6">
-                      {sections.map((section, sectionIndex) => (
-                        <ProcedureSectionCard
-                          key={section.id}
-                          section={section}
-                          parentTitle={groupTitle}
-                          headerTitle={sectionIndex === 0 ? groupTitle : null}
-                          headerSubtitle={sectionIndex === 0 ? group.subtitle : null}
-                        />
-                      ))}
-                    </div>
+                    <ProcedureSectionMasonry
+                      sections={sections}
+                      parentTitle={groupTitle}
+                      headerTitle={groupTitle}
+                      headerSubtitle={group.subtitle}
+                    />
                   </section>
                 );
               })
-            : fallbackSections?.map((section) => (
-                <ProcedureSectionCard key={section.id} section={section} />
-              ))}
-          <article className="space-y-4 rounded-xl border border-border bg-card p-6 shadow-sm">
+            : fallbackSections ? (
+                <ProcedureSectionMasonry sections={fallbackSections} />
+              ) : null}
+          <article className="w-full space-y-4 rounded-xl border border-border bg-card p-6 shadow-sm lg:w-[60%] lg:mx-auto">
             <h3 className="text-center text-lg font-semibold text-text">
               Θέλετε να το συζητήσουμε;
             </h3>
