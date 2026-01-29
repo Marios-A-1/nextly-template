@@ -97,8 +97,8 @@ export const Hero = () => {
           Κλείσε ραντεβού
         </a>
         <a
-          href="https://github.com/web3templates/nextly-template/"
-          target="_blank"
+          href="/results"
+          target="_self"
           rel="noopener noreferrer"
           className="flex items-center space-x-2 text-muted px-8"
         >

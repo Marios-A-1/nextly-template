@@ -1538,8 +1538,13 @@ export const Epemvaseis = [
             title: null,
             blocks: [
               {
-                type: "note",
-                text: "Εδώ θα προστεθούν video παρουσίασης του Crisalix και του Art of the Possible Plastic Surgery."
+                type: "p",
+                text: "Παρακολουθήστε το video παρουσίασης του Crisalix."
+              },
+              {
+                type: "video",
+                title: "Crisalix 4D",
+                url: "https://www.youtube.com/embed/nhQ8dN1-_NY"
               }
             ]
           }

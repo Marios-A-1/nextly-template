@@ -1,10 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import ThemeChanger from "./DarkSwitch";
 import Image from "next/image";
 import { Disclosure } from "@headlessui/react";
 import { ContactModal } from "./ContactModal";
+import { CONTACT_MODAL_EVENT } from "./ContactModalTrigger";
 
 export const Navbar = () => {
   const navigation = [
@@ -15,6 +16,13 @@ export const Navbar = () => {
     { label: "About us", href: "/about" }
   ];
   const [isContactOpen, setIsContactOpen] = useState(false);
+  useEffect(() => {
+    const handleOpen = () => setIsContactOpen(true);
+    window.addEventListener(CONTACT_MODAL_EVENT, handleOpen);
+    return () => {
+      window.removeEventListener(CONTACT_MODAL_EVENT, handleOpen);
+    };
+  }, []);
 
   return (
     <div className="w-full">

@@ -14,6 +14,7 @@ import type {
 import { getEpemvaseisCategoryLabelBySlug } from "../epemvaseisCategories";
 import { buildEpemvaseisHref } from "../breadcrumbs";
 import EpemvaseisBreadcrumb from "../components/EpemvaseisBreadcrumb";
+import { ContactModalTrigger } from "@/src/components/ContactModalTrigger";
 
 type ProcedurePageProps = {
   params: { slug: string };
@@ -67,59 +68,106 @@ const procedureImages: Record<string, string> = {
 
 const ProcedureSectionCard = ({
   section,
-  parentTitle
+  parentTitle,
+  headerTitle,
+  headerSubtitle
 }: {
   section: DoctorContentSection;
   parentTitle?: string | null;
-}) => (
-  <article className="space-y-4 rounded-xl border border-border bg-card p-6 shadow-sm">
-    {section.title && section.title !== parentTitle ? (
-      <h3 className="text-center text-lg font-semibold text-text">
-        {section.title}
-      </h3>
-    ) : null}
-    <div className="space-y-4 text-sm leading-relaxed text-muted">
-      {section.blocks.map((block, index) => {
-        if (block.type === "p") {
-          return (
-            <p key={`${section.id}-p-${index}`} className="leading-relaxed">
-              {block.text}
+  headerTitle?: string | null;
+  headerSubtitle?: string | null;
+}) => {
+  const renderableBlocks = section.blocks.filter(
+    (block) =>
+      block.type === "p" ||
+      block.type === "ul" ||
+      block.type === "ol" ||
+      block.type === "quote" ||
+      block.type === "spacer" ||
+      block.type === "video"
+  );
+
+  if (!renderableBlocks.length) {
+    return null;
+  }
+
+  const displayTitle =
+    headerTitle ?? (section.title && section.title !== parentTitle ? section.title : null);
+  const displaySubtitle = headerSubtitle ?? null;
+
+  return (
+    <article className="space-y-4 rounded-xl border border-border bg-card p-6 text-center shadow-sm">
+      {displayTitle ? (
+        <div className="space-y-2">
+          <h3 className="text-center px-8 text-lg font-semibold text-text">
+            {displayTitle}
+          </h3>
+          {displaySubtitle ? (
+            <p className="text-sm leading-relaxed text-muted text-center">
+              {displaySubtitle}
             </p>
-          );
-        }
-        if (block.type === "ul" || block.type === "ol") {
-          const Tag = block.type === "ul" ? "ul" : "ol";
-          const listClass = block.type === "ul" ? "list-disc" : "list-decimal";
-          return (
-            <Tag
-              key={`${section.id}-${block.type}-${index}`}
-              className={`${listClass} space-y-2 pl-5 text-sm leading-relaxed text-muted`}
-            >
-              {block.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </Tag>
-          );
-        }
-        if (block.type === "quote") {
-          return (
-            <blockquote
-              key={`${section.id}-quote-${index}`}
-              className="rounded border-l-4 border-primary pl-4 italic text-sm text-muted"
-            >
-              {block.text}
-            </blockquote>
-          );
-        }
-        if (block.type === "spacer") {
-          const size = block.size ?? "md";
-          return <div key={`${section.id}-spacer-${index}`} className={spacerSizes[size]} />;
-        }
-        return null;
-      })}
-    </div>
-  </article>
-);
+          ) : null}
+        </div>
+      ) : null}
+      <div className="space-y-4 px-8 text-sm leading-relaxed text-muted text-center md:px-8">
+        {renderableBlocks.map((block, index) => {
+          if (block.type === "p") {
+            return (
+              <p key={`${section.id}-p-${index}`} className="leading-relaxed text-center">
+                {block.text}
+              </p>
+            );
+          }
+          if (block.type === "ul" || block.type === "ol") {
+            const Tag = block.type === "ul" ? "ul" : "ol";
+            const listClass = block.type === "ul" ? "list-disc" : "list-decimal";
+            return (
+              <Tag
+                key={`${section.id}-${block.type}-${index}`}
+                className={`${listClass} list-inside space-y-2 text-sm leading-relaxed text-muted text-center`}
+              >
+                {block.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </Tag>
+            );
+          }
+          if (block.type === "video") {
+            const title = block.title ?? "Video";
+            return (
+              <div key={`${section.id}-video-${index}`} className="mx-auto w-full max-w-2xl space-y-2">
+                <div className="aspect-video w-full overflow-hidden rounded-lg border-0 bg-transparent">
+                  <iframe
+                    title={title}
+                    src={block.url}
+                    className="h-full w-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            );
+          }
+          if (block.type === "quote") {
+            return (
+              <blockquote
+                key={`${section.id}-quote-${index}`}
+                className="italic text-sm text-muted"
+              >
+                {block.text}
+              </blockquote>
+            );
+          }
+          if (block.type === "spacer") {
+            const size = block.size ?? "md";
+            return <div key={`${section.id}-spacer-${index}`} className={spacerSizes[size]} />;
+          }
+          return null;
+        })}
+      </div>
+    </article>
+  );
+};
 
 const convertLegacyChunkToSections = (
   chunk: LegacyContentChunk,
@@ -395,22 +443,14 @@ export default function ProcedurePage({ params, searchParams }: ProcedurePagePro
                     key={group.id ?? `${groupTitle ?? "group"}-${groupIndex}`}
                     className="space-y-4"
                   >
-                    <div className="space-y-1">
-                      {groupTitle ? (
-                      <h2 className="text-center text-2xl font-semibold text-text">
-                        {groupTitle}
-                      </h2>
-                      ) : null}
-                      {group.subtitle ? (
-                        <p className="text-sm leading-relaxed  text-center text-muted">{group.subtitle}</p>
-                      ) : null}
-                    </div>
                     <div className="space-y-6">
-                      {sections.map((section) => (
+                      {sections.map((section, sectionIndex) => (
                         <ProcedureSectionCard
                           key={section.id}
                           section={section}
                           parentTitle={groupTitle}
+                          headerTitle={sectionIndex === 0 ? groupTitle : null}
+                          headerSubtitle={sectionIndex === 0 ? group.subtitle : null}
                         />
                       ))}
                     </div>
@@ -427,12 +467,9 @@ export default function ProcedurePage({ params, searchParams }: ProcedurePagePro
             <p className="text-sm leading-relaxed text-center text-muted">
               Συμπληρώστε τα στοιχεία σας και η ομάδα μας θα επικοινωνήσει μαζί σας.
             </p>
-            <Link
-              href="/"
-              className="inline-flex w-full items-center justify-center rounded-md bg-primary px-4 py-3 text-sm font-semibold text-text transition hover:brightness-95"
-            >
+            <ContactModalTrigger className="inline-flex w-full items-center justify-center rounded-md bg-primary px-4 py-3 text-sm font-semibold text-text transition hover:brightness-95">
               Επικοινωνία
-            </Link>
+            </ContactModalTrigger>
           </article>
         </div>
       </MainContainer>

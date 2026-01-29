@@ -5,6 +5,7 @@ import { Video } from "../components/Video";
 import Testimonials from "../components/Testimonials";
 import { Faq } from "../components/Faq";
 import { Cta } from "../components/Cta";
+import { TreatmentsPromo } from "../components/TreatmentsPromo";
 import { MainContainer, PageRoot } from "../components/PageLayout";
 import { benefitOne, benefitTwo } from "../components/data";
 import ScrollReveal from "../components/ScrollReveal";
@@ -405,6 +406,8 @@ export default function Home() {
           <Benefits data={benefitOne} />
           <Benefits imgPos="right" data={benefitTwo} />
         </section>
+
+        <TreatmentsPromo />
 
         <section id="care-experience" className="grid grid-cols-1 gap-16">
           <div className="grid grid-cols-1 gap-6">

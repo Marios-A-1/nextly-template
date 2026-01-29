@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import { Container } from "./Container";
+import { ContactModalTrigger } from "./ContactModalTrigger";
 
 export function Footer() {
   const navigation = ["Αρχική", "Αποτελέσματα", "Επεμβάσεις", "About us", "Επικοινωνία"];
@@ -38,15 +39,24 @@ export function Footer() {
 
           <div>
             <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
-              {navigation.map((item, index) => (
-                <Link
-                  key={index}
-                  href="/"
-                  className="w-full px-4 py-2 text-muted rounded-md dark:text-muted hover:text-primary focus:text-primary focus:bg-primary focus:outline-none dark:focus:bg-trueGray-700"
-                >
-                  {item}
-                </Link>
-              ))}
+              {navigation.map((item, index) =>
+                item === "Επικοινωνία" || index === navigation.length - 1 ? (
+                  <ContactModalTrigger
+                    key={index}
+                    className="w-full px-4 py-2 text-muted rounded-md dark:text-muted hover:text-primary focus:text-primary focus:bg-primary focus:outline-none dark:focus:bg-trueGray-700"
+                  >
+                    {item}
+                  </ContactModalTrigger>
+                ) : (
+                  <Link
+                    key={index}
+                    href="/"
+                    className="w-full px-4 py-2 text-muted rounded-md dark:text-muted hover:text-primary focus:text-primary focus:bg-primary focus:outline-none dark:focus:bg-trueGray-700"
+                  >
+                    {item}
+                  </Link>
+                )
+              )}
             </div>
           </div>
           <div>

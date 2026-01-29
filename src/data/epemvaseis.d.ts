@@ -4,6 +4,7 @@ export type DoctorContentBlock =
   | { type: "ol"; items: string[] }
   | { type: "quote"; text: string }
   | { type: "spacer"; size?: "sm" | "md" | "lg" }
+  | { type: "video"; url: string; title?: string }
   | { type: "image"; meta: Record<string, unknown> };
 
 export type DoctorContentSection = {
