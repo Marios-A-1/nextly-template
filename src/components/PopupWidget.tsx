@@ -180,7 +180,7 @@ export function PopupWidget() {
                               message: "Παρακαλώ εισάγετε ένα έγκυρο email",
                             },
                           })}
-                          placeholder="you@company.com"
+                          placeholder="you@mail.com"
                           className={`w-full px-3 py-2 text-muted placeholder:text-muted bg-card border border-border rounded-md focus:outline-none focus:ring   ${
                             errors.email
                               ? "border-red-600 focus:border-red-600 ring-red-100"
@@ -191,6 +191,46 @@ export function PopupWidget() {
                         {errors.email && (
                           <div className="mt-1 text-sm text-red-400 invalid-feedback">
                             {errors.email.message as string}
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="mb-4">
+                        <label
+                          htmlFor="phone"
+                          className="block mb-2 text-sm text-muted dark:text-muted"
+                        >
+                          Phone Number
+                        </label>
+                        {/* <PhoneInput defaultCountry="gr" forceDialCode /> */}
+                        <input
+                          type="tel"
+                          id="phone"
+                          autoComplete="tel"
+                          {...register("phone", {
+                            required: "Please enter your phone number",
+                            validate: (value) => {
+                              const digits = value?.replace(/\D/g, "") ?? "";
+                              if (!/^\+?[0-9\s().-]+$/.test(value ?? "")) {
+                                return "Please enter a valid phone number";
+                              }
+                              if (digits.length < 10 || digits.length > 15) {
+                                return "Phone number must be 10-15 digits";
+                              }
+                              return true;
+                            },
+                          })}
+                          placeholder="+30 690 000 0000"
+                          className={`w-full px-3 py-2 text-muted placeholder:text-muted bg-card border border-border rounded-md focus:outline-none focus:ring   ${
+                            errors.phone
+                              ? "border-red-600 focus:border-red-600 ring-red-100"
+                              : "border-border focus:border-primary ring-primary"
+                          }`}
+                        />
+
+                        {errors.phone && (
+                          <div className="mt-1 text-sm text-red-400 invalid-feedback">
+                            {errors.phone.message as string}
                           </div>
                         )}
                       </div>

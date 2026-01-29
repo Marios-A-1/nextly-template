@@ -243,7 +243,7 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
                                   message: "Παρακαλώ εισάγετε ένα έγκυρο email",
                                 },
                               })}
-                              placeholder="you@company.com"
+                              placeholder="you@mail.com"
                               className={`w-full px-3 py-2 text-muted placeholder:text-muted bg-card border border-border rounded-md focus:outline-none focus:ring   ${
                                 errors.email
                                   ? "border-red-600 focus:border-red-600 ring-red-100"
@@ -254,6 +254,46 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
                             {errors.email && (
                               <div className="mt-1 text-sm text-red-400 invalid-feedback">
                                 {errors.email.message as string}
+                              </div>
+                            )}
+                          </div>
+
+                          <div className="mb-4">
+                            <label
+                              htmlFor="phone"
+                              className="block mb-2 text-sm text-muted dark:text-muted"
+                            >
+                              Τηλέφωνο
+                            </label>
+                            {/* <PhoneInput defaultCountry="gr" forceDialCode /> */}
+                            <input
+                              type="tel"
+                              id="phone"
+                              autoComplete="tel"
+                              {...register("phone", {
+                                required: "Συμπληρώστε το τηλέφωνό σας",
+                                validate: (value) => {
+                                  const digits = value?.replace(/\D/g, "") ?? "";
+                                  if (!/^\+?[0-9\s().-]+$/.test(value ?? "")) {
+                                    return "Παρακαλώ εισάγετε ένα έγκυρο τηλέφωνο";
+                                  }
+                                  if (digits.length < 10 || digits.length > 15) {
+                                    return "Το τηλέφωνο πρέπει να έχει 10-15 ψηφία";
+                                  }
+                                  return true;
+                                },
+                              })}
+                              placeholder="+30 690 000 0000"
+                              className={`w-full px-3 py-2 text-muted placeholder:text-muted bg-card border border-border rounded-md focus:outline-none focus:ring   ${
+                                errors.phone
+                                  ? "border-red-600 focus:border-red-600 ring-red-100"
+                                  : "border-border focus:border-primary ring-primary"
+                              }`}
+                            />
+
+                            {errors.phone && (
+                              <div className="mt-1 text-sm text-red-400 invalid-feedback">
+                                {errors.phone.message as string}
                               </div>
                             )}
                           </div>
