@@ -410,7 +410,7 @@ export default function Home() {
         <TreatmentsPromo />
 
         <section id="care-experience" className="grid grid-cols-1 gap-16">
-          <div className="grid grid-cols-1 gap-6">
+          {/* <div className="grid grid-cols-1 gap-6">
             <SectionTitle
               preTitle="Watch a video"
               title="Δείτε σε 60’’ πώς δουλεύουμε"
@@ -418,7 +418,7 @@ export default function Home() {
               Μια σύντομη παρουσίαση της φιλοσοφίας μας, της διαδικασίας και του τι να περιμένετε από το ραντεβού σας
             </SectionTitle>
             <Video videoId="fZ0D0cnR88E" />
-          </div>
+          </div> */}
 
           <div className="grid grid-cols-1 gap-6">
             <SectionTitle

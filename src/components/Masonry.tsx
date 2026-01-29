@@ -479,7 +479,7 @@ const Masonry: React.FC<MasonryProps> = ({
             >
               Close
             </button>
-            <div className="relative h-[90vh] w-full max-h-[90vh]">
+            <div className="relative h-[50vh] w-full max-h-[90vh]">
               <NextImage
                 src={activeItem.img}
                 alt={activeItem.alt || 'Selected image'}

@@ -185,8 +185,8 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
 
                 {view === "form" && (
                   <div className="flex flex-col">
-                    <div className="flex flex-col items-center rounded-xl justify-center h-24 p-5 bg-primary">
-                      <h3 className="text-lg text-text">Πώς μπορούμε να βοηθήσουμε;</h3>
+                    <div className="flex flex-col items-center rounded-xl justify-center h-24 w-auto p-5 bg-primary">
+                      <h3 className="text-lg font-semibold text-center text-text">Πώς μπορούμε<br/>να βοηθήσουμε;</h3>
                     </div>
                     <div className="flex-grow h-full p-6 overflow-auto bg-card">
                       {!isSubmitSuccessful && (

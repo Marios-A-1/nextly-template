@@ -68,7 +68,7 @@ export const TreatmentsPromo = () => {
               className="group flex h-full w-full max-w-sm flex-col justify-between rounded-2xl border border-border bg-surface pb-10 text-center shadow-sm transition hover:-translate-y-0.5 hover:border-primary hover:shadow-md"
             >
               <div>
-                <div className="mb-5 w-full overflow-hidden rounded-2xl bg-muted/10">
+                <div className="mb-5 w-full overflow-hidden rounded-2xl rounded-b-none bg-muted/10">
                   <img
                     src={category.image}
                     alt={category.title}
