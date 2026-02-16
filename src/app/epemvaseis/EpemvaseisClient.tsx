@@ -52,9 +52,9 @@ const categoryImages: Record<string, string> = {
 };
 
 const subcategoryImages: Record<string, string> = {
-  prosopo: "/img/subcategories/Prosopo.webp",
-  soma: "/img/subcategories/soma.webp",
-  stithos: "/img/subcategories/stithos.webp",
+  prosopo: "/img/subCategories/prosopo.webp",
+  soma: "/img/subCategories/soma.webp",
+  stithos: "/img/subCategories/stithos.webp",
 };
 
 const procedureImages: Record<string, string> = {
