@@ -1,29 +1,31 @@
 "use client";
+
 import Image from "next/image";
 import heroImg from "../../public/img/logo-hq.webp";
 import CountUp from "./CountUp";
 import BlurText from "./BlurText";
 import SplitText from "./SplitText";
 import AnimatedContent from "./AnimatedContent";
+import { ContactModalTrigger } from "./ContactModalTrigger";
 
 export const Hero = () => {
   return (
     <section className="grid gap-10 pt-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,440px)] -mt-20 lg:items-center lg:-mt-10 lg:gap-16">
-      <div className="space-y-8 text-center lg:text-left lg:order-1">
+      <div className="space-y-8 text-center lg:order-1 lg:text-left">
         <div className="space-y-6">
-              
-          <h1 className="text-center lg:text-left text-4xl font-bold -mb-4 leading-snug tracking-tight text-text lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight">
+          <h1 className="text-center text-4xl font-bold -mb-4 leading-snug tracking-tight text-text lg:text-left lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight">
             <BlurText
               text="Art of the Possible"
               delay={20}
               animateBy="letters"
               direction="top"
-              className="justify-center lg:justify-start text-center lg:text-left text-4xl font-bold -mb-4 leading-snug tracking-tight text-text lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight"
+              className="justify-center text-center text-4xl font-bold -mb-4 leading-snug tracking-tight text-text lg:justify-start lg:text-left lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight"
             />
           </h1>
-          <div className="text-xl leading-relaxed text-muted text-center lg:text-xl xl:text-2xl lg:text-left lg:hidden ">
-          <SplitText
-              text="Aισθητική & Επανορθωτική Πλαστική, με σχέδιο και ασφάλεια."
+
+          <div className="text-center text-xl leading-relaxed text-muted lg:hidden lg:text-xl xl:text-2xl">
+            <SplitText
+              text="Αισθητική & Επανορθωτική Πλαστική, με σχέδιο και ασφάλεια."
               delay={150}
               duration={1.85}
               ease="power3.out"
@@ -33,15 +35,15 @@ export const Hero = () => {
               threshold={0.1}
               rootMargin="-100px"
               textAlign="center"
-            /> 
-            </div>
-          <div className="text-xl leading-relaxed text-muted lg:text-xl xl:text-2xl text-left sm:block hidden ">
+            />
+          </div>
 
-              <SplitText
-              text="Αισθητική & Επανορθωτική Πλαστική, με σχέδιο και ασφάλεια.
-                Εξατομικευμένη προσέγγιση, σύγχρονες τεχνικές και πλήρης καθοδήγηση 
-                από την πρώτη επίσκεψη έως την αποθεραπεία."
-              className="text-xl leading-relaxed text-muted lg:text-xl xl:text-2xl text-left sm:block hidden "
+          <div className="hidden text-left text-xl leading-relaxed text-muted sm:block lg:text-xl xl:text-2xl">
+            <SplitText
+              text={`Αισθητική & Επανορθωτική Πλαστική, με σχέδιο και ασφάλεια.
+                Εξατομικευμένη προσέγγιση, σύγχρονες τεχνικές και πλήρης καθοδήγηση
+                από την πρώτη επίσκεψη έως την αποθεραπεία.`}
+              className="hidden text-left text-xl leading-relaxed text-muted sm:block lg:text-xl xl:text-2xl"
               delay={150}
               duration={1.85}
               ease="power3.out"
@@ -51,12 +53,12 @@ export const Hero = () => {
               threshold={0.1}
               rootMargin="-100px"
               textAlign="left"
-            /> 
+            />
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center lg:order-2 lg:col-start-2 ">
+      <div className="flex flex-col items-center justify-center lg:order-2 lg:col-start-2">
         <AnimatedContent>
           <Image
             src={heroImg}
@@ -68,42 +70,40 @@ export const Hero = () => {
             placeholder="blur"
           />
         </AnimatedContent>
+
         <AnimatedContent threshold={-100}>
-        <p className="text-xl font-medium text-center text-text lg:text-2xl lg:text-left mt-6">
-          Πάνω απο
-          <span className="px-2 text-primary">
-            <CountUp
-              from={0}
-              to={2000}
-              separator=","
-              direction="up"
-              duration={1}
-              className="count-up-text"
-            />+
-          </span>
-           Επεμβάσεις
-        </p>
+          <p className="mt-6 text-center text-xl font-medium text-text lg:text-left lg:text-2xl">
+            Πάνω από
+            <span className="px-2 text-primary">
+              <CountUp
+                from={0}
+                to={2000}
+                separator=","
+                direction="up"
+                duration={1}
+                className="count-up-text"
+              />
+              +
+            </span>
+            Επεμβάσεις
+          </p>
         </AnimatedContent>
       </div>
 
-      <AnimatedContent threshold={-100} className="lg:-mt-40 lg:col-span-2 lg:order-3">
+      <AnimatedContent threshold={-100} className="lg:-mt-40 lg:order-3 lg:col-span-2">
         <div className="flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row sm:items-center sm:justify-start">
-        <a
-          href="https://web3templates.com/templates/nextly-landing-page-template-for-startups"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-8 py-4 text-lg font-medium text-text bg-primary rounded-md text-center"
-        >
-          Κλείσε ραντεβού
-        </a>
-        <a
-          href="/results"
-          target="_self"
-          rel="noopener noreferrer"
-          className="flex items-center space-x-2 text-muted px-8"
-        >
-          <span> Δες Αποτελέσματα</span>
-        </a>
+          <ContactModalTrigger className="rounded-md bg-primary px-8 py-4 text-center text-lg font-medium text-text">
+            Κλείσε ραντεβού
+          </ContactModalTrigger>
+
+          <a
+            href="/results"
+            target="_self"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 px-8 text-muted"
+          >
+            <span>Δες Αποτελέσματα</span>
+          </a>
         </div>
       </AnimatedContent>
     </section>
