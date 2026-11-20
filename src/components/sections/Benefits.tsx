@@ -54,13 +54,13 @@ export function Benefits({
                     id={`${item.id}-trigger`}
                     aria-expanded={activeId === item.id}
                     aria-controls={`${item.id}-panel`}
-                    className="flex min-h-11 w-full items-center gap-3 text-left text-xl font-semibold tracking-[-0.03em] text-[#20292b] outline-none transition-colors hover:text-[#282018] focus-visible:ring-2 focus-visible:ring-[#9a6d24]/40 sm:gap-4 sm:text-2xl"
+                    className="flex min-h-11 w-full items-center gap-3 text-left text-xl font-semibold tracking-[-0.03em] text-foreground outline-none transition-colors hover:text-[#282018] focus-visible:ring-2 focus-visible:ring-ring/40 sm:gap-4 sm:text-2xl"
                     onClick={() => setActiveId((current) => current === item.id ? "" : item.id)}
                   >
                     <motion.span
                       animate={{ rotate: activeId === item.id ? 45 : 0, scale: activeId === item.id ? 1.08 : 1 }}
                       transition={{ duration: motionDurations.faq, ease: easeSoft }}
-                      className="grid size-8 shrink-0 place-items-center rounded-full bg-[#f1e6d2] text-[#201b17]"
+                      className="grid size-8 shrink-0 place-items-center rounded-full bg-champagne text-[#201b17]"
                       aria-hidden="true"
                     >
                       <Plus  className="size-5" />

@@ -129,7 +129,7 @@ export function ServicesDropdown({ item, services, labels }: ServicesDropdownPro
             exit="exit"
             id={panelId}
             data-services-dropdown-panel
-            className="absolute left-1/2 top-full z-50 w-[min(680px,calc(100vw-2rem))] origin-top -translate-x-1/2 translate-y-4 overflow-hidden rounded-[0.85rem] border border-white/15 bg-[#161411] p-2 text-white shadow-[0_24px_70px_rgba(0,32,36,0.28)] ring-1 ring-black/5"
+            className="absolute left-1/2 top-full z-50 w-[min(680px,calc(100vw-2rem))] origin-top -translate-x-1/2 translate-y-4 overflow-hidden rounded-[0.85rem] border border-white/15 bg-[#161411] p-2 text-white shadow-[0_24px_70px_rgba(40,32,24,0.28)] ring-1 ring-black/5"
           >
             <div className="flex items-center justify-between gap-4 border-b border-white/10 px-3 py-2.5">
               <span className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-white/56">
@@ -142,18 +142,18 @@ export function ServicesDropdown({ item, services, labels }: ServicesDropdownPro
               <motion.div variants={menuItemVariants}>
                 <Link
                   data-services-dropdown-row
-                  className="group/dropdown-row grid min-h-[76px] gap-3 rounded-[0.65rem] bg-white px-4 py-3 text-[#201b17] transition-[background-color,color,translate] duration-[520ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:translate-x-0.5 hover:bg-[#f9f5ed] focus-visible:translate-x-0.5 focus-visible:bg-[#f9f5ed] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 sm:grid-cols-[minmax(12rem,0.72fr)_minmax(0,1fr)_2.5rem] sm:items-center"
+                  className="group/dropdown-row grid min-h-[76px] gap-3 rounded-[0.65rem] bg-white px-4 py-3 text-[#201b17] transition-[background-color,color,translate] duration-[520ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:translate-x-0.5 hover:bg-ivory focus-visible:translate-x-0.5 focus-visible:bg-ivory focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 sm:grid-cols-[minmax(12rem,0.72fr)_minmax(0,1fr)_2.5rem] sm:items-center"
                   href="/epemvaseis"
                   onClick={() => setOpen(false)}
                 >
                   <span className="block text-sm font-semibold text-[#201b17]">
                     {labels.allServicesTitle}
                   </span>
-                  <span className="block text-xs leading-5 text-[#516866]">
+                  <span className="block text-xs leading-5 text-muted-foreground">
                     {labels.allServicesDescription}
                   </span>
                   <span
-                    className="grid size-10 place-items-center rounded-full bg-[#282018] text-white transition-[background-color,color,rotate,scale] duration-[520ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/dropdown-row:rotate-[-45deg] group-hover/dropdown-row:scale-105 group-focus-visible/dropdown-row:rotate-[-45deg] group-focus-visible/dropdown-row:scale-105 sm:justify-self-end"
+                    className="grid size-10 place-items-center rounded-full bg-espresso text-white transition-[background-color,color,rotate,scale] duration-[520ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/dropdown-row:rotate-[-45deg] group-hover/dropdown-row:scale-105 group-focus-visible/dropdown-row:rotate-[-45deg] group-focus-visible/dropdown-row:scale-105 sm:justify-self-end"
                     aria-hidden="true"
                   >
                     <ArrowRight className="size-4" />

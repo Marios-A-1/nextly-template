@@ -18,11 +18,39 @@ for (const path of ["/", "/about", "/results", "/epemvaseis", ...slugs.map((slug
   assert.ok(html.includes(`href="https://artofthepossible.vercel.app${path === "/" ? "" : path}"`), `canonical ${path}`);
 }
 
+const home = await (await get("/")).text();
+assert.ok(home.indexOf('id="services"') < home.indexOf('id="doctor-showcase"') && home.includes('id="doctor-showcase"'));
+assert.match(home, /id="doctor-showcase"[\s\S]*?href="\/about"/);
+const about = await (await get("/about")).text();
+assert.match(about, /id="doctor-story".*id="clinic-values"/s);
+assert.match(about, /Πανεπιστημίου της Μάλτας/);
+assert.match(about, /Εμπιστοσύνη που διαρκεί/);
+const treatments = await (await get("/epemvaseis")).text();
+assert.equal((treatments.match(/data-treatment-trigger="/g) ?? []).length, 26);
+
 await get("/epemvaseis/unknown-smoke-test", 404);
 const filter = new URLSearchParams({ cat: "Αισθητική Χειρουργική", sub: "prosopo", step: "3" });
 const filtered = await (await get(`/epemvaseis?${filter}`)).text();
-assert.match(filtered, /<h1[^>]*>Πρόσωπο<\/h1>/);
-assert.ok(filtered.includes("/epemvaseis/face-lift?"));
+assert.equal(filtered.match(/<h1[^>]*>(.*?)<\/h1>/s)?.[1].replace(/<[^>]+>/g, ""), "Πρόσωπο");
+assert.ok(filtered.includes('data-treatment-trigger="face-lift"'));
+assert.ok(!filtered.includes('data-treatment-trigger="egkavmata"'));
+function treatmentBackHref(html) {
+  const backLink = html.match(/<a[^>]*data-treatment-back="true"[^>]*>/)?.[0];
+  return backLink?.match(/href="([^"]+)"/)?.[1].replaceAll("&amp;", "&");
+}
+
+const detail = await (await get(`/epemvaseis/face-lift?${filter}`)).text();
+assert.equal(treatmentBackHref(detail), `/epemvaseis?${filter}`);
+assert.match(detail, /id="treatment-information".*id="treatment-faq"/s);
+
+const categoryOnly = new URLSearchParams({ cat: filter.get("cat"), step: "3" });
+const categoryDetail = await (await get(`/epemvaseis/face-lift?${categoryOnly}`)).text();
+assert.equal(treatmentBackHref(categoryDetail), `/epemvaseis?${categoryOnly}`);
+const rootDetail = await (await get("/epemvaseis/face-lift?step=3")).text();
+assert.equal(treatmentBackHref(rootDetail), "/epemvaseis");
+
+const invalid = await (await get("/epemvaseis?cat=unknown&sub=unknown&step=3")).text();
+assert.equal((invalid.match(/data-treatment-trigger="/g) ?? []).length, 26);
 assert.ok(!filtered.includes("/epemvaseis/egkavmata?"));
 
 const sitemap = await (await get("/sitemap.xml")).text();

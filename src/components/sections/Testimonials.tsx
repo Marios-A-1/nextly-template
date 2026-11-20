@@ -64,8 +64,8 @@ function ReviewStars({
           aria-hidden="true"
           className={`size-4 ${
             index < filledStars
-              ? "fill-[#f5b301] text-[#f5b301]"
-              : "text-[#d5dee0]"
+              ? "fill-gold text-bronze"
+              : "text-border"
           }`}
           key={index}
           strokeWidth={2.3}
@@ -78,7 +78,7 @@ function ReviewStars({
 function ReviewCardContent({ review }: { review: Testimonial }) {
   return (
     <>
-      <div className="mx-auto mb-5 grid size-20 place-items-center rounded-full bg-gradient-to-br from-[#e8f7f7] to-[#f2ce68] text-3xl font-semibold text-[#282018] shadow-[inset_0_0_0_1px_rgba(0,61,66,0.08),0_16px_36px_rgba(0,61,66,0.16)] sm:size-28 sm:text-5xl">
+      <div className="mx-auto mb-5 grid size-20 place-items-center rounded-full bg-gradient-to-br from-champagne to-gold text-3xl font-semibold text-[#282018] shadow-[inset_0_0_0_1px_rgba(40,32,24,0.08),0_16px_36px_rgba(40,32,24,0.16)] sm:size-28 sm:text-5xl">
         {getReviewInitial(review.name)}
       </div>
       <p className="text-lg font-semibold">{review.name}</p>
@@ -150,10 +150,10 @@ export function Testimonials({
         initial={false}
         transition={testimonialBackgroundTransition}
       />
-      <div className="absolute inset-0 bg-[#dfeff0]/78 backdrop-blur-[2px]" />
+      <div className="absolute inset-0 bg-champagne/78 backdrop-blur-[2px]" />
       <Reveal
         variant="stagger"
-        className="dark-teal-slab relative mx-4 max-w-[600px] rounded-[1rem] px-5 py-8 text-center shadow-[0_24px_70px_rgba(0,38,42,0.2)] sm:mx-auto sm:px-8 sm:py-12 md:px-10"
+        className="dark-gold-slab relative mx-4 max-w-[600px] rounded-[1rem] px-5 py-8 text-center shadow-[0_24px_70px_rgba(40,32,24,0.2)] sm:mx-auto sm:px-8 sm:py-12 md:px-10"
         childVariant="heroSupport"
       >
         <Reveal as="p" className="section-kicker border border-white/18 bg-white/5 text-white">
@@ -163,7 +163,7 @@ export function Testimonials({
           <HighlightedText
             text={title ?? labels.title}
             highlight={labels.highlight}
-            highlightClassName="text-[#6f9698]"
+            highlightClassName="text-gold"
           />
         </Reveal>
 
@@ -237,7 +237,7 @@ export function Testimonials({
         {reviewSummary && googleReviewsUrl && summaryRating ? (
           <Reveal className="mt-7 sm:mt-8">
             <a
-              className="mx-auto flex w-full max-w-xl items-center justify-center gap-3 rounded-[0.7rem] border border-white/14 bg-white px-4 py-3 text-[#201b17] shadow-[0_16px_36px_rgba(0,38,42,0.16)] transition hover:-translate-y-0.5 hover:bg-[#f5fbfb] sm:w-fit sm:px-5"
+              className="mx-auto flex w-full max-w-xl items-center justify-center gap-3 rounded-[0.7rem] border border-white/14 bg-white px-4 py-3 text-[#201b17] shadow-[0_16px_36px_rgba(40,32,24,0.16)] transition hover:-translate-y-0.5 hover:bg-ivory sm:w-fit sm:px-5"
               href={googleReviewsUrl}
               rel="noreferrer"
               target="_blank"
@@ -249,7 +249,7 @@ export function Testimonials({
               <span className="text-sm font-semibold">
                 {reviewSummary.rating}
               </span>
-              <span className="text-sm text-[#536669]">
+              <span className="text-sm text-muted-foreground">
                 {reviewSummary.count} {labels.kicker}
               </span>
               <ExternalLink aria-hidden="true" className="size-4" />

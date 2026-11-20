@@ -49,7 +49,7 @@ export function Header({
     <>
       <header
         data-site-header
-        className="relative z-40 border-b border-white/60 bg-[#282018]/15 text-white backdrop-blur-xl"
+        className="relative z-40 border-b border-white/60 bg-espresso/15 text-white backdrop-blur-xl"
       >
         <div className="site-container flex h-[64px] items-center justify-between gap-4 sm:h-[68px] lg:gap-6">
           <Reveal as="div" variant="panel" className="flex items-center gap-3">

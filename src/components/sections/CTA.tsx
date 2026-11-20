@@ -31,7 +31,7 @@ export function CTA({
     <section id={id} className="bg-[#fbf1e6] pt-0">
       <Reveal
         variant="stagger"
-        className="dark-teal-slab rounded-t-[1rem] px-4 py-14 text-center sm:px-5 sm:py-20 lg:py-28"
+        className="dark-gold-slab rounded-t-[1rem] px-4 py-14 text-center sm:px-5 sm:py-20 lg:py-28"
         childVariant="heroSupport"
       >
         <Reveal as="p" className="section-kicker border border-white/18 bg-white/5 text-white">
@@ -41,7 +41,7 @@ export function CTA({
           <HighlightedText
             text={title ?? labels.title}
             highlight={labels.highlight}
-            highlightClassName="text-[#5e9296]"
+            highlightClassName="text-gold"
           />
         </Reveal>
         <Reveal as="p" className="mx-auto mt-5 max-w-xl text-sm font-semibold leading-7 text-white/88 sm:mt-6">

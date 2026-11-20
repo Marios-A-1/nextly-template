@@ -53,28 +53,28 @@ export function Process({
             return (
               <Reveal
                 key={step.id}
-                className="relative rounded-2xl border border-zinc-200/90 bg-white/95 p-0"
+                className="relative rounded-2xl border border-border bg-white/95 p-0"
               >
                 <Card className="border-0 bg-transparent">
                   <CardHeader>
-                    <div className="mb-2 inline-flex size-9 items-center justify-center rounded-xl border border-teal-200 bg-teal-50 text-teal-700">
+                    <div className="mb-2 inline-flex size-9 items-center justify-center rounded-xl border border-ring/25 bg-champagne text-bronze">
                       <Icon className="size-5" />
                     </div>
-                    <CardTitle className="text-lg text-zinc-900 sm:text-xl">
+                    <CardTitle className="text-lg text-foreground sm:text-xl">
                       {step.title}
                     </CardTitle>
-                    <p className="text-xs uppercase tracking-[0.12em] text-zinc-500">
+                    <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
                       {labels.step} {index + 1} - {step.duration}
                     </p>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm leading-relaxed text-zinc-600">
+                    <p className="text-sm leading-relaxed text-muted-foreground">
                       {step.description}
                     </p>
                   </CardContent>
                 </Card>
                 {index < steps.length - 1 ? (
-                  <span className="absolute left-4 top-full block h-5 w-px bg-zinc-200" />
+                  <span className="absolute left-4 top-full block h-5 w-px bg-border" />
                 ) : null}
               </Reveal>
             );
@@ -82,32 +82,32 @@ export function Process({
         </Reveal>
 
         <Reveal variant="scaleIn">
-          <Card className="h-full border-zinc-200/90 bg-linear-to-br from-zinc-100 to-teal-100/70 p-0">
+          <Card className="h-full border-border bg-linear-to-br from-ivory to-champagne p-0">
             <CardHeader>
-              <p className="text-sm font-medium uppercase tracking-[0.12em] text-zinc-500">
+              <p className="text-sm font-medium uppercase tracking-[0.12em] text-muted-foreground">
                 {labels.previewEyebrow}
               </p>
-              <p className="text-2xl font-semibold text-zinc-900">
+              <p className="text-2xl font-semibold text-foreground">
                 {labels.previewTitle}
               </p>
             </CardHeader>
             <CardContent className="space-y-4">
-              <p className="text-sm text-zinc-600">
+              <p className="text-sm text-muted-foreground">
                 {labels.previewDescription}
               </p>
               <div className="rounded-xl border border-white/80 bg-white/90 p-3">
-                <p className="text-xs uppercase tracking-[0.12em] text-zinc-500">
+                <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
                   {labels.touchpoint}
                 </p>
-                <p className="mt-1 text-sm font-medium text-zinc-900">
+                <p className="mt-1 text-sm font-medium text-foreground">
                   {site.siteDescription}
                 </p>
               </div>
               <div className="rounded-xl border border-white/80 bg-white/90 p-3">
-                <p className="text-xs uppercase tracking-[0.12em] text-zinc-500">
+                <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
                   {labels.cycle}
                 </p>
-                <p className="mt-1 text-sm text-zinc-700">
+                <p className="mt-1 text-sm text-muted-foreground">
                   {labels.cycleDescription}
                 </p>
               </div>

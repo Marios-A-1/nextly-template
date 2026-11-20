@@ -105,14 +105,14 @@ export function HeaderRevealBubble({
       {isVisible ? (
         <motion.div
           data-header-reveal-bubble
-          className="fixed left-1/2 top-2 z-[30] h-14 -translate-x-1/2 overflow-hidden rounded-full border border-white/45 bg-[#282018]/72 p-1.5 shadow-[0_18px_54px_rgba(0,38,42,0.22)] backdrop-blur-xl"
+          className="fixed left-1/2 top-2 z-[30] h-14 -translate-x-1/2 overflow-hidden rounded-full border border-white/45 bg-espresso/72 p-1.5 shadow-[0_18px_54px_rgba(40,32,24,0.22)] backdrop-blur-xl"
           role="presentation"
           {...bubbleMotionProps}
         >
           <div className="flex h-full items-center gap-2">
             <motion.button
               type="button"
-              className="grid size-11 shrink-0 place-items-center rounded-full border border-white/70 bg-white text-[#282018] shadow-[0_10px_24px_rgba(4,45,49,0.12)] transition-[background-color,transform] duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+              className="grid size-11 shrink-0 place-items-center rounded-full border border-white/70 bg-white text-[#282018] shadow-[0_10px_24px_rgba(40,32,24,0.12)] transition-[background-color,transform] duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
               onClick={onScrollToTop}
               aria-label={scrollToTopLabel}
               initial={shouldReduceMotion ? false : "hidden"}
@@ -133,13 +133,13 @@ export function HeaderRevealBubble({
             >
               <button
                 type="button"
-                className="group/bubble-cta grid min-h-11 w-full min-w-0 grid-cols-[2rem_minmax(0,1fr)_2rem] items-center gap-2 overflow-hidden rounded-full bg-white py-1.5 pl-4 pr-1.5 text-center text-sm font-semibold leading-tight text-[#201b17] shadow-[0_12px_34px_rgba(4,45,49,0.14)] transition-[background-color,box-shadow] duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+                className="group/bubble-cta grid min-h-11 w-full min-w-0 grid-cols-[2rem_minmax(0,1fr)_2rem] items-center gap-2 overflow-hidden rounded-full bg-white py-1.5 pl-4 pr-1.5 text-center text-sm font-semibold leading-tight text-[#201b17] shadow-[0_12px_34px_rgba(40,32,24,0.14)] transition-[background-color,box-shadow] duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
                 onClick={(event) => openContactChoice(event.currentTarget)}
               >
                 <span aria-hidden="true" />
                 <span className="min-w-0 truncate">{appointmentLabel}</span>
                 {/* <span
-                  className="grid size-8 place-items-center justify-self-center rounded-full bg-[#2b2219]v text-[#2b2219]"
+                  className="grid size-8 place-items-center justify-self-center rounded-full bg-espresso text-gold"
                   aria-hidden="true"
                 >
                   <ArrowUpRight className="size-4" />

@@ -44,7 +44,7 @@ export function Hero({
             delay={0.06}
             duration={1.42}
             highlight={titleHighlight}
-            highlightClassName="text-[#f2ce68]"
+            highlightClassName="text-gold"
             mode="words"
             stagger={0.085}
             className="max-w-3xl text-balance text-[clamp(3rem,14vw,4.35rem)] font-semibold leading-[0.98] tracking-[-0.05em] text-white drop-shadow-[0_16px_46px_rgba(0,0,0,0.22)] md:text-7xl md:leading-[1.08] md:tracking-[-0.02em]"

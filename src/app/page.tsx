@@ -5,6 +5,7 @@ import { Benefits } from "@/components/sections/Benefits";
 import { CTA } from "@/components/sections/CTA";
 import { FAQ } from "@/components/sections/FAQ";
 import { Hero } from "@/components/sections/Hero";
+import { DoctorShowcase } from "@/components/sections/ReferenceSections";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { Testimonials } from "@/components/sections/Testimonials";
 import {
@@ -49,6 +50,7 @@ export default function Home() {
         services={services.slice(0, 4)}
         title={pages.home.servicesTitle}
       />
+      <DoctorShowcase />
       <Benefits
         description={sections.benefits.description}
         highlight={sections.benefits.highlight}

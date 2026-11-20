@@ -25,7 +25,7 @@ export function SectionShell({
     <section
       id={id}
       className={cn(
-        "relative overflow-hidden py-14 text-zinc-900 sm:py-20 lg:py-24",
+        "relative overflow-hidden py-14 text-foreground sm:py-20 lg:py-24",
         className
       )}
     >
@@ -38,17 +38,17 @@ export function SectionShell({
         {(eyebrow || title || description) && (
           <Reveal variant="stagger" className="max-w-3xl space-y-4">
             {eyebrow ? (
-              <Reveal as="p" className="inline-flex items-center rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700">
+              <Reveal as="p" className="inline-flex items-center rounded-full border border-ring/25 bg-champagne px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-bronze">
                 {eyebrow}
               </Reveal>
             ) : null}
             {title ? (
-              <Reveal as="h2" className="text-[2.25rem] font-semibold leading-tight tracking-tight text-zinc-900 md:text-4xl">
+              <Reveal as="h2" className="text-[2.25rem] font-semibold leading-tight tracking-tight text-foreground md:text-4xl">
                 {title}
               </Reveal>
             ) : null}
             {description ? (
-              <Reveal as="p" className="max-w-2xl text-base leading-relaxed text-zinc-600 md:text-lg">
+              <Reveal as="p" className="max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
                 {description}
               </Reveal>
             ) : null}

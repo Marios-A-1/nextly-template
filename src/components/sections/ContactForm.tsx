@@ -69,7 +69,7 @@ export function ContactForm() {
         {status === "sending" ? "Αποστολή…" : "Αποστολή αιτήματος"}
       </AnimatedButton>
       {feedback && (
-        <p role={status === "error" ? "alert" : "status"} className={status === "error" ? "text-sm text-red-800" : "text-sm text-green-800"}>
+        <p role={status === "error" ? "alert" : "status"} className={status === "error" ? "text-sm text-red-800" : "text-sm text-bronze"}>
           {feedback}
         </p>
       )}

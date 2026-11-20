@@ -2,16 +2,17 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { AnimatedImageReveal } from "@/components/animations/AnimatedImageReveal";
 import { ContactChoiceButton } from "@/components/common/ContactChoiceModal";
 import { CTA } from "@/components/sections/CTA";
+import { FAQ } from "@/components/sections/FAQ";
 import { Reveal } from "@/components/sections/Reveal";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { buildEpemvaseisHref } from "@/content/breadcrumbs";
 import { Epemvaseis } from "@/content/epemvaseis";
 import { getEpemvaseisCategorySlugByLabel } from "@/content/epemvaseisCategories";
-import { getServices, getSectionContent, getSiteContent } from "@/content/localized";
+import { getFaqs, getServices, getSectionContent, getSiteContent } from "@/content/localized";
 import { procedureImages } from "@/content/procedureImages";
 import { toAbsoluteSiteUrl } from "@/lib/siteUrl";
 import { ProcedureContent } from "@/components/sections/ProcedureContent";
@@ -44,29 +45,35 @@ export default async function TreatmentPage({ params, searchParams }: PageProps)
   const procedure = Epemvaseis.find((item) => item.slug === slug);
   if (!procedure) notFound();
 
-  const category = typeof query.cat === "string" ? query.cat : procedure.category;
-  const subcategory = typeof query.sub === "string"
+  const fromTreatmentList = query.step === "3" || typeof query.cat === "string";
+  const category = fromTreatmentList ? query.cat : procedure.category;
+  const subcategory = fromTreatmentList
     ? query.sub
     : procedure.subcategory && getEpemvaseisCategorySlugByLabel(procedure.subcategory);
-  const backHref = buildEpemvaseisHref({ category, subcategory, step: 3 });
+  const backHref = typeof category === "string"
+    ? buildEpemvaseisHref({ category, subcategory: typeof subcategory === "string" ? subcategory : undefined, step: 3 })
+    : "/epemvaseis";
   const image = procedureImages[slug] ?? "/img/categories/AisthitikiXeirourgiki.webp";
   const relatedSlugs = Epemvaseis
     .filter((item) => item.category === procedure.category && item.slug !== slug)
     .slice(0, 2).map((item) => item.slug);
   const sections = getSectionContent();
+  const highlights = procedure.overviewBullets ?? [];
 
   return (
     <div className="reference-page">
-      <section className="-mt-[68px] bg-[#282018] pt-[68px] text-white">
-        <div className="site-container py-14 sm:py-20">
-          <Link href={backHref} className="mb-7 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-white/85 hover:text-white">
-            <ArrowLeft className="size-4" aria-hidden="true" /> Επιστροφή στις επεμβάσεις
-          </Link>
-          <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1fr]">
+      <section className="-mt-[64px] bg-espresso pt-[64px] text-white sm:-mt-[68px] sm:pt-[68px]">
+        <div className="site-container py-14 sm:py-16 lg:py-24">
+          <Reveal variant="panel">
+            <Link data-treatment-back="true" href={backHref} className="mb-7 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-white/85 hover:text-white">
+              <ArrowLeft className="size-4" aria-hidden="true" /> Επιστροφή στις επεμβάσεις
+            </Link>
+          </Reveal>
+          <div className="grid gap-12 lg:grid-cols-[0.75fr_1fr] lg:items-end">
             <Reveal variant="stagger" className="space-y-5">
-              <p className="text-sm font-semibold text-[#f2ce68]">{procedure.category}</p>
-              <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-6xl">{procedure.title}</h1>
-              <p className="text-lg leading-relaxed text-white/85">{procedure.shortDesc}</p>
+              <Reveal as="p" className="section-kicker border border-white/20 bg-white/8 text-gold">{procedure.category}</Reveal>
+              <Reveal as="h1" className="text-balance text-[2.65rem] font-semibold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">{procedure.title}</Reveal>
+              <Reveal as="p" className="text-base font-semibold leading-7 text-white/85">{procedure.shortDesc}</Reveal>
               <ContactChoiceButton variant="light">Κλείστε ραντεβού</ContactChoiceButton>
             </Reveal>
             <AnimatedImageReveal className="aspect-[4/3] rounded-xl bg-[#efe7d8]" variant="subtle">
@@ -75,14 +82,20 @@ export default async function TreatmentPage({ params, searchParams }: PageProps)
           </div>
         </div>
       </section>
-      <section className="site-container space-y-8 py-14 sm:py-20">
-        {Boolean(procedure.overviewBullets?.length) && (
-          <ul className="mx-auto max-w-3xl list-disc space-y-2 pl-6 text-muted-foreground">
-            {procedure.overviewBullets?.map((item) => <li key={item}>{item}</li>)}
-          </ul>
+      <section id="treatment-information" className="site-container space-y-8 py-14 sm:py-20" aria-label="Πληροφορίες για την επέμβαση">
+        {highlights.length > 0 && (
+          <Reveal as="ul" variant="stagger" childVariant="card" className="grid gap-4 md:grid-cols-2">
+            {highlights.map((item) => (
+              <Reveal as="li" key={item} className="premium-hover-surface rounded-xl border border-border bg-white p-5 sm:p-6">
+                <CheckCircle2 className="size-5 text-bronze" aria-hidden="true" />
+                <p className="mt-3 font-semibold leading-7">{item}</p>
+              </Reveal>
+            ))}
+          </Reveal>
         )}
         <ProcedureContent procedure={procedure} />
       </section>
+      <FAQ id="treatment-faq" faqs={getFaqs()} labels={sections.faq} />
       {relatedSlugs.length > 0 && (
         <ServicesGrid labels={sections.servicesGrid} services={getServices().filter((item) => relatedSlugs.includes(item.slug))} title="Σχετικές επεμβάσεις" />
       )}

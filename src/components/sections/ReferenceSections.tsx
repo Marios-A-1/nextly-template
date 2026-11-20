@@ -1,3 +1,4 @@
+import { AnimatedButton } from "@/components/ui/AnimatedButton";
 import { AnimatedCounter } from "@/components/animations/AnimatedCounter";
 import { AnimatedImageReveal } from "@/components/animations/AnimatedImageReveal";
 import { SplitTextReveal } from "@/components/animations/SplitTextReveal";
@@ -46,6 +47,69 @@ export function AboutHeroSection({
             variant="default"
           />
         </div>
+      </div>
+    </section>
+  );
+}
+
+export function SecondaryPageHero({
+  title,
+  description,
+  appointment,
+}: {
+  title: string;
+  description: string;
+  appointment?: boolean;
+}) {
+  return (
+    <section className="relative isolate -mt-[64px] overflow-hidden bg-espresso pt-[64px] text-white sm:-mt-[68px] sm:pt-[68px]">
+      <div aria-hidden="true" className="dark-gold-slab pointer-events-none absolute inset-0 -z-10" />
+      <Reveal variant="stagger" className="site-container space-y-6 py-16 text-center sm:py-24 lg:py-32">
+        <SplitTextReveal
+          as="h1"
+          text={title}
+          className="mx-auto max-w-4xl text-balance text-[2.65rem] font-semibold leading-[1.04] tracking-[-0.045em] sm:text-5xl md:text-7xl"
+        />
+        <Reveal as="p" className="mx-auto max-w-2xl text-base leading-7 text-white/85 sm:text-lg">
+          {description}
+        </Reveal>
+        {appointment && (
+          <Reveal>
+            <ContactChoiceButton variant="light">Κλείστε ραντεβού</ContactChoiceButton>
+          </Reveal>
+        )}
+      </Reveal>
+    </section>
+  );
+}
+
+export function DoctorShowcase() {
+  return (
+    <section id="doctor-showcase" className="cream-band py-14 sm:py-20 lg:py-28">
+      <div className="site-container">
+        <Reveal variant="stagger" className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
+          <Reveal as="p" className="section-kicker">Ο ιατρός</Reveal>
+          <Reveal as="h2" className="mt-4 text-balance text-[2.35rem] font-semibold leading-[1.08] tracking-[-0.04em] sm:text-5xl md:text-6xl">
+            Γνωρίστε τον ιατρό
+          </Reveal>
+        </Reveal>
+        <Reveal variant="card" className="mx-auto max-w-[380px]">
+          <AnimatedImageReveal
+            as="article"
+            className="premium-hover-surface aspect-[4/5] min-h-[330px] rounded-[0.8rem] sm:min-h-[420px]"
+            imageClassName="clinic-doctor-portrait stock-image"
+            variant="card"
+          >
+            <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-espresso/55 via-transparent to-white/8" />
+            <div className="absolute inset-x-4 bottom-4 space-y-1 rounded-[0.7rem] bg-white px-4 py-4 shadow-lg sm:inset-x-5 sm:bottom-5">
+              <h3 className="text-xl font-semibold tracking-tight">Δρ. Πέτρος Θ. Βλασταράκος</h3>
+              <p className="text-sm text-muted-foreground">Πλαστικός χειρουργός</p>
+            </div>
+          </AnimatedImageReveal>
+          <div className="mt-5 flex justify-center">
+            <AnimatedButton href="/about" variant="outline">Βιογραφικό ιατρού</AnimatedButton>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

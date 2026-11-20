@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { AnimatedImageReveal } from "@/components/animations/AnimatedImageReveal";
+import { CTA } from "@/components/sections/CTA";
+import { FAQ } from "@/components/sections/FAQ";
+import { SecondaryPageHero } from "@/components/sections/ReferenceSections";
 import { Reveal } from "@/components/sections/Reveal";
+import { ServicesAccordion } from "@/components/sections/ServicesAccordion";
 import { Epemvaseis } from "@/content/epemvaseis";
 import { getEpemvaseisCategorySlugByLabel } from "@/content/epemvaseisCategories";
 import { buildEpemvaseisHref, buildEpemvaseisQuery } from "@/content/breadcrumbs";
-import { getMetadataContent } from "@/content/localized";
-import { procedureImages } from "@/content/procedureImages";
+import { getFaqs, getMetadataContent, getSectionContent, getServices, getSiteContent } from "@/content/localized";
 import { toAbsoluteSiteUrl } from "@/lib/siteUrl";
 
 type PageProps = {
@@ -16,16 +16,23 @@ type PageProps = {
 };
 
 const categories = [
-  { title: "Αισθητική Χειρουργική", image: "/img/categories/AisthitikiXeirourgiki.webp", description: "Επεμβάσεις για ανανέωση και αρμονία." },
-  { title: "Επανορθωτική Χειρουργική", image: "/img/categories/EpanorthotikiXeirourgiki.webp", description: "Αποκατάσταση μορφής και λειτουργίας." },
-  { title: "Μή Επεμβατικές Θεραπείες", image: "/img/categories/MiEpemvatikesTherapies.webp", description: "Στοχευμένες θεραπείες χωρίς χειρουργείο." },
+  { title: "Αισθητική Χειρουργική", description: "Επεμβάσεις για ανανέωση και αρμονία." },
+  { title: "Επανορθωτική Χειρουργική", description: "Αποκατάσταση μορφής και λειτουργίας." },
+  { title: "Μή Επεμβατικές Θεραπείες", description: "Στοχευμένες θεραπείες χωρίς χειρουργείο." },
 ];
 
-const subcategoryImages: Record<string, string> = {
-  prosopo: "/img/subCategories/prosopo.webp",
-  soma: "/img/subCategories/soma.webp",
-  stithos: "/img/subCategories/stithos.webp",
-};
+function FilterLink({ href, selected, children }: { href: string; selected: boolean; children: string }) {
+  return (
+    <Link
+      aria-current={selected ? "page" : undefined}
+      className={`inline-flex min-h-11 items-center rounded-full border px-4 py-2 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold ${selected ? "border-gold bg-gold text-espresso" : "border-white/35 text-white hover:bg-white/15"}`}
+      href={href}
+      scroll={false}
+    >
+      {children}
+    </Link>
+  );
+}
 
 export function generateMetadata(): Metadata {
   return {
@@ -36,76 +43,69 @@ export function generateMetadata(): Metadata {
 
 export default async function TreatmentsPage({ searchParams }: PageProps) {
   const query = await searchParams;
-
   const category = categories.find(({ title }) => title === query.cat);
-  const procedures = Epemvaseis.filter((item) => item.category === category?.title);
-  const subcategories = [...new Set(procedures.flatMap((item) => item.subcategory ? [item.subcategory] : []))]
-    .map((label) => ({ label, slug: getEpemvaseisCategorySlugByLabel(label) ?? label }));
+  const procedures = category ? Epemvaseis.filter((item) => item.category === category.title) : Epemvaseis;
+  const subcategories = category
+    ? [...new Set(procedures.flatMap((item) => item.subcategory ? [item.subcategory] : []))]
+      .map((label) => ({ label, slug: getEpemvaseisCategorySlugByLabel(label) ?? label }))
+    : [];
   const subcategory = subcategories.find(({ slug, label }) => slug === query.sub || label === query.sub);
-  const showSubcategories = subcategories.length > 1 && !subcategory;
-  const treatmentQuery = buildEpemvaseisQuery({ category: category?.title, subcategory: subcategory?.slug, step: 3 });
-
-  const cards = !category
-    ? categories.map((item) => ({
-      ...item, href: buildEpemvaseisHref({ category: item.title, step: 2 }),
-    }))
-    : showSubcategories
-      ? subcategories.map(({ label, slug }) => ({
-        title: label,
-        description: "",
-        image: subcategoryImages[slug] ?? category.image,
-        href: buildEpemvaseisHref({ category: category.title, subcategory: slug, step: 3 }),
-      }))
-      : procedures.filter((item) => !subcategory || item.subcategory === subcategory.label).map((item) => ({
-        title: item.title,
-        description: item.shortDesc,
-        image: procedureImages[item.slug] ?? category.image,
-        href: `/epemvaseis/${item.slug}?${treatmentQuery}`,
-      }));
+  const visibleSlugs = new Set(procedures.filter((item) => !subcategory || item.subcategory === subcategory.label).map((item) => item.slug));
+  const detailQuery = buildEpemvaseisQuery({
+    category: category?.title, subcategory: subcategory?.slug, step: 3,
+  });
+  const services = getServices().filter(({ slug }) => visibleSlugs.has(slug)).map((service) => ({
+    ...service,
+    cta: { ...service.cta, href: `${service.cta.href}?${detailQuery}` },
+  }));
+  const labels = getSectionContent();
 
   return (
-    <div className="reference-page -mt-[68px] page-top-gradient pt-[68px]">
-      <section className="site-container py-14 sm:py-20">
-        <Reveal variant="stagger" className="mb-10 max-w-3xl space-y-4">
-          {category && (
-            <nav aria-label="Διαδρομή πλοήγησης" className="flex flex-wrap gap-2 text-sm">
-              <Link href="/epemvaseis" className="underline underline-offset-4">Όλες οι επεμβάσεις</Link>
-              {subcategory && (
-                <>
-                  <span aria-hidden="true">/</span>
-                  <Link href={buildEpemvaseisHref({ category: category.title, step: 2 })} className="underline underline-offset-4">
-                    {category.title}
-                  </Link>
-                </>
-              )}
+    <div className="reference-page">
+      <SecondaryPageHero
+        title={subcategory?.label ?? category?.title ?? "Επεμβάσεις"}
+        description={category?.description ?? "Επιλέξτε κατηγορία για να δείτε τις διαθέσιμες επεμβάσεις και θεραπείες."}
+        appointment
+      />
+      <section className="dark-gold-slab py-14 sm:py-20 lg:py-28" aria-labelledby="treatment-list-title">
+        <div className="site-container">
+          <Reveal variant="stagger" className="mb-9 space-y-5 sm:mb-12">
+            {category && (
+              <nav aria-label="Διαδρομή πλοήγησης" className="flex flex-wrap gap-2 text-sm text-white/85">
+                <Link href="/epemvaseis" className="underline underline-offset-4">Όλες οι επεμβάσεις</Link>
+                <span aria-hidden="true">/</span>
+                {subcategory ? (
+                  <>
+                    <Link href={buildEpemvaseisHref({ category: category.title, step: 2 })} className="underline underline-offset-4">
+                      {category.title}
+                    </Link>
+                    <span aria-hidden="true">/</span>
+                    <span aria-current="page">{subcategory.label}</span>
+                  </>
+                ) : <span aria-current="page">{category.title}</span>}
+              </nav>
+            )}
+            <h2 id="treatment-list-title" className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">Επεμβάσεις και θεραπείες</h2>
+            <nav aria-label="Κατηγορίες επεμβάσεων" className="flex flex-wrap gap-2">
+              <FilterLink href="/epemvaseis" selected={!category}>Όλες</FilterLink>
+              {categories.map(({ title }) => (
+                <FilterLink key={title} href={buildEpemvaseisHref({ category: title, step: 2 })} selected={category?.title === title}>{title}</FilterLink>
+              ))}
             </nav>
-          )}
-          <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-6xl">
-            {subcategory?.label ?? category?.title ?? "Επεμβάσεις"}
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            {category?.description ?? "Επιλέξτε κατηγορία για να δείτε τις διαθέσιμες επεμβάσεις και θεραπείες."}
-          </p>
-        </Reveal>
-        <Reveal variant="stagger" childVariant="card" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {cards.map((card) => (
-            <Reveal as="article" key={card.href} className="group overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
-              <Link href={card.href} className="block h-full focus-visible:outline-2 focus-visible:outline-offset-[-3px]">
-                <AnimatedImageReveal className="aspect-[5/3] bg-[#efe7d8]" variant="subtle">
-                  <Image src={card.image} alt="" fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform group-hover:scale-105" />
-                </AnimatedImageReveal>
-                <div className="space-y-3 p-5 sm:p-6">
-                  <h2 className="flex items-start justify-between gap-3 text-xl font-semibold">
-                    {card.title}
-                    <ArrowRight className="mt-1 size-5 shrink-0 text-[#7a571f]" aria-hidden="true" />
-                  </h2>
-                  {card.description && <p className="text-sm leading-relaxed text-muted-foreground">{card.description}</p>}
-                </div>
-              </Link>
-            </Reveal>
-          ))}
-        </Reveal>
+            {category && subcategories.length > 1 && (
+              <nav aria-label="Περιοχές επέμβασης" className="flex flex-wrap gap-2">
+                <FilterLink href={buildEpemvaseisHref({ category: category.title, step: 2 })} selected={!subcategory}>Όλες οι περιοχές</FilterLink>
+                {subcategories.map(({ label, slug }) => (
+                  <FilterLink key={slug} href={buildEpemvaseisHref({ category: category.title, subcategory: slug, step: 3 })} selected={subcategory?.slug === slug}>{label}</FilterLink>
+                ))}
+              </nav>
+            )}
+          </Reveal>
+          <ServicesAccordion key={`${category?.title ?? ""}/${subcategory?.slug ?? ""}`} services={services} />
+        </div>
       </section>
+      <FAQ faqs={getFaqs()} labels={labels.faq} />
+      <CTA ctaButtons={getSiteContent().ctas} labels={labels.cta} title="Συζητήστε τις επιλογές σας" />
     </div>
   );
 }

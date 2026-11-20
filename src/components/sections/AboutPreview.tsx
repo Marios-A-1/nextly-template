@@ -47,7 +47,7 @@ export function AboutPreview({
               delay={index * 0.1}
               variant="card"
             >
-                <div className="absolute inset-0 bg-gradient-to-t from-[#061d20] via-[#061d20]/42 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/42 to-transparent" />
                 <div className="absolute inset-x-5 bottom-5 text-white sm:inset-x-6 sm:bottom-6">
                   <div className="mb-4 flex items-center gap-3 border-b border-white/14 pb-4 sm:mb-5 sm:gap-4 sm:pb-5">
                     <AnimatedCounter
@@ -57,7 +57,7 @@ export function AboutPreview({
                     <p className="max-w-[150px] text-base font-semibold leading-tight sm:text-lg">
                       {card.label}
                     </p>
-                    <span className="ml-auto hidden h-1.5 w-20 rounded-full border-y-2 border-dashed border-[#20a8b4] sm:block" />
+                    <span className="ml-auto hidden h-1.5 w-20 rounded-full border-y-2 border-dashed border-gold sm:block" />
                   </div>
                   <p className="text-lg font-semibold leading-7 sm:text-xl sm:leading-8">{card.description}</p>
                 </div>

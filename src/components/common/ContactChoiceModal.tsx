@@ -120,7 +120,7 @@ export function ContactChoiceProvider({
         type="button"
         aria-label="Αίτημα ραντεβού"
         data-booking-widget
-        className="fixed bottom-5 right-5 z-50 grid size-12 place-items-center rounded-full border border-white/40 bg-[#282018] text-[#f2ce68] shadow-lg transition hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 sm:bottom-7 sm:right-7 sm:size-14"
+        className="fixed bottom-5 right-5 z-50 grid size-12 place-items-center rounded-full border border-white/40 bg-espresso text-gold shadow-lg transition hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 sm:bottom-7 sm:right-7 sm:size-14"
         onClick={(event) => openContactChoice(event.currentTarget, true)}
       >
         <MessageCircle className="size-6" aria-hidden="true" />
@@ -151,7 +151,7 @@ export function ContactChoiceProvider({
                 }}
               >
                 <motion.div
-                  className="fixed left-1/2 z-[91] origin-center overflow-hidden rounded-[2rem] bg-white/28 p-1.5 text-[#201b17] shadow-[0_28px_90px_rgba(0,45,49,0.30),0_0_0_1px_rgba(255,255,255,0.62)] outline-none backdrop-blur-2xl"
+                  className="fixed left-1/2 z-[91] origin-center overflow-hidden rounded-[2rem] bg-white/28 p-1.5 text-[#201b17] shadow-[0_28px_90px_rgba(40,32,24,0.30),0_0_0_1px_rgba(255,255,255,0.62)] outline-none backdrop-blur-2xl"
                   style={{
                     top: "50%",
                     width: finalWidth,
@@ -191,7 +191,7 @@ export function ContactChoiceProvider({
                   transition={shouldReduceMotion ? { duration: 0.01 } : modalSpring}
                 >
                   <motion.div
-                    className="grid max-h-[calc(100svh-2.25rem)] gap-4 overflow-y-auto rounded-[calc(2rem-0.375rem)] bg-[#f8fbf8]/96 p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.85),inset_0_-1px_0_rgba(0,61,66,0.08)] sm:p-6"
+                    className="grid max-h-[calc(100svh-2.25rem)] gap-4 overflow-y-auto rounded-[calc(2rem-0.375rem)] bg-ivory/96 p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.85),inset_0_-1px_0_rgba(40,32,24,0.08)] sm:p-6"
                     initial={
                       shouldReduceMotion
                         ? { opacity: 1 }
@@ -209,14 +209,14 @@ export function ContactChoiceProvider({
                         <DialogPrimitive.Title className="max-w-[17rem] text-balance text-[1.72rem] font-semibold leading-[1.05] tracking-normal text-[#201b17] sm:text-[1.82rem]">
                           {showForm ? "Αίτημα ραντεβού" : labels.title}
                         </DialogPrimitive.Title>
-                        <DialogPrimitive.Description className="mt-3 max-w-[20rem] text-sm font-semibold leading-6 text-[#526669]">
+                        <DialogPrimitive.Description className="mt-3 max-w-[20rem] text-sm font-semibold leading-6 text-muted-foreground">
                           {showForm ? "Συμπληρώστε τα στοιχεία σας και θα επικοινωνήσουμε μαζί σας." : labels.description}
                         </DialogPrimitive.Description>
                       </div>
                       <DialogPrimitive.Close asChild>
                         <button
                           type="button"
-                          className="grid size-10 shrink-0 place-items-center rounded-full bg-white/90 text-[#372a1e] shadow-[0_0_0_1px_rgba(6,45,49,0.08),0_10px_28px_rgba(6,45,49,0.12)] transition-[background-color,box-shadow,transform] duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-px hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9a6d24]/35 active:scale-[0.98]"
+                          className="grid size-10 shrink-0 place-items-center rounded-full bg-white/90 text-[#372a1e] shadow-[0_0_0_1px_rgba(40,32,24,0.08),0_10px_28px_rgba(40,32,24,0.12)] transition-[background-color,box-shadow,transform] duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-px hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/35 active:scale-[0.98]"
                           aria-label={labels.closeLabel}
                         >
                           <X className="size-4 stroke-[1.7]" />
@@ -227,7 +227,7 @@ export function ContactChoiceProvider({
                     {showForm ? <ContactForm /> : (
                     <div className="grid gap-2.5">
                       <a
-                        className="group/call grid min-h-[4.35rem] grid-cols-[2.35rem_minmax(0,1fr)] items-center gap-3 rounded-[1.45rem] bg-[#282018] px-4 py-3 text-white shadow-[0_18px_44px_rgba(0,61,66,0.26),inset_0_1px_1px_rgba(255,255,255,0.16)] transition-[background-color,box-shadow,transform] duration-[520ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-px hover:bg-[#3a2b1d] hover:shadow-[0_22px_54px_rgba(0,61,66,0.30),inset_0_1px_1px_rgba(255,255,255,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9a6d24]/45 active:scale-[0.99]"
+                        className="group/call grid min-h-[4.35rem] grid-cols-[2.35rem_minmax(0,1fr)] items-center gap-3 rounded-[1.45rem] bg-espresso px-4 py-3 text-white shadow-[0_18px_44px_rgba(40,32,24,0.26),inset_0_1px_1px_rgba(255,255,255,0.16)] transition-[background-color,box-shadow,transform] duration-[520ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-px hover:bg-[#3a2b1d] hover:shadow-[0_22px_54px_rgba(40,32,24,0.30),inset_0_1px_1px_rgba(255,255,255,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/45 active:scale-[0.99]"
                         href={phoneHref}
                       >
                         <span
@@ -255,7 +255,7 @@ export function ContactChoiceProvider({
                         </a>
                       )}
                       <button
-                        className="flex min-h-12 items-center gap-3 rounded-full bg-white px-4 text-left text-sm font-semibold hover:bg-[#f5ebd9]"
+                        className="flex min-h-12 items-center gap-3 rounded-full bg-white px-4 text-left text-sm font-semibold hover:bg-champagne"
                         type="button"
                         onClick={() => setShowForm(true)}
                       >

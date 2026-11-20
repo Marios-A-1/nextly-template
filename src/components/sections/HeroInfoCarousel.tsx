@@ -47,7 +47,7 @@ function HeroInfoCard({
       aria-roledescription={isMobile ? "slide" : undefined}
       className={
         isMobile
-          ? "min-w-[min(82vw,19rem)] snap-center rounded-[1.1rem] border border-white/18 bg-white/14 p-4 shadow-[0_22px_70px_rgba(0,20,22,0.24)] backdrop-blur-xl motion-safe:animate-[heroInfoItemIn_0.82s_cubic-bezier(0.16,1,0.3,1)_both] motion-reduce:animate-none sm:min-w-[18rem]"
+          ? "min-w-[min(82vw,19rem)] snap-center rounded-[1.1rem] border border-white/18 bg-white/14 p-4 shadow-[0_22px_70px_rgba(40,32,24,0.24)] backdrop-blur-xl motion-safe:animate-[heroInfoItemIn_0.82s_cubic-bezier(0.16,1,0.3,1)_both] motion-reduce:animate-none sm:min-w-[18rem]"
           : "min-w-0 border-white/18 bg-transparent px-6 py-5 motion-safe:animate-[heroInfoItemIn_0.82s_cubic-bezier(0.16,1,0.3,1)_both] motion-reduce:animate-none md:first:border-l md:last:border-r lg:px-7 lg:py-6"
       }
       data-hero-info-card={item.id}

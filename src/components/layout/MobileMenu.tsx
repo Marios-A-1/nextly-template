@@ -154,7 +154,7 @@ export function MobileMenu({
                   <button
                     type="button"
                     aria-label={labels.close}
-                    className="absolute inset-0 bg-[#022c30]/24 backdrop-blur-[3px]"
+                    className="absolute inset-0 bg-espresso/24 backdrop-blur-[3px]"
                     onClick={() => setOpen(false)}
                   />
                   <motion.aside
@@ -162,7 +162,7 @@ export function MobileMenu({
                     role="dialog"
                     aria-label={labels.nav}
                     aria-modal="true"
-                    className="absolute inset-y-0 right-0 flex w-[min(calc(100vw-1rem),390px)] flex-col overflow-hidden border-l border-white/70 bg-[#fffcf6] pb-[env(safe-area-inset-bottom)] text-foreground shadow-[0_30px_90px_rgba(0,45,49,0.26)]"
+                    className="absolute inset-y-0 right-0 flex w-[min(calc(100vw-1rem),390px)] flex-col overflow-hidden border-l border-white/70 bg-[#fffcf6] pb-[env(safe-area-inset-bottom)] text-foreground shadow-[0_30px_90px_rgba(40,32,24,0.26)]"
                     variants={mobileMenuPanelVariants}
                     initial="hidden"
                     animate="show"
@@ -186,7 +186,7 @@ export function MobileMenu({
                               />
                             </span>
                           ) : (
-                            <span className="grid size-10 shrink-0 place-items-center rounded-full bg-[#282018] text-base font-semibold text-white shadow-[0_14px_34px_rgba(0,61,66,0.18)]">
+                            <span className="grid size-10 shrink-0 place-items-center rounded-full bg-espresso text-base font-semibold text-white shadow-[0_14px_34px_rgba(40,32,24,0.18)]">
                               {site.logoText.trim().slice(0, 1) || "M"}
                             </span>
                           )}
@@ -194,7 +194,7 @@ export function MobileMenu({
                         <button
                           type="button"
                           ref={closeButtonRef}
-                          className="grid size-10 shrink-0 place-items-center rounded-full border border-primary/10 bg-white text-[#372a1e] shadow-sm transition-[transform,background-color,box-shadow] duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:hover:-translate-y-px hover:bg-[#eef8f6] hover:shadow-md"
+                          className="grid size-10 shrink-0 place-items-center rounded-full border border-primary/10 bg-white text-[#372a1e] shadow-sm transition-[transform,background-color,box-shadow] duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:hover:-translate-y-px hover:bg-ivory hover:shadow-md"
                           aria-label={labels.close}
                           onClick={() => setOpen(false)}
                         >
@@ -265,7 +265,7 @@ export function MobileMenu({
                       ) : null} */}
                     </motion.div>
                     <motion.div
-                      className="shrink-0 border-t border-primary/10 bg-[#fffcf6]/95 px-5 py-4 shadow-[0_-18px_50px_rgba(8,48,51,0.08)] backdrop-blur sm:px-6"
+                      className="shrink-0 border-t border-primary/10 bg-[#fffcf6]/95 px-5 py-4 shadow-[0_-18px_50px_rgba(40,32,24,0.08)] backdrop-blur sm:px-6"
                       variants={menuItemVariants}
                       initial="hidden"
                       animate="show"

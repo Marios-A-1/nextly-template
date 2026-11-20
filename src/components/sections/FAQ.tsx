@@ -6,6 +6,7 @@ import { Phone, Plus } from "lucide-react";
 import { type FAQ as FAQType } from "@/types/content";
 import { Reveal } from "./Reveal";
 import { ContactChoiceButton } from "@/components/common/ContactChoiceModal";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 import { easeSoft, faqContentVariants, motionDurations } from "@/lib/animations";
 
 type FAQProps = {
@@ -30,6 +31,7 @@ export function FAQ({
   faqs,
   labels,
 }: FAQProps) {
+  const reducedMotion = useReducedMotion();
   const [openId, setOpenId] = useState(faqs[0]?.id ?? "");
 
   return (
@@ -47,7 +49,7 @@ export function FAQ({
             {description ?? labels.description}
           </Reveal>
 
-          <Reveal className="mt-8 max-w-md rounded-[0.8rem] bg-white p-5 shadow-[0_20px_60px_rgba(6,45,49,0.06)] sm:mt-12">
+          <Reveal className="mt-8 max-w-md rounded-[0.8rem] bg-white p-5 shadow-[0_20px_60px_rgba(40,32,24,0.06)] sm:mt-12">
             <span className="grid size-12 place-items-center rounded-full bg-[#fbf1e6] text-[#282018]">
               <Phone className="size-5" />
             </span>
@@ -77,7 +79,7 @@ export function FAQ({
                 <button
                   type="button"
                   id={`${faq.id}-trigger`}
-                  className="flex min-h-11 w-full items-start justify-between gap-4 py-3 text-left text-xl font-semibold tracking-[-0.03em] text-[#20292b] outline-none transition-colors hover:text-[#282018] focus-visible:ring-2 focus-visible:ring-[#9a6d24]/40 sm:gap-5 sm:py-4 sm:text-2xl"
+                  className="flex min-h-11 w-full items-start justify-between gap-4 py-3 text-left text-xl font-semibold tracking-[-0.03em] text-foreground outline-none transition-colors hover:text-[#282018] focus-visible:ring-2 focus-visible:ring-ring/40 sm:gap-5 sm:py-4 sm:text-2xl"
                   aria-expanded={openId === faq.id}
                   aria-controls={`${faq.id}-answer`}
                   onClick={() => setOpenId((current) => current === faq.id ? "" : faq.id)}
@@ -85,8 +87,8 @@ export function FAQ({
                   {faq.question}
                   <motion.span
                     animate={{ rotate: openId === faq.id ? 45 : 0 }}
-                    transition={{ duration: motionDurations.faq, ease: easeSoft }}
-                    className="mt-1 grid size-8 shrink-0 place-items-center rounded-full bg-[#f1e6d2] text-[#201b17]"
+                    transition={{ duration: reducedMotion ? 0 : motionDurations.faq, ease: easeSoft }}
+                    className="mt-1 grid size-8 shrink-0 place-items-center rounded-full bg-champagne text-[#201b17]"
                     aria-hidden="true"
                   >
                     <Plus className="size-4" />
@@ -98,8 +100,8 @@ export function FAQ({
                       id={`${faq.id}-answer`}
                       role="region"
                       aria-labelledby={`${faq.id}-trigger`}
-                      variants={faqContentVariants}
-                      initial="hidden"
+                      variants={reducedMotion ? undefined : faqContentVariants}
+                      initial={reducedMotion ? false : "hidden"}
                       animate="show"
                       exit="hidden"
                       className="overflow-hidden"

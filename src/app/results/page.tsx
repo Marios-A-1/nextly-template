@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ResultsGallery } from "@/components/sections/ResultsGallery";
+import { SecondaryPageHero } from "@/components/sections/ReferenceSections";
 import { Reveal } from "@/components/sections/Reveal";
 import { getMetadataContent } from "@/content/localized";
 import { getResultsPage } from "@/lib/results";
@@ -16,13 +17,15 @@ export default async function ResultsPage() {
   const page = await getResultsPage();
 
   return (
-    <div className="reference-page -mt-[68px] page-top-gradient pt-[68px]">
-      <section className="site-container py-14 sm:py-20">
-        <Reveal variant="stagger" className="mb-10 max-w-3xl space-y-4">
-          <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-6xl">Αποτελέσματα πριν και μετά</h1>
-          <p className="text-lg text-muted-foreground">Φωτογραφίες από επεμβάσεις και θεραπείες της κλινικής.</p>
+    <div className="reference-page">
+      <SecondaryPageHero
+        title="Αποτελέσματα πριν και μετά"
+        description="Φωτογραφίες από επεμβάσεις και θεραπείες της κλινικής."
+      />
+      <section className="bg-background py-14 sm:py-20 lg:py-28" aria-label="Συλλογή αποτελεσμάτων">
+        <Reveal className="site-container" variant="panel">
+          <ResultsGallery initialPage={page} />
         </Reveal>
-        <ResultsGallery initialPage={page} />
       </section>
     </div>
   );

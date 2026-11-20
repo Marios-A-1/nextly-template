@@ -30,7 +30,7 @@ export function Footer({ navigation, site, labels }: FooterProps) {
         <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-start">
           <Link className="inline-flex items-center gap-3" href="/">
             {site.logoImage ? (
-              <span className="grid h-14 w-14 place-items-center rounded-full bg-white p-2 shadow-[0_12px_32px_rgba(6,45,49,0.12)]">
+              <span className="grid h-14 w-14 place-items-center rounded-full bg-white p-2 shadow-[0_12px_32px_rgba(40,32,24,0.12)]">
                 <Image
                   src={site.logoImage.src}
                   alt={site.logoImage.alt}
@@ -40,7 +40,7 @@ export function Footer({ navigation, site, labels }: FooterProps) {
                 />
               </span>
             ) : (
-              <span className="grid size-10 place-items-center rounded-full bg-[#282018] text-sm font-bold text-white">
+              <span className="grid size-10 place-items-center rounded-full bg-espresso text-sm font-bold text-white">
                 {logoInitial}
               </span>
             )}
@@ -51,7 +51,7 @@ export function Footer({ navigation, site, labels }: FooterProps) {
 
           <div className="space-y-4 break-words text-left text-xl font-semibold leading-tight tracking-normal sm:text-4xl lg:text-right lg:text-5xl">
             <a
-              className="flex min-h-11 min-w-0 items-center gap-3 transition-[color] duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-[#7a571f] lg:justify-end"
+              className="flex min-h-11 min-w-0 items-center gap-3 transition-[color] duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-bronze lg:justify-end"
               href={normalizedPhoneHref}
             >
               <Phone className="size-6 shrink-0 sm:size-7" />
@@ -59,7 +59,7 @@ export function Footer({ navigation, site, labels }: FooterProps) {
             </a>
             {site.contact.email ? (
               <a
-                className="flex min-h-11 min-w-0 items-center gap-3 transition-[color] duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-[#7a571f] lg:justify-end"
+                className="flex min-h-11 min-w-0 items-center gap-3 transition-[color] duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-bronze lg:justify-end"
                 href={`mailto:${site.contact.email}`}
               >
                 <Mail className="size-6 shrink-0 sm:size-7" />

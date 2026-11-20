@@ -26,11 +26,11 @@ type AnimatedButtonProps = {
 
 const variantClassName: Record<AnimatedButtonVariant, string> = {
   primary:
-    "bg-[#2b2219] text-white shadow-[0_12px_30px_rgba(0,63,69,0.18)] hover:bg-[#3a2b1d]",
+    "bg-[#2b2219] text-white shadow-[0_12px_30px_rgba(40,32,24,0.18)] hover:bg-[#3a2b1d]",
   light:
-    "bg-white text-[#201b17] shadow-[0_12px_34px_rgba(4,45,49,0.14)] hover:bg-white/90",
+    "bg-white text-[#201b17] shadow-[0_12px_34px_rgba(40,32,24,0.14)] hover:bg-white/90",
   outline:
-    "border border-[#8fb4b8] bg-white text-[#201b17] hover:bg-white/90",
+    "border border-ring bg-white text-[#201b17] hover:bg-white/90",
 }
 
 const arrowClassName: Record<AnimatedButtonVariant, string> = {

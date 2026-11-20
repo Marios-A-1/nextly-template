@@ -23,15 +23,6 @@ type ServicesGridProps = {
   };
 };
 
-const PANEL_TONES = [
-  "bg-[#f0f4ff]",
-  "bg-[#fff3e7]",
-  "bg-[#eefdf5]",
-  "bg-[#f5edff]",
-  "bg-[#eef6f7]",
-  "bg-[#fff7ed]",
-];
-
 export function ServicesGrid({
   id,
   title,
@@ -74,7 +65,7 @@ export function ServicesGrid({
               <Reveal
                 as="article"
                 key={service.id}
-                className={`${PANEL_TONES[index % PANEL_TONES.length]} premium-hover-surface grid gap-6 overflow-hidden rounded-[1rem] p-5 sm:min-h-[320px] sm:gap-8 sm:rounded-[1.25rem] sm:p-7 md:grid-cols-[0.65fr_1fr] md:p-9`}
+                className="bg-ivory even:bg-champagne/55 premium-hover-surface grid gap-6 overflow-hidden rounded-[1rem] p-5 sm:min-h-[320px] sm:gap-8 sm:rounded-[1.25rem] sm:p-7 md:grid-cols-[0.65fr_1fr] md:p-9"
               >
                 <div className="flex flex-col justify-between gap-8">
                   <div>

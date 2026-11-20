@@ -5,6 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-gold: var(--gold);
+  --color-bronze: var(--bronze);
+  --color-champagne: var(--champagne);
+  --color-ivory: var(--ivory);
+  --color-espresso: var(--espresso);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
@@ -49,6 +54,11 @@
 }
 
 :root {
+  --gold: #f2ce68;
+  --bronze: #7a571f;
+  --champagne: #f1e6d2;
+  --ivory: #f9f5ed;
+  --espresso: #282018;
   --background: oklch(0.972 0.015 74);
   --foreground: #201b17;
   --card: oklch(0.995 0.006 85);
@@ -56,31 +66,31 @@
   --popover: oklch(0.995 0.006 85);
   --popover-foreground: #201b17;
   --primary: #26201a;
-  --primary-foreground: oklch(0.99 0.01 180);
-  --secondary: oklch(0.915 0.035 184);
-  --secondary-foreground: oklch(0.2 0.045 188);
+  --primary-foreground: #fffdf8;
+  --secondary: var(--champagne);
+  --secondary-foreground: var(--foreground);
   --muted: oklch(0.925 0.019 80);
-  --muted-foreground: oklch(0.52 0.018 205);
-  --accent: oklch(0.64 0.095 190);
-  --accent-foreground: oklch(0.16 0.04 188);
+  --muted-foreground: #6d6156;
+  --accent: var(--champagne);
+  --accent-foreground: var(--espresso);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.84 0.018 80);
   --input: oklch(0.86 0.018 80);
-  --ring: oklch(0.55 0.09 188);
-  --chart-1: oklch(0.72 0.12 176);
-  --chart-2: oklch(0.67 0.12 143);
-  --chart-3: oklch(0.63 0.1 220);
-  --chart-4: oklch(0.76 0.12 88);
-  --chart-5: oklch(0.69 0.12 35);
+  --ring: #9a6d24;
+  --chart-1: var(--bronze);
+  --chart-2: #a4773b;
+  --chart-3: #bb9354;
+  --chart-4: #d7ae64;
+  --chart-5: var(--gold);
   --radius: 1.25rem;
-  --sidebar: oklch(0.972 0.015 74);
-  --sidebar-foreground: #201b17;
-  --sidebar-primary: #26201a;
-  --sidebar-primary-foreground: oklch(0.99 0.01 180);
-  --sidebar-accent: oklch(0.915 0.035 184);
-  --sidebar-accent-foreground: oklch(0.2 0.045 188);
-  --sidebar-border: oklch(0.84 0.018 80);
-  --sidebar-ring: oklch(0.55 0.09 188);
+  --sidebar: var(--background);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
 }
 
 .dark {
@@ -92,16 +102,16 @@
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.922 0 0);
   --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
+  --secondary: #3a2b1d;
   --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --muted: #30251b;
+  --muted-foreground: #cfc1ae;
+  --accent: #3a2b1d;
+  --accent-foreground: var(--gold);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --ring: #d7ae64;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -109,12 +119,12 @@
   --chart-5: oklch(0.269 0 0);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-primary: var(--gold);
+  --sidebar-primary-foreground: var(--espresso);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --sidebar-ring: var(--ring);
 }
 
 @layer base {
@@ -157,7 +167,7 @@
     pointer-events: none;
   }
   ::selection {
-    @apply bg-primary/20 text-foreground;
+    @apply bg-gold/45 text-espresso;
   }
   a {
     @apply underline-offset-4;
@@ -174,7 +184,7 @@
   }
 
   .premium-card {
-    @apply border border-white/75 bg-white/90 shadow-[0_18px_54px_rgba(8,48,51,0.09)] backdrop-blur sm:shadow-[0_28px_90px_rgba(8,48,51,0.10)];
+    @apply border border-white/75 bg-white/90 shadow-[0_18px_54px_rgba(40,32,24,0.09)] backdrop-blur sm:shadow-[0_28px_90px_rgba(40,32,24,0.10)];
   }
 
   .premium-hover-surface {
@@ -201,7 +211,7 @@
 
   .soft-gradient {
     background:
-      radial-gradient(circle at 12% 6%, oklch(0.88 0.045 185 / 0.75), transparent 26%),
+      radial-gradient(circle at 12% 6%, var(--champagne), transparent 26%),
       linear-gradient(180deg, oklch(0.972 0.015 74), oklch(0.965 0.018 85));
   }
 
@@ -214,7 +224,7 @@
   }
 
   .section-kicker {
-    @apply inline-flex items-center gap-1.5 rounded-full bg-[#f1e6d2] px-3 py-1 text-xs font-medium normal-case tracking-normal text-[#201b17];
+    @apply inline-flex items-center gap-1.5 rounded-full bg-champagne px-3 py-1 text-xs font-medium normal-case tracking-normal text-[#201b17];
   }
 
   .section-kicker::before {
@@ -223,7 +233,13 @@
   }
 
   .gradient-word {
-    @apply bg-gradient-to-r from-[#6f9698] to-[#1ba8b5] bg-clip-text text-transparent;
+    color: var(--bronze);
+
+    @supports (background-clip: text) {
+      background-image: linear-gradient(90deg, var(--bronze), #8d6424);
+      background-clip: text;
+      color: transparent;
+    }
   }
 
   .pill-button {
@@ -231,11 +247,11 @@
   }
 
   .pill-button-primary {
-    @apply bg-[#2b2219] text-white shadow-[0_12px_30px_rgba(0,63,69,0.18)] hover:bg-[#3a2b1d];
+    @apply bg-[#2b2219] text-white shadow-[0_12px_30px_rgba(40,32,24,0.18)] hover:bg-[#3a2b1d];
   }
 
   .pill-button-light {
-    @apply bg-white text-[#201b17] shadow-[0_12px_34px_rgba(4,45,49,0.14)] hover:bg-white/90;
+    @apply bg-white text-[#201b17] shadow-[0_12px_34px_rgba(40,32,24,0.14)] hover:bg-white/90;
   }
 
   .pill-arrow {
@@ -244,46 +260,6 @@
 
   .pill-button-primary .pill-arrow {
     @apply bg-white text-[#2b2219];
-  }
-
-  .photo-treatment {
-    background:
-      linear-gradient(180deg, rgba(3, 42, 45, 0) 45%, rgba(3, 28, 31, 0.76) 100%),
-      radial-gradient(circle at 70% 30%, rgba(255, 244, 226, 0.72), transparent 22%),
-      radial-gradient(circle at 32% 44%, rgba(120, 205, 215, 0.5), transparent 25%),
-      linear-gradient(135deg, #d8eef1, #f7efe4 45%, #8ac8d1);
-  }
-
-  .photo-clinic {
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(2, 45, 49, 0.58)),
-      radial-gradient(circle at 78% 25%, rgba(255, 255, 255, 0.9), transparent 20%),
-      radial-gradient(circle at 22% 70%, rgba(194, 126, 69, 0.7), transparent 22%),
-      linear-gradient(120deg, #e8eef0, #c7dadd 48%, #f5efe8);
-  }
-
-  .photo-team-teal {
-    background:
-      radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.62), transparent 18%),
-      linear-gradient(180deg, #109ba0, #0c7f86 45%, #d7b18c);
-  }
-
-  .photo-team-light {
-    background:
-      radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.9), transparent 18%),
-      linear-gradient(180deg, #edf1ef, #d8e1de 52%, #c49c79);
-  }
-
-  .photo-team-clinic {
-    background:
-      radial-gradient(circle at 54% 22%, rgba(255, 255, 255, 0.88), transparent 18%),
-      linear-gradient(180deg, #f1e6d2, #d6e4e5 48%, #a9785f);
-  }
-
-  .photo-team-warm {
-    background:
-      radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.86), transparent 18%),
-      linear-gradient(180deg, #f0e8df, #d8d7d2 55%, #a77b63);
   }
 
   .visual-avatar {
@@ -296,7 +272,7 @@
     border-radius: 999px 999px 55% 55%;
     background:
       radial-gradient(circle at 50% 38%, #f3ceb2 0 22%, transparent 23%),
-      radial-gradient(circle at 50% 62%, #f8faf8 0 38%, transparent 39%);
+      radial-gradient(circle at 50% 62%, #fffdf8 0 38%, transparent 39%);
     opacity: 0.95;
   }
 
@@ -374,8 +350,8 @@
     }
   }
 
-  .dark-teal-slab {
-    @apply bg-[#282018] text-white;
+  .dark-gold-slab {
+    @apply bg-espresso text-white;
     background:
       radial-gradient(circle at 12% 0%, rgba(164, 119, 59, 0.45), transparent 28%),
       linear-gradient(140deg, #221a14 0%, #30251b 54%, #181410 100%);
@@ -383,10 +359,6 @@
 
   .cream-band {
     @apply bg-[#fbf1e6];
-  }
-
-  .pale-teal-band {
-    @apply bg-[#dfeff0];
   }
 
   .stock-image {
