@@ -4,7 +4,7 @@ Greek website for the plastic surgery clinic of Dr. Petros Th. Vlastarakos. It u
 
 ## Local development
 
-Use Node.js 20.9 or later and pnpm 9.
+Use Node.js 22 and pnpm 9.
 
 ```sh
 pnpm install --frozen-lockfile
