@@ -1,67 +1,69 @@
-import { NextResponse } from "next/server";
+const requiredMessage = "Ελέγξτε τα στοιχεία της φόρμας και δοκιμάστε ξανά.";
+const failureMessage = "Το αίτημα δεν στάλθηκε. Δοκιμάστε ξανά ή καλέστε την κλινική.";
+
+function result(success: boolean, message: string, status = 200) {
+  return Response.json({ success, message }, { status });
+}
+
+function textField(value: unknown) {
+  return typeof value === "string" ? value.trim() : "";
+}
 
 export async function POST(request: Request) {
+  const payload = await request.json().catch(() => null);
+  if (!payload || typeof payload !== "object") {
+    return result(false, requiredMessage, 400);
+  }
+
+  const name = textField(payload.name);
+  const email = textField(payload.email);
+  const phone = textField(payload.phone);
+  const message = textField(payload.message);
+  if (payload.botcheck) return result(true, "Ευχαριστούμε.");
+
+  if (
+    !name || name.length > 120 ||
+    email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
+    phone.length > 32 || !/^\+?[\d ().-]+$/.test(phone) ||
+    !/^\d{7,15}$/.test(phone.replace(/\D/g, "")) ||
+    !message || message.length > 3000
+  ) {
+    return result(false, requiredMessage, 400);
+  }
+
+  const webhookUrl = process.env.LEADS_API_URL;
+  if (!webhookUrl) return result(false, failureMessage, 500);
+
+  const apiKey = process.env.LEADS_API_KEY;
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
+
   try {
-    const payload = await request.json();
-
-    if (!payload?.name || !payload?.email || !payload?.message) {
-      return NextResponse.json(
-        { success: false, message: "Please fill in all required fields." },
-        { status: 400 }
-      );
-    }
-
-    if (payload?.botcheck) {
-      return NextResponse.json({ success: true, message: "Thanks!" });
-    }
-
-    const webhookUrl = process.env.LEADS_API_URL;
-    if (!webhookUrl) {
-      return NextResponse.json(
-        { success: false, message: "Lead capture is not configured." },
-        { status: 500 }
-      );
-    }
-
-    const headers: Record<string, string> = {
-      "Content-Type": "application/json",
-    };
-    const apiKey = process.env.LEADS_API_KEY;
-    if (apiKey) {
-      headers.Authorization = `Bearer ${apiKey}`;
-    }
-
-    const forwardBody = {
-      name: payload.name,
-      email: payload.email,
-      message: payload.message,
-      pageUrl: payload.pageUrl || null,
-      source: "popup-widget",
-      createdAt: new Date().toISOString(),
-      ...(apiKey ? { secret: apiKey } : {}),
-    };
-
     const response = await fetch(webhookUrl, {
       method: "POST",
       headers,
-      body: JSON.stringify(forwardBody),
+      body: JSON.stringify({
+        name,
+        email,
+        phone,
+        message,
+        pageUrl: textField(payload.pageUrl).slice(0, 2048) || null,
+        source: "popup-widget",
+        createdAt: new Date().toISOString(),
+        ...(apiKey ? { secret: apiKey } : {}),
+      }),
+      signal: AbortSignal.timeout(10000),
     });
 
-    if (!response.ok) {
-      return NextResponse.json(
-        { success: false, message: "Lead submission failed. Please try again." },
-        { status: 502 }
-      );
+    if (!response.ok) return result(false, failureMessage, 502);
+
+    const receipt = await response.json().catch(() => null);
+    if (receipt?.success === false || receipt?.ok === false) {
+      return result(false, failureMessage, 502);
     }
 
-    return NextResponse.json({
-      success: true,
-      message: "Thanks! We'll be in touch soon.",
-    });
-  } catch (error) {
-    return NextResponse.json(
-      { success: false, message: "Server error. Please try again." },
-      { status: 500 }
-    );
+    return result(true, "Ευχαριστούμε. Θα επικοινωνήσουμε μαζί σας σύντομα.");
+  } catch {
+    return result(false, failureMessage, 502);
   }
 }

@@ -1,0 +1,305 @@
+{
+  "metadata": {
+    "siteName": "Art of the Possible",
+    "siteDescription": "Κλινική αισθητικής και επανορθωτικής πλαστικής χειρουργικής του Δρ. Πέτρου Θ. Βλασταράκου στην Αθήνα.",
+    "home": {
+      "title": "Art of the Possible | Πλαστική Χειρουργική",
+      "description": "Αισθητική και επανορθωτική πλαστική χειρουργική στην Αθήνα, με εξατομικευμένη προσέγγιση και καθοδήγηση."
+    },
+    "about": {
+      "title": "Η κλινική και ο ιατρός",
+      "description": "Γνωρίστε τον πλαστικό χειρουργό Πέτρο Θ. Βλασταράκο και τη φιλοσοφία της κλινικής."
+    },
+    "services": {
+      "title": "Επεμβάσεις",
+      "description": "Δείτε τις αισθητικές και επανορθωτικές επεμβάσεις και τις μη επεμβατικές θεραπείες."
+    },
+    "results": {
+      "title": "Αποτελέσματα",
+      "description": "Φωτογραφίες πριν και μετά από επεμβάσεις της κλινικής."
+    }
+  },
+  "navigation": {
+    "main": [
+      {
+        "id": "home",
+        "label": "Αρχική",
+        "href": "/"
+      },
+      {
+        "id": "services",
+        "label": "Επεμβάσεις",
+        "href": "/epemvaseis"
+      },
+      {
+        "id": "results",
+        "label": "Αποτελέσματα",
+        "href": "/results"
+      },
+      {
+        "id": "about",
+        "label": "Σχετικά",
+        "href": "/about"
+      }
+    ]
+  },
+  "site": {
+    "id": "art-of-the-possible",
+    "siteName": "Art of the Possible",
+    "siteTagline": "Πλαστική χειρουργική",
+    "siteDescription": "Αισθητική και επανορθωτική πλαστική χειρουργική στην Αθήνα.",
+    "logoText": "Art of the Possible",
+    "logoByline": "Πλαστική χειρουργική",
+    "logoImage": {
+      "id": "clinic-logo",
+      "src": "/img/logo-hq.webp",
+      "alt": "Art of the Possible",
+      "width": 515,
+      "height": 443
+    },
+    "homeUrl": "https://artofthepossible.vercel.app/",
+    "legalName": "Art of the Possible",
+    "shortIntro": "Η κλινική του Δρ. Πέτρου Θ. Βλασταράκου στην Αθήνα. Αισθητική και επανορθωτική πλαστική χειρουργική με εξατομικευμένη φροντίδα.",
+    "phoneHref": "tel:+302110081112",
+    "contact": {
+      "phone": "2110 081 112",
+      "email": "info@artofthepossible.gr",
+      "address": {
+        "line1": "",
+        "city": "Αθήνα",
+        "region": "Αττική",
+        "postalCode": "",
+        "country": "GR"
+      },
+      "hours": []
+    },
+    "social": [
+      {
+        "id": "instagram",
+        "platform": "instagram",
+        "label": "Instagram",
+        "url": "https://www.instagram.com/petros_vlastarakos/"
+      },
+      {
+        "id": "facebook",
+        "platform": "facebook",
+        "label": "Facebook",
+        "url": "https://www.facebook.com/p/Art-Of-The-Possible-Plastic-Surgery-Clinic-61568608215185"
+      },
+      {
+        "id": "tiktok",
+        "platform": "tiktok",
+        "label": "TikTok",
+        "url": "https://www.tiktok.com/@artofpossible/"
+      },
+      {
+        "id": "linkedin",
+        "platform": "linkedin",
+        "label": "LinkedIn",
+        "url": "https://gr.linkedin.com/in/petrosvlastarakos"
+      }
+    ],
+    "stats": [],
+    "heroInfoItems": [
+      {
+        "id": "experience",
+        "title": "2.000+ επεμβάσεις",
+        "description": "Δρ. Πέτρος Θ. Βλασταράκος",
+        "iconName": "shield"
+      },
+      {
+        "id": "planning",
+        "title": "Εξατομικευμένο πλάνο",
+        "description": "Σχεδιασμός από την πρώτη επίσκεψη",
+        "iconName": "calendar"
+      },
+      {
+        "id": "aftercare",
+        "title": "Καθοδήγηση στην αποθεραπεία",
+        "description": "Φροντίδα μετά την επέμβαση",
+        "iconName": "heart"
+      }
+    ],
+    "proofCards": [
+      {
+        "id": "planning",
+        "value": "Σχεδιασμός",
+        "label": "Εξατομίκευση",
+        "description": "Συζητάμε τους στόχους σας και τις ρεαλιστικές επιλογές θεραπείας.",
+        "tone": "cream"
+      },
+      {
+        "id": "care",
+        "value": "Φροντίδα",
+        "label": "Από την πρώτη επίσκεψη",
+        "description": "Πλήρης καθοδήγηση πριν και μετά την επέμβαση.",
+        "tone": "gold"
+      }
+    ],
+    "teamMembers": [],
+    "awards": [],
+    "aboutMetrics": [
+      {
+        "id": "experience",
+        "value": "2.000+",
+        "label": "επεμβάσεις",
+        "description": "",
+        "tone": "dark"
+      }
+    ],
+    "locations": [],
+    "ctas": [
+      {
+        "id": "booking",
+        "label": "Κλείστε ραντεβού",
+        "href": "/contact",
+        "variant": "primary"
+      },
+      {
+        "id": "results",
+        "label": "Δείτε αποτελέσματα",
+        "href": "/results",
+        "variant": "secondary"
+      }
+    ],
+    "heroImage": {
+      "id": "clinic-hero",
+      "src": "/img/stock-blast-2.webp",
+      "alt": "Art of the Possible",
+      "width": 1924,
+      "height": 2793
+    },
+    "processImage": {
+      "id": "clinic-care",
+      "src": "/img/our-vision-image.webp",
+      "alt": "Φροντίδα ασθενών",
+      "width": 1924,
+      "height": 1356
+    }
+  },
+  "pages": {
+    "home": {
+      "heroTitle": "Art of the Possible",
+      "heroTitleHighlight": "Possible",
+      "heroDescription": "Αισθητική και επανορθωτική πλαστική χειρουργική με εξατομικευμένο σχεδιασμό και καθοδήγηση από την πρώτη επίσκεψη έως την αποθεραπεία.",
+      "servicesTitle": "Επεμβάσεις και θεραπείες",
+      "ctaTitle": "Κλείστε το ραντεβού σας",
+      "ctaDescription": "Συζητήστε τις επιλογές σας με τον Δρ. Πέτρο Θ. Βλασταράκο."
+    },
+    "about": {
+      "ctaTitle": "Μιλήστε με τον ιατρό"
+    },
+    "serviceDetail": {
+      "cta": "Κλείστε ραντεβού",
+      "relatedTitle": "Σχετικές επεμβάσεις",
+      "readyPrefix": "Έχετε ερωτήσεις;"
+    }
+  },
+  "sections": {
+    "aboutPreview": {
+      "kicker": "Η κλινική",
+      "title": "Πλαστική χειρουργική με προσωπική φροντίδα",
+      "highlight": "προσωπική φροντίδα",
+      "description": "Στόχος μας είναι ένα αποτέλεσμα που δένει φυσικά με το πρόσωπο ή το σώμα σας, με προτεραιότητα την ασφάλεια και τη σωστή ιατρική καθοδήγηση."
+    },
+    "servicesGrid": {
+      "kicker": "Επεμβάσεις",
+      "defaultTitle": "Επεμβάσεις και θεραπείες",
+      "highlight": "θεραπείες",
+      "description": "Αισθητική χειρουργική, επανορθωτική χειρουργική και μη επεμβατικές θεραπείες.",
+      "allServices": "Όλες οι επεμβάσεις",
+      "viewDetails": "Περισσότερα"
+    },
+    "benefits": {
+      "tag": "Η προσέγγισή μας",
+      "title": "Σχεδιασμός και φροντίδα σε κάθε βήμα",
+      "highlight": "σε κάθε βήμα",
+      "description": "Εξατομικευμένη φροντίδα και ιατρική καθοδήγηση από την πρώτη επίσκεψη έως την αποθεραπεία.",
+      "items": [
+        {
+          "id": "goals",
+          "title": "Κατανόηση αναγκών",
+          "description": "Συζητάμε τι σας απασχολεί και ποιο αποτέλεσμα θέλετε."
+        },
+        {
+          "id": "options",
+          "title": "Ρεαλιστικές επιλογές",
+          "description": "Εξηγούμε τις επιλογές, τους περιορισμούς και τους κινδύνους πριν αποφασίσετε."
+        },
+        {
+          "id": "plan",
+          "title": "Σχεδιασμός βήμα-βήμα",
+          "description": "Καταρτίζουμε εξατομικευμένο πλάνο και εξηγούμε αναλυτικά το κόστος."
+        },
+        {
+          "id": "safety",
+          "title": "Ασφάλεια και πρωτόκολλα",
+          "description": "Η ασφάλεια καθοδηγεί τον σχεδιασμό της επέμβασης και της αποθεραπείας."
+        },
+        {
+          "id": "after",
+          "title": "Μετά την επέμβαση",
+          "description": "Συνεχίζουμε την παρακολούθηση και σας καθοδηγούμε κατά την αποθεραπεία."
+        }
+      ]
+    },
+    "testimonials": {
+      "kicker": "Κριτικές",
+      "title": "Τι λένε οι ασθενείς μας",
+      "highlight": "ασθενείς μας",
+      "showLabel": "Εμφάνιση κριτικής"
+    },
+    "faq": {
+      "kicker": "Ερωτήσεις",
+      "title": "Συχνές ερωτήσεις",
+      "description": "Βασικές πληροφορίες για τη συμβουλευτική, τις επεμβάσεις και την αποθεραπεία.",
+      "cardTitle": "Έχετε άλλη ερώτηση;",
+      "cardDescription": "Επικοινωνήστε με την κλινική.",
+      "cardCta": "Επικοινωνία"
+    },
+    "cta": {
+      "kicker": "Ραντεβού",
+      "title": "Κλείστε το ραντεβού σας",
+      "highlight": "ραντεβού",
+      "description": "Συζητήστε το αίτημά σας με την κλινική.",
+      "button": "Κλείστε ραντεβού"
+    },
+    "aboutHero": {
+      "title": "Δρ. Πέτρος Θ. Βλασταράκος",
+      "description": "Πλαστικός, επανορθωτικός και αισθητικός χειρουργός στην Αθήνα. Μέλος της Ελληνικής Εταιρίας Πλαστικής, Επανορθωτικής και Αισθητικής Χειρουργικής.",
+      "cta": "Κλείστε ραντεβού"
+    }
+  },
+  "layout": {
+    "header": {
+      "homeAria": "Art of the Possible, αρχική σελίδα",
+      "primaryNav": "Κύρια πλοήγηση",
+      "appointment": "Κλείστε ραντεβού",
+      "scrollToTop": "Επιστροφή στην κορυφή",
+      "allServicesTitle": "Όλες οι επεμβάσεις",
+      "allServicesDescription": "Δείτε τις επεμβάσεις και τις θεραπείες ανά κατηγορία."
+    },
+    "mobile": {
+      "toggle": "Άνοιγμα μενού",
+      "close": "Κλείσιμο μενού",
+      "nav": "Πλοήγηση",
+      "navLabel": "Μενού",
+      "popular": "Επεμβάσεις",
+      "appointment": "Κλείστε ραντεβού"
+    },
+    "footer": {
+      "nav": "Πλοήγηση υποσέλιδου",
+      "navigationHeading": "Πλοήγηση",
+      "follow": "Ακολουθήστε μας",
+      "appointment": "Κλείστε ραντεβού",
+      "copyright": "©"
+    },
+    "contactChoice": {
+      "title": "Κλείστε ραντεβού",
+      "description": "Καλέστε την κλινική ή στείλτε αίτημα για να επικοινωνήσουμε μαζί σας.",
+      "callLabel": "Καλέστε μας",
+      "messageLabel": "Στείλτε αίτημα",
+      "closeLabel": "Κλείσιμο"
+    }
+  }
+}
