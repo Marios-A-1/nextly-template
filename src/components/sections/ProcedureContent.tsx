@@ -1,3 +1,5 @@
+import { CheckCircle2 } from "lucide-react";
+import { Reveal } from "./Reveal";
 import type {
   DoctorContentBlock,
   DoctorContentGroup,
@@ -15,13 +17,9 @@ const spacerSizes: Record<string, string> = {
 const ProcedureSectionCard = ({
   section,
   parentTitle,
-  headerTitle,
-  headerSubtitle
 }: {
   section: DoctorContentSection;
   parentTitle?: string | null;
-  headerTitle?: string | null;
-  headerSubtitle?: string | null;
 }) => {
   const renderableBlocks = section.blocks.filter(
     (block) =>
@@ -37,24 +35,17 @@ const ProcedureSectionCard = ({
     return null;
   }
 
-  const displayTitle =
-    headerTitle ?? (section.title && section.title !== parentTitle ? section.title : null);
-  const displaySubtitle = headerSubtitle ?? null;
+  const displayTitle = section.title === parentTitle ? null : section.title;
+  const hasVideo = renderableBlocks.some((block) => block.type === "video");
 
   return (
-    <article className="mx-auto w-full max-w-3xl rounded-xl border border-border bg-white p-5 shadow-sm sm:p-8">
-      {displayTitle ? (
-        <div className="space-y-2">
-          <h3 className="mb-4 text-lg font-semibold text-foreground">
-            {displayTitle}
-          </h3>
-          {displaySubtitle ? (
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              {displaySubtitle}
-            </p>
-          ) : null}
-        </div>
-      ) : null}
+    <Reveal
+      as="article"
+      variant="card"
+      className={`premium-hover-surface min-w-0 rounded-[0.8rem] border border-border bg-white p-5 shadow-sm sm:p-7 ${hasVideo ? "md:col-span-2" : ""}`}
+    >
+      <CheckCircle2 className="mb-4 size-5 text-bronze" aria-hidden="true" />
+      {displayTitle && <h3 className="mb-3 text-lg font-semibold text-foreground">{displayTitle}</h3>}
       <div className="space-y-4 text-sm leading-relaxed text-muted-foreground">
         {renderableBlocks.map((block, index) => {
           if (block.type === "p") {
@@ -112,11 +103,11 @@ const ProcedureSectionCard = ({
           return null;
         })}
       </div>
-    </article>
+    </Reveal>
   );
 };
 
-const ProcedureSectionMasonry = ({
+const ProcedureSectionGrid = ({
   sections,
   parentTitle,
   headerTitle,
@@ -128,16 +119,20 @@ const ProcedureSectionMasonry = ({
   headerSubtitle?: string | null;
 }) => {
   return (
-    <div className="space-y-6">
-      {sections.map((section, sectionIndex) => (
-        <ProcedureSectionCard
-          key={section.id}
-          section={section}
-          parentTitle={parentTitle}
-          headerTitle={sectionIndex === 0 ? headerTitle : null}
-          headerSubtitle={sectionIndex === 0 ? headerSubtitle : null}
-        />
-      ))}
+    <div className="space-y-5">
+      {headerTitle && (
+        <Reveal as="h3" variant="panel" className="text-balance text-2xl font-semibold tracking-tight">
+          {headerTitle}
+        </Reveal>
+      )}
+      {headerSubtitle && <p className="text-muted-foreground">{headerSubtitle}</p>}
+      <div data-treatment-card-grid="true">
+        <Reveal variant="stagger" childVariant="card" className="grid items-start gap-5 md:grid-cols-2">
+          {sections.map((section) => (
+            <ProcedureSectionCard key={section.id} section={section} parentTitle={parentTitle} />
+          ))}
+        </Reveal>
+      </div>
     </div>
   );
 };
@@ -228,7 +223,7 @@ export function ProcedureContent({ procedure }: { procedure: Procedure }) {
       {groups.map((group, index) => {
         const title = group.title ?? group.heading ?? null;
         return (
-          <ProcedureSectionMasonry
+          <ProcedureSectionGrid
             key={group.id ?? index}
             sections={getGroupSections(group, index)}
             parentTitle={title}
@@ -238,7 +233,7 @@ export function ProcedureContent({ procedure }: { procedure: Procedure }) {
         );
       })}
       {groups.length === 0 && (
-        <ProcedureSectionMasonry sections={doctorSections.length ? doctorSections : rootSections} parentTitle={procedure.title} />
+        <ProcedureSectionGrid sections={doctorSections.length ? doctorSections : rootSections} parentTitle={procedure.title} />
       )}
     </div>
   );

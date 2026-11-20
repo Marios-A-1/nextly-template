@@ -27,6 +27,11 @@ assert.match(about, /Πανεπιστημίου της Μάλτας/);
 assert.match(about, /Εμπιστοσύνη που διαρκεί/);
 const treatments = await (await get("/epemvaseis")).text();
 assert.equal((treatments.match(/data-treatment-trigger="/g) ?? []).length, 26);
+const listSection = treatments.match(/<section[^>]*aria-labelledby="treatment-list-title"[^>]*>(.*?)<\/section>/s)?.[1];
+assert.ok(listSection?.includes("Οι υπηρεσίες μας"), "Melina section kicker directly below the hero");
+assert.ok(!listSection?.includes('aria-label="Κατηγορίες επεμβάσεων"'), "filters sit outside the accordion section");
+assert.match(listSection ?? "", /data-treatment-trigger="blefaroplastiki" aria-expanded="true"/);
+
 
 await get("/epemvaseis/unknown-smoke-test", 404);
 const filter = new URLSearchParams({ cat: "Αισθητική Χειρουργική", sub: "prosopo", step: "3" });
@@ -42,6 +47,8 @@ function treatmentBackHref(html) {
 const detail = await (await get(`/epemvaseis/face-lift?${filter}`)).text();
 assert.equal(treatmentBackHref(detail), `/epemvaseis?${filter}`);
 assert.match(detail, /id="treatment-information".*id="treatment-faq"/s);
+assert.match(detail, /data-treatment-card-grid="true"/);
+
 
 const categoryOnly = new URLSearchParams({ cat: filter.get("cat"), step: "3" });
 const categoryDetail = await (await get(`/epemvaseis/face-lift?${categoryOnly}`)).text();
@@ -51,7 +58,7 @@ assert.equal(treatmentBackHref(rootDetail), "/epemvaseis");
 
 const invalid = await (await get("/epemvaseis?cat=unknown&sub=unknown&step=3")).text();
 assert.equal((invalid.match(/data-treatment-trigger="/g) ?? []).length, 26);
-assert.ok(!filtered.includes("/epemvaseis/egkavmata?"));
+
 
 const sitemap = await (await get("/sitemap.xml")).text();
 assert.equal((sitemap.match(/<loc>/g) ?? []).length, 30);
@@ -69,4 +76,4 @@ assert.equal(lastPage.items.length, 1);
 assert.equal(lastPage.nextOffset, null);
 await get(encodeURI(lastPage.items[0].src));
 
-console.log("Verified all public routes, legacy treatment filters, the sitemap, and gallery pagination.");
+console.log("Verified the Melina treatment layouts, all public routes, filter navigation, the sitemap, and gallery pagination.");

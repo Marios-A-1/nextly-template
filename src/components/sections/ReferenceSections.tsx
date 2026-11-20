@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { AnimatedButton } from "@/components/ui/AnimatedButton";
 import { AnimatedCounter } from "@/components/animations/AnimatedCounter";
 import { AnimatedImageReveal } from "@/components/animations/AnimatedImageReveal";
@@ -56,10 +57,12 @@ export function SecondaryPageHero({
   title,
   description,
   appointment,
+  children,
 }: {
   title: string;
   description: string;
   appointment?: boolean;
+  children?: ReactNode;
 }) {
   return (
     <section className="relative isolate -mt-[64px] overflow-hidden bg-espresso pt-[64px] text-white sm:-mt-[68px] sm:pt-[68px]">
@@ -78,6 +81,7 @@ export function SecondaryPageHero({
             <ContactChoiceButton variant="light">Κλείστε ραντεβού</ContactChoiceButton>
           </Reveal>
         )}
+        {children}
       </Reveal>
     </section>
   );

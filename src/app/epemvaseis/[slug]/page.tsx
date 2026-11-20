@@ -82,18 +82,25 @@ export default async function TreatmentPage({ params, searchParams }: PageProps)
           </div>
         </div>
       </section>
-      <section id="treatment-information" className="site-container space-y-8 py-14 sm:py-20" aria-label="Πληροφορίες για την επέμβαση">
-        {highlights.length > 0 && (
-          <Reveal as="ul" variant="stagger" childVariant="card" className="grid gap-4 md:grid-cols-2">
-            {highlights.map((item) => (
-              <Reveal as="li" key={item} className="premium-hover-surface rounded-xl border border-border bg-white p-5 sm:p-6">
-                <CheckCircle2 className="size-5 text-bronze" aria-hidden="true" />
-                <p className="mt-3 font-semibold leading-7">{item}</p>
-              </Reveal>
-            ))}
+      <section id="treatment-information" className="bg-background py-14 sm:py-20" aria-labelledby="treatment-information-heading">
+        <div className="site-container space-y-8">
+          <Reveal variant="panel">
+            <h2 id="treatment-information-heading" className="text-balance text-[2.35rem] font-semibold tracking-tight sm:text-5xl">
+              Πληροφορίες για την επέμβαση
+            </h2>
           </Reveal>
-        )}
-        <ProcedureContent procedure={procedure} />
+          {highlights.length > 0 && (
+            <Reveal as="ul" variant="stagger" childVariant="card" className="grid gap-4 md:grid-cols-2">
+              {highlights.map((item) => (
+                <Reveal as="li" key={item} className="premium-hover-surface rounded-xl border border-border bg-white p-5 sm:p-6">
+                  <CheckCircle2 className="size-5 text-bronze" aria-hidden="true" />
+                  <p className="mt-3 font-semibold leading-7">{item}</p>
+                </Reveal>
+              ))}
+            </Reveal>
+          )}
+          <ProcedureContent procedure={procedure} />
+        </div>
       </section>
       <FAQ id="treatment-faq" faqs={getFaqs()} labels={sections.faq} />
       {relatedSlugs.length > 0 && (
